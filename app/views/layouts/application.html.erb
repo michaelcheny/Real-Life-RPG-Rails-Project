@@ -16,6 +16,10 @@
     <%= navbar %>
   </header>
 
+      <% flash.each do |k,v| %>
+        <div class=<%= k %>><%= v %></div>
+      <% end %>
+
     <%= yield %>
   </body>
 </html>

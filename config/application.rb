@@ -11,6 +11,7 @@ module RailsProject
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
+    # Set time zone to Pacific Time.
     config.time_zone = 'Pacific Time (US & Canada)'
     config.active_record.default_timezone = :local
     

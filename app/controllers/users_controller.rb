@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params(:username, :password, :password_confirmation, :name, :email))
+    # binding.pry
     if @user.save
       # to log in
       session[:user_id] = @user.id
@@ -23,7 +24,8 @@ class UsersController < ApplicationController
       redirect_to dashboard_path
     else
       flash[:alert] = "WTF BRO"
-      render "new"
+      # binding.pry
+      render :new
     end
   end
 

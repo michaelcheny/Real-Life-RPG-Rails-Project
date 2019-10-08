@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'sessions/destroy'
   root 'welcome#index'
 
-  get '/signup' => 'user#new', as: 'signup'
+  get '/signup' => 'users#new', as: 'signup'
   get '/login' => 'sessions#new', as: 'login'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'

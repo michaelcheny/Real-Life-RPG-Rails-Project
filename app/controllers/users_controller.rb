@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Yo #{@user.username}!"
       redirect_to dashboard_path
     else
-      flash[:alert] = "WTF BRO"
+      flash[:alert] = "YOU'VE DUN GOOFED!"
       # binding.pry
       render :new
     end

@@ -1,21 +1,6 @@
 <h3>Register Here</h3>
 
-<% if @user.errors.any? %>
-  <%= render partial: 'show_errors', locals: {user: @user} %>
-<% end %>
+<%= render "shared/error_messages", object: @user %>
 
-
-
-<% if @user.errors.any? %>
-  <div class="error-box">
-    <h3><%= pluralize(@user.errors.count, "error") %> prohibited your account from being created:</h3>
-    <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div><br>
-<% end %>
-
-<%= render 'form' %>
+<%= render 'form', user: @user %>
 

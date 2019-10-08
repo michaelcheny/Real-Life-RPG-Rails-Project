@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
-
+    
   end
 
   def new
@@ -33,6 +33,10 @@ class UsersController < ApplicationController
 
   def destroy
 
+  end
+
+  def dashboard
+    @user = current_user
   end
 
   private

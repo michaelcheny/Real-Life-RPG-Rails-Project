@@ -2,6 +2,7 @@
 <%= form_with model: @user, class: "log_in_form" do |f| %>
 
   <%= f.text_field :name, placeholder: "Name" %> <br>
+  <%= f.text_field :email, placeholder: "Email" %> <br>
   <%= f.text_field :username, placeholder: "Username" %> <br>
   <%= f.password_field :password, placeholder: "Password" %> <br>
   <%= f.password_field :password_confirmation, placeholder: "Password again" %> <br> <br>

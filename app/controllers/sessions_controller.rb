@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       flash[:success] = "Login Success!"
       redirect_to dashboard_path
     else
-      flash[:error] = "WTF BRO? TRY AGAIN"
+      flash[:error] = "Login Error: Your login information was incorrect. Please try again."
       redirect_to login_path
     end
   end

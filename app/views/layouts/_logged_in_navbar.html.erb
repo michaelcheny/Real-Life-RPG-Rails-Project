@@ -1,3 +1,10 @@
-<%= link_to 'Home', dashboard_path %>
-
-<%= link_to 'Logout', '/logout', method: :delete %>
+<%= link_to 'Home', dashboard_path, class: "navbutton" %>
+<div class="dropdown">
+  <%= link_to 'Profile', user_path(@user), class: "navbutton" %>
+    <div class="dropdown-content">
+      <%= link_to 'Edit Profile', edit_user_path(@user) %>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+</div>
+<%= link_to 'Logout', '/logout', method: :delete, class: "navbutton" %>

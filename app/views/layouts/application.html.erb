@@ -14,12 +14,12 @@
   <header>
     <h1>Welcome to Froopyland (temp name)</h1>
     <h4><%= greeting %></h4>
-    <%= navbar %>
+    <%= navbar %> <br><br>
   </header>
 
-      <% flash.each do |k,v| %>
-        <br><div class=<%= k %>><%= v %></div>
-      <% end %>
+    <% flash.each do |k,v| %>
+      <br><div class=<%= k %>><%= v %></div>
+    <% end %>
 
     <%= yield %>
   </body>

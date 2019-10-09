@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   
-  before_action :find_user, only: [:index, :show, :edit, :update, :destroy, :index]
+  before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def index
-
+    @users = User.all
   end
 
   def show
@@ -23,8 +23,8 @@ class UsersController < ApplicationController
       flash[:notice] = "Yo #{@user.username}!"
       redirect_to dashboard_path
     else
-        flash[:error] = "nonono"
-        render :new
+      flash[:error] = "nonono"
+      render :new
     end
   end
 

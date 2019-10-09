@@ -1,1 +1,4 @@
-<%= @user.username %>'s page'
+<h3><%= @user.username.capitalize %>'s page</h3>
+<p><%= @user.email %></p>
+
+<p><%= link_to 'back', users_path %></p>

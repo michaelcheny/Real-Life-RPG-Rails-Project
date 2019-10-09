@@ -26,11 +26,12 @@ task
 has many user skills
 has many users through userskills
 
-skills 
 
 task-skills
+belongs to tsak
+belonfs to skill
 
-tasks
+
 
 
 

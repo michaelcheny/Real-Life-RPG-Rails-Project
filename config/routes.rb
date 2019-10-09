@@ -12,6 +12,6 @@ Rails.application.routes.draw do
 
   get 'dashboard' => 'users#dashboard', as: 'dashboard'
 
-  resources :users
+  resources :users, except: [:new, :create]
   
 end

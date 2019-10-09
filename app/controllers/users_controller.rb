@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    redirect_to dashboard_path if logged_in?
     @user = User.new
   end
 

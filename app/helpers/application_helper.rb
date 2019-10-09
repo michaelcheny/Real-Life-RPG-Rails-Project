@@ -9,4 +9,11 @@ module ApplicationHelper
     end
   end
 
+  # Greeting
+  def greeting
+    if logged_in?
+      "Hello " + current_user.username.titlecase
+    end
+  end
+
 end

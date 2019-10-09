@@ -1,5 +1,5 @@
 
-<%= form_with model: user, class: "log_in_form" do |f| %>
+<%= form_with model: user, class: "log_in_form", local: true do |f| %>
 
   <%= f.text_field :name, placeholder: "Name" %> <br>
   <%= f.text_field :email, placeholder: "Email" %> <br>

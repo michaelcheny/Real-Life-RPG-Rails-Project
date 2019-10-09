@@ -16,16 +16,15 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params(:username, :password, :password_confirmation, :name, :email))
-    # binding.pry
+ 
     if @user.save
       # to log in
       session[:user_id] = @user.id
       flash[:notice] = "Yo #{@user.username}!"
       redirect_to dashboard_path
     else
-      flash[:alert] = "YOU'VE DUN GOOFED!"
-      # binding.pry
-      render :new
+        flash[:error] = "nonono"
+        render :new
     end
   end
 

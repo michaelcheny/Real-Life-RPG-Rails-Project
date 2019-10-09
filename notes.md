@@ -1,5 +1,38 @@
 # Notes for Rails project
 
+## tables
+
+User 
+has many user_skills
+has many skills through user-skills
+has many user_tasks
+has many tasks through user_tasks
+
+user_skills
+belongs to user
+belings to skills
+
+Skills
+has many userskills
+has many useres through userskills
+
+
+user_task
+belongs to user
+belings to skills
+status
+
+task
+has many user skills
+has many users through userskills
+
+skills 
+
+task-skills
+
+tasks
+
+
 
 ## RPG YOUR LIFE TO DO LIST/CALENDER/PLANNER APPPPPPP
 

@@ -30,11 +30,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-
+    authorize_user_for_editing_user(@user)
   end
 
   def update
-
+    authorize_user_for_editing_user(@user)
   end
 
   def destroy

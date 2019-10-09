@@ -25,4 +25,11 @@ class ApplicationController < ActionController::Base
   def authorize?
     !current_user.nil? && !!logged_in?
   end
+
+  ## authorizes user to edit user info, if not, redirect
+  def authorize_user_for_editing_user(user)
+    authenticate
+    redirect "/user/#{current_user.id}/edit" if !user
+    redirect "/user/#{current_user.id}/edit" if current_user != user
+  end
 end

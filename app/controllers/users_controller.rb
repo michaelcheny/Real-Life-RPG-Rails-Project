@@ -35,6 +35,12 @@ class UsersController < ApplicationController
 
   def update
     authorize_user_for_editing_user(@user)
+    if @user.update(user_params(:username, :password, :password_confirmation, :name, :email))
+      flash[:notice] = "Profile successfully updated!"
+      redirect_to dashboard_path
+    else
+      render :edit
+    end
   end
 
   def destroy

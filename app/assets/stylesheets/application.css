@@ -14,6 +14,10 @@
  *= require_self
  */
 
+ body {
+   background-color: beige;
+ }
+
  .container {
    border: solid black 1px;
  }

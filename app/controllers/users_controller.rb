@@ -22,6 +22,11 @@ class UsersController < ApplicationController
       # to log in
       session[:user_id] = @user.id
       flash[:success] = "Yo #{@user.username}!"
+
+      Skill.all.each do |s|
+        @user.skills << s
+      end
+      
       redirect_to dashboard_path
     else
       flash[:error] = "nonono"

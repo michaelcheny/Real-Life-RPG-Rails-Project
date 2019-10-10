@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :skills
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root 'welcome#index'
@@ -17,4 +16,5 @@ Rails.application.routes.draw do
     resources :tasks, only: [:index, :new, :show]
   end
   resources :tasks
+  resources :skills
 end

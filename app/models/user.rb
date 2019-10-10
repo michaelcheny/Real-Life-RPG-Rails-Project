@@ -1,8 +1,12 @@
 class User < ApplicationRecord
+  has_secure_password
+  
   has_many :user_tasks
   has_many :tasks, through: :user_tasks
+  has_many :user_skills
+  has_many :skills, through: :user_skills
 
-  has_secure_password
+  
 
   ## validation for account creation
   # validates :name, presence: true

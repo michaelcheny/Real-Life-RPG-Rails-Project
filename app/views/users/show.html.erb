@@ -1,4 +1,13 @@
 
-<p><%= @user.email %></p>
-
-user profile info stuff
+<p>Email: <%= @user.email %></p>
+<p>Name: <%= @user.name %></p>
+<p>Current Tasks:</p>
+<ul>
+  <% @user.tasks.each do |task| %>
+    <p><%= task.name %></p>
+    <li><%= task.description %></li>
+    <li><%= task.difficulty_level %></li>
+    <li><%= task.priority_level %></li>
+    
+  <% end %>
+</ul>

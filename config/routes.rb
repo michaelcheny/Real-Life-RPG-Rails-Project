@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :tasks
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root 'welcome#index'
@@ -13,6 +12,8 @@ Rails.application.routes.draw do
 
   get 'dashboard' => 'users#dashboard', as: 'dashboard'
 
-  resources :users, except: [:new, :create]
-  
+  resources :users, except: [:new, :create] do
+    resources :tasks, only: [:index, :new, :show]
+  end
+  resources :tasks
 end

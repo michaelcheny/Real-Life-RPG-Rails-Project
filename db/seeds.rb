@@ -58,3 +58,12 @@ Skill.create(name: "Exploration", description: "The ability to travel over new t
 
 Skill.create(name: "Social", description: "The ability to interact and act appropriately in given social contexts. (example: communication and friendship making skills.)")
 
+m = User.create(
+  name: "Michael", 
+  email: "michael@michael.com", 
+  username: "michael", 
+  password: "password", 
+  password_confirmation: "password",
+  )
+
+Skill.all.each{ |skill| m.skills << skill }

@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     if @user.save
       # to log in
       session[:user_id] = @user.id
-      flash[:notice] = "Yo #{@user.username}!"
+      flash[:success] = "Yo #{@user.username}!"
       redirect_to dashboard_path
     else
       flash[:error] = "nonono"
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   def update
     authorize_user_for_editing_user(@user)
     if @user.update(user_params(:username, :password, :password_confirmation, :name, :email))
-      flash[:notice] = "Profile successfully updated!"
+      flash[:success] = "Profile successfully updated!"
       redirect_to dashboard_path
     else
       render :edit

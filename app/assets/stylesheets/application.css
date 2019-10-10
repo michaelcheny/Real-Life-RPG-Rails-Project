@@ -18,9 +18,14 @@
    border: solid black 1px;
  }
 
- /* for incorrect login stuffs */
+ /* for incorrect stuff causing errors */
  .error {
   color: red;
+ }
+
+/* for successful db updates */
+ .success {
+   color: green;
  }
 
  /* Dropdown Button */

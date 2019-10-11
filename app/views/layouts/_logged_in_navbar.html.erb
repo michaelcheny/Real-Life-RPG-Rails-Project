@@ -18,7 +18,7 @@
 
       <%= link_to current_user.username.titlecase + "'s Profile", user_path(current_user) %>
       <%= link_to 'Edit Profile', edit_user_path(current_user) %>
-      <a href="#">Link 3</a>
+      <%= link_to 'Skills', user_skills_path(current_user) %>
       <a href="#">Link 4</a>
 
     </div>

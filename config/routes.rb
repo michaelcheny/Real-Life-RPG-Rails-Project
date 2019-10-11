@@ -14,8 +14,8 @@ Rails.application.routes.draw do
 
   resources :users, except: [:new, :create] do
     resources :tasks, only: [:index, :new, :show]
-    resources :skills, only: [:show]
+    resources :skills, only: [:index, :show]
   end
   resources :tasks
-  resources :skills, only: [:show]
+  # resources :skills, only: [:show]
 end

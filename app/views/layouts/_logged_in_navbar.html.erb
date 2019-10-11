@@ -1,14 +1,11 @@
 <%= link_to 'Home', dashboard_path, class: "navbutton" %>
 
 <div class="dropdown">
-  <%= link_to 'Tasks', tasks_path, class: "navbutton" %>
+  <%= link_to 'Tasks', user_tasks_path(current_user), class: "navbutton" %>
     <div class="dropdown-content">
-
+      <%= link_to 'Your Tasks', user_tasks_path(current_user) %>
       <%= link_to 'New Task', new_user_task_path(current_user) %>
-      
-      <a href="#">Link 3</a>
-      <a href="#">Link 4</a>
-
+      <%= link_to 'All Tasks', tasks_path %>
     </div>
 </div>
 

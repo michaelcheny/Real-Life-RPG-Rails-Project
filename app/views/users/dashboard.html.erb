@@ -3,8 +3,8 @@ User skills  | Show a list of uncomplete tasks | Show a list of completed tasks 
 
 
   <% @skills.each do |skill| %>
-    <p class="skill_name"><%= skill.name %></p>
-    
+    <p class="skill_name"><%= link_to skill.name, skill_path(skill) %></p>
+
     <% skill.user_skills.each do |s| %>
       <p>Level: <%= s.level %></p>
       <p>Exp: <%= s.experience_pts %></p>

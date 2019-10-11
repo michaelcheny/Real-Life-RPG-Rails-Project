@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       Skill.all.each do |s|
         @user.skills << s
       end
-      
+
       redirect_to dashboard_path
     else
       flash[:error] = "nonono"
@@ -54,6 +54,8 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = current_user
+    #skill.user_skills.first.update(level: 1)
+    @skills = @user.skills
   end
 
   private

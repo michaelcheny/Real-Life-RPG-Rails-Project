@@ -44,6 +44,7 @@ class UsersController < ApplicationController
       flash[:success] = "Profile successfully updated!"
       redirect_to dashboard_path
     else
+      flash[:error] = "Please try again."
       render :edit
     end
   end
@@ -55,7 +56,7 @@ class UsersController < ApplicationController
   def dashboard
     @user = current_user
     #skill.user_skills.first.update(level: 1)
-    @skills = @user.skills
+    
   end
 
   private

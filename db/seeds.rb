@@ -36,6 +36,8 @@ User.destroy_all
 
 Skill.destroy_all
 
+UserSkill.destroy_all
+
 
 
 Skill.create(name: "Health", description: "The overall health of your body. (example: not getting sick because you are healthy)")
@@ -66,4 +68,13 @@ m = User.create(
   password_confirmation: "password",
   )
 
+d = User.create(
+  name: "dog", 
+  email: "dog@dog.com", 
+  username: "dog", 
+  password: "password", 
+  password_confirmation: "password",
+  )  
+
 Skill.all.each{ |skill| m.skills << skill }
+Skill.all.each{ |skill| d.skills << skill }

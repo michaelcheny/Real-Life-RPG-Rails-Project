@@ -2,13 +2,14 @@
 User skills  | Show a list of uncomplete tasks | Show a list of completed tasks |
 
 
-  <% @skills.each do |skill| %>
-    <p class="skill_name"><%= link_to skill.name, user_skill_path(@user, skill.id) %></p>
 
-    <% skill.user_skills.each do |s| %>
-      <p>Level: <%= s.level %></p>
-      <p>Exp: <%= s.experience_pts %></p>
-    <% end %>
-    
+  <% @user.user_skills.each do |user_skill| %>
+    <p class="skill_name"><%= link_to user_skill.skill.name, user_skill_path(@user, user_skill.skill) %></p>
+
+    <p>Level: <%= user_skill.level %></p>
+    <p>Exp: <%= user_skill.experience_pts %></p>
+
+    <% #binding.pry %>
+   
   <% end %>
 

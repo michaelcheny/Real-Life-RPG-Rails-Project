@@ -1,5 +1,11 @@
 <h3>Tasks</h3>
 
-<% @tasks.each do |task| %>
-  <%= task.name %>
-<% end %>
+  <% @user.user_tasks.each do |user_task| %>
+    <div class="container">
+      <p>name: <%= user_task.task.name %></p>
+      <p>desc: <%= user_task.task.description %></p>
+      <p>dif lvl: <%= user_task.task.difficulty_level %></p>
+      <p>pri lvl: <%= user_task.task.priority_level %></p>
+      <p>completed? <%= user_task.completed %></p>
+    </div>
+  <% end %>

@@ -17,8 +17,13 @@ class TasksController < ApplicationController
 
   def new
     authenticate
-    create action isnt finding user_id, do something here to show user id
-    @task = Task.new
+    # create action isnt finding user_id, do something here to show user id
+    # @task = UserTask.new(user_id: params[:user_id])
+    # https://stackoverflow.com/questions/2182428/rails-nested-form-with-has-many-through-how-to-edit-attributes-of-join-model
+
+    @task = @user.user_tasks.build.build_tasks
+    # @task = current_user.tasks.build
+    # @task.users.build
   end
 
   def create
@@ -37,6 +42,7 @@ class TasksController < ApplicationController
         binding.pry
         render :new
       end
+      ## need to add an else conditional here
     end
 
     # @task = Task.new(task_params)
@@ -78,7 +84,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :description, :difficulty_level, :priority_level)
+    params.require(:task).permit(:name, :description, :difficulty_level, :priority_level, :user_id)
   end
 end
 

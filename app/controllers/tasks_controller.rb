@@ -16,17 +16,38 @@ class TasksController < ApplicationController
 
 
   def new
+    authenticate
+    create action isnt finding user_id, do something here to show user id
     @task = Task.new
   end
 
   def create
-    @task = Task.new(task_params)
-    if @task.save
-      flash[:success] = "Task created!"
-      redirect_to user_task_path(@task.user)
-    else
-      render :new
+    authenticate
+    binding.pry
+    if params[:user_id]
+      @user = User.find_by(id: params[:user_id])
+      @task = Task.new(task_params)
+      @user.tasks << @task
+      binding.pry
+      if @task.save
+        flash[:notice] = "Task created, good job, #{@user.username}!"
+        redirect_to user_task_path(@user, @task)
+      else
+        flash[:error] = "Sorry, #{@user.username}, something messed up."
+        binding.pry
+        render :new
+      end
     end
+
+    # @task = Task.new(task_params)
+    # # 
+    # if @task.save
+    #   flash[:success] = "Task created!"
+    #   redirect_to task_path(@task)
+    # else
+    #   flash[:error] = "Something messed up, try again."
+    #   render :new
+    # end
   end
 
   def show

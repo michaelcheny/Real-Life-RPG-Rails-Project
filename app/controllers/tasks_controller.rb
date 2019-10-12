@@ -30,7 +30,16 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = Task.find(params[:id])
+    if params[:user_id]
+      @user = User.find_by(id: params[:user_id])
+      @task = @user.tasks.find_by(id: params[:id])
+      if @task.nil?
+        flash[:error] = "Task not found."
+        redirect_to user_tasks_path(@user)
+      end
+    else
+      @task = Task.find(params[:id])
+    end
   end
 
   def edit

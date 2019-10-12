@@ -7,6 +7,12 @@
   <%= f.label :description %>
   <p><%= f.text_area :description, placeholder: "High intensity interval sprints with my doge." %></p>
 
+  <%= f.label :priority_level %>
+  <p><%= f.select :priority_level, (1..10).to_a %></p>
+
+  <%= f.label :difficulty_level %>
+  <p><%= f.select :difficulty_level, (1..10).to_a %></p>
+
   <%= f.submit %>
 
 <% end %>

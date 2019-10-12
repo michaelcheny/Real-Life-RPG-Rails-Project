@@ -2,7 +2,10 @@
 
 <%= form_with model: @task, local: true do |f| %>
   <%= f.label :name %>
-  <%= f.text_field :description %>
+  <p><%= f.text_field :name, placeholder: "Run hills with dog" %></p>
+
+  <%= f.label :description %>
+  <p><%= f.text_area :description, placeholder: "High intensity interval sprints with my doge." %></p>
 
   <%= f.submit %>
 

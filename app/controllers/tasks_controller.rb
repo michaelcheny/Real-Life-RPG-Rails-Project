@@ -1,8 +1,19 @@
 class TasksController < ApplicationController
 
   def index
-    @tasks = Task.all
+    if params[:user_id]
+      @user = User.find_by(id: params[:user_id])
+      if @user.nil?
+        flash[:error] = "User not found"
+        redirect_to users_path
+      else
+        @tasks = @user.tasks
+      end
+    else
+      @tasks = Task.all
+    end
   end
+
 
   def new
     @task = Task.new
@@ -12,7 +23,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     if @task.save
       flash[:success] = "Task created!"
-      redirect_to dashboard_path
+      redirect_to user_task_path(@task.user)
     else
       render :new
     end

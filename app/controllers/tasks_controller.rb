@@ -67,12 +67,16 @@ class TasksController < ApplicationController
     authenticate
     if params[:user_id]
       @user = current_user
-      # binding.pry
       authorize(@user)
-      @task = @user.tasks.find(params[:id])
-      # authorize_task(@task)
+      if @user.tasks.find_by(id: params[:id])
+        @task = @user.tasks.find(params[:id])
+        authorize_task(@task)
+      else 
+        flash[:error] = "Task not found, don't you dare."
+         redirect_to user_tasks_path(@user) 
+      end
     else
-      flash[:error] = "Not found."
+      flash[:error] = "User not found."
       redirect_to user_tasks_path(@user)
     end
   end

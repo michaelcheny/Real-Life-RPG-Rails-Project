@@ -2,11 +2,14 @@
 
   <% @tasks.each do |task| %>
     <div class="container">
-      <p>name: <%= link_to task.name, edit_user_task_path(task.user, task) %></p>
+      <p>name: <%= task.name %></p>
       <p>desc: <%= task.description %></p>
       <p>dif lvl: <%= task.difficulty_level %></p>
       <p>pri lvl: <%= task.priority_level %></p>
       <p>completed? <%= task.completed %></p>
       <p><%= show_task_user(task) %></p>
+      <% if current_user == task.user %>
+        <%= link_to "Edit", edit_user_task_path(current_user, task) %>
+      <% end %>
     </div>
   <% end %>

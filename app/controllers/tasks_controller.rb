@@ -23,23 +23,14 @@ class TasksController < ApplicationController
      
   end
 
+
   def create
     authenticate
- 
-    ## 
     if params[:user_id]
       @user = current_user
       ## if user.id != params of userid, throw 403
       @task = @user.tasks.build(task_params)
    
-      # @task = @user.user_tasks.build(task_params)
-      # binding.pry
-      # @task = Task.new(task_params)
-      # @task = Task.new(task_params)
-      # binding.pry
-      # @user.user_tasks.build(task: @task)
-      # @user.tasks << @task
-      # binding.pry
       if @task.save
         flash[:notice] = "Task created, good job, #{@user.username}!"
         redirect_to user_task_path(@user, @task)
@@ -54,16 +45,8 @@ class TasksController < ApplicationController
       redirect_to new_user_task_path(current_user)
     end
 
-    # @task = Task.new(task_params)
-    # # 
-    # if @task.save
-    #   flash[:success] = "Task created!"
-    #   redirect_to task_path(@task)
-    # else
-    #   flash[:error] = "Something messed up, try again."
-    #   render :new
-    # end
   end
+
 
   def show
     if params[:user_id]
@@ -78,17 +61,25 @@ class TasksController < ApplicationController
     end
   end
 
-  def edit
 
+  def edit
+    authenticate
+    if params[:user_id]
+      @user = current_user
+      @task = @user.tasks.find(params[:id])
+    end
   end
+
 
   def update
 
   end
 
+
   def destroy
 
   end
+
 
   private
 

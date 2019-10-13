@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
+
   def new
     redirect_to dashboard_path if authorize?
   end
+
 
   def create
     user = User.find_by(username: params[:username])
@@ -29,13 +31,11 @@ class SessionsController < ApplicationController
     @user.google_refresh_token = refresh_token if refresh_token.present?
     if @user.save
       flash[:success] = "Hello #{@user.username}"
-      # binding.pry
       helpers.populate_skills_if_empty(@user)
       log_in(@user)
       redirect_to dashboard_path
     else
-      flash[:error] = "There was an error"
-      # binding.pry
+      flash[:error] = "There was an error, please try again."
       redirect_to login_path
     end
   end
@@ -45,4 +45,5 @@ class SessionsController < ApplicationController
     session.delete(:user_id)
     redirect_to root_path
   end
+  
 end

@@ -1,0 +1,11 @@
+<h3>Update Task</h3>
+<%= form_with model: [@task.user, @task], local:true do |f| %>
+
+  <p><%= f.label :name %></p>
+  <p><%= f.text_field :name %></p>
+  <p><%= f.label :description %></p>
+  <p><%= f.text_area :description %></p>
+
+  <p><%= f.submit %></p>
+
+<% end %>

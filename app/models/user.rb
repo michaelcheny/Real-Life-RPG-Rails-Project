@@ -24,8 +24,9 @@ class User < ApplicationRecord
       user.name = auth.info.name
       user.username = auth.info.name.split(" ").first
       user.email = auth.info.email
-      user.password = RandomPasswordGenerator.generate(18)
-      user.password_confirmation = user.password
+      random_password = RandomPasswordGenerator.generate(18)
+      user.password = random_password
+      user.password_confirmation = random_password
     end
   end
 

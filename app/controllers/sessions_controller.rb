@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
     if @user.save
       flash[:success] = "Hello #{@user.username}"
       # binding.pry
-      helpers.populate_skills(@user)
+      helpers.populate_skills_if_empty(@user)
       log_in(@user)
       redirect_to dashboard_path
     else

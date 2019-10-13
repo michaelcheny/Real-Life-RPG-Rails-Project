@@ -7,5 +7,6 @@
       <p>dif lvl: <%= task.difficulty_level %></p>
       <p>pri lvl: <%= task.priority_level %></p>
       <p>completed? <%= task.completed %></p>
+      <p>user: <%= link_to task.user.username, user_path(task.user) %></p>
     </div>
   <% end %>

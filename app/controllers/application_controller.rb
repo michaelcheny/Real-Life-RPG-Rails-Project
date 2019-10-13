@@ -36,4 +36,11 @@ class ApplicationController < ActionController::Base
     redirect "/user/#{current_user.id}/edit" if !user
     redirect "/user/#{current_user.id}/edit" if current_user != user
   end
+
+  def authorize(user)
+    authenticate
+    redirect "/user/#{current_user.id}/edit" if !user
+    redirect "/user/#{current_user.id}/edit" if current_user != user
+  end
+
 end

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get 'dashboard' => 'users#dashboard', as: 'dashboard'
 
   resources :users, except: [:new] do
-    resources :tasks, only: [:index, :show, :new, :create]
+    resources :tasks
     resources :skills, only: [:index, :show]
   end
   resources :tasks

@@ -17,15 +17,10 @@ class TasksController < ApplicationController
 
   def new
     authenticate
-    # create action isnt finding user_id, do something here to show user id
-    # @task = UserTask.new(user_id: params[:user_id])
 
     @user = current_user
-
     @task = @user.tasks.build
-    
-    # binding.pry
- 
+     
   end
 
   def create

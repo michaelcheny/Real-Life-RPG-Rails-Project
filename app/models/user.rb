@@ -22,7 +22,10 @@ class User < ApplicationRecord
     # Creates a new user only if it doesn't exist
     where(email: auth.info.email).first_or_initialize do |user|
       user.name = auth.info.name
+      user.username = auth.info.name.split(" ").first
       user.email = auth.info.email
+      user.password = RandomPasswordGenerator.generate(18)
+      user.password_confirmation = user.password
     end
   end
 

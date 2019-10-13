@@ -29,11 +29,12 @@ class SessionsController < ApplicationController
     @user.google_refresh_token = refresh_token if refresh_token.present?
     if @user.save
       flash[:success] = "Hello #{@user.username}"
+      # binding.pry
       log_in(@user)
       redirect_to dashboard_path
     else
       flash[:error] = "There was an error"
-      binding.pry
+      # binding.pry
       redirect_to login_path
     end
   end

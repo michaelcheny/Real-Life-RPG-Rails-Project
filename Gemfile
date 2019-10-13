@@ -25,6 +25,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
+gem 'random_password_generator', '~> 1.0'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

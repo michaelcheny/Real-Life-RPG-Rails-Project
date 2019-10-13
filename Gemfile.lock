@@ -168,6 +168,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.20.3, < 2.0)
     rake (13.0.0)
+    random_password_generator (1.0.0)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
@@ -244,6 +245,7 @@ DEPENDENCIES
   pry
   puma (~> 3.11)
   rails (~> 6.0.0)
+  random_password_generator (~> 1.0)
   sass-rails (~> 5)
   selenium-webdriver
   spring

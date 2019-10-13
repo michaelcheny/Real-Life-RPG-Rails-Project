@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
+  # Routes for Google authentication
+
+  get 'auth/:provider/callback', to: 'sessions#googleAuth'
+  get 'auth/failure', to: redirect('/')
+
   get 'dashboard' => 'users#dashboard', as: 'dashboard'
 
   resources :users, except: [:new] do

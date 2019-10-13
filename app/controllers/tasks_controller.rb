@@ -37,8 +37,8 @@ class TasksController < ApplicationController
 
 
       # @task = Task.new(task_params)
-      @task = @user.tasks.build(task_params)
-      binding.pry
+      @task = Task.new(task_params)
+      # binding.pry
       @user.user_tasks.build(task: @task)
       # @user.tasks << @task
       binding.pry
@@ -95,7 +95,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :description, :difficulty_level, :priority_level, user_id:[])
+    params.require(:task).permit(:name, :description, :difficulty_level, :priority_level)
   end
 end
 

@@ -34,8 +34,11 @@ ActiveRecord::Schema.define(version: 2019_10_13_033749) do
     t.string "description"
     t.integer "difficulty_level"
     t.integer "priority_level"
+    t.integer "user_id"
+    t.boolean "completed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "user_skills", force: :cascade do |t|
@@ -47,17 +50,6 @@ ActiveRecord::Schema.define(version: 2019_10_13_033749) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["skill_id"], name: "index_user_skills_on_skill_id"
     t.index ["user_id"], name: "index_user_skills_on_user_id"
-  end
-
-  create_table "user_tasks", force: :cascade do |t|
-    t.string "notes"
-    t.boolean "completed", default: false
-    t.integer "user_id"
-    t.integer "task_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["task_id"], name: "index_user_tasks_on_task_id"
-    t.index ["user_id"], name: "index_user_tasks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

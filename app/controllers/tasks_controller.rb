@@ -19,35 +19,38 @@ class TasksController < ApplicationController
     authenticate
     # create action isnt finding user_id, do something here to show user id
     # @task = UserTask.new(user_id: params[:user_id])
-    # https://stackoverflow.com/questions/2182428/rails-nested-form-with-has-many-through-how-to-edit-attributes-of-join-model
+
     @user = current_user
-    # binding.pry
-    @task = @user.user_tasks.build
+
+    @task = @user.tasks.build
     
-    # @task = current_user.tasks.build
-    # @task.users.build
+    # binding.pry
+ 
   end
 
   def create
     authenticate
-    # binding.pry
+ 
+    ## 
     if params[:user_id]
-      @user = User.find_by(id: params[:user_id])
-      binding.pry
-
-
-      # @task = Task.new(task_params)
-      @task = Task.new(task_params)
+      @user = current_user
+      ## if user.id != params of userid, throw 403
+      @task = @user.tasks.build(task_params)
+   
+      # @task = @user.user_tasks.build(task_params)
       # binding.pry
-      @user.user_tasks.build(task: @task)
+      # @task = Task.new(task_params)
+      # @task = Task.new(task_params)
+      # binding.pry
+      # @user.user_tasks.build(task: @task)
       # @user.tasks << @task
-      binding.pry
+      # binding.pry
       if @task.save
         flash[:notice] = "Task created, good job, #{@user.username}!"
         redirect_to user_task_path(@user, @task)
       else
         flash[:error] = "Sorry, #{@user.username}, something messed up."
-        binding.pry
+        # binding.pry
         redirect_to new_user_task_path(current_user)
       end
     else

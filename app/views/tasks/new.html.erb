@@ -1,6 +1,6 @@
 <h3>New Task</h3>
 
-<%= form_with model: @task, local: true do |f| %>
+<%= form_with model: [@user, @task], local: true do |f| %>
   <%= f.label :name %>
   <p><%= f.text_field :name, placeholder: "Run hills with dog" %></p>
 
@@ -13,7 +13,7 @@
   <%= f.label :difficulty_level %>
   <p><%= f.select :difficulty_level, (1..10) %></p>
 
-  <%= f.hidden_field 'user_task[:user_id]' %>
+  
   <%= f.submit %>
 
 <% end %>

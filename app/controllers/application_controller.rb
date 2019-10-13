@@ -37,10 +37,14 @@ class ApplicationController < ActionController::Base
     redirect "/user/#{current_user.id}/edit" if current_user != user
   end
 
+  def authorize_task(task)
+    # authenticate
+    redirect_to user_tasks_path(current_user) if !task
+    redirect_to user_tasks_path(current_user) if current_user != task.user
+  end
+
   def authorize(user)
-    authenticate
-    redirect "/user/#{current_user.id}/edit" if !user
-    redirect "/user/#{current_user.id}/edit" if current_user != user
+    redirect_to user_tasks_path(user) if params[:user_id] != user.id.to_s
   end
 
 end

@@ -29,6 +29,7 @@ class TasksController < ApplicationController
     if params[:user_id]
       @user = current_user
       ## if user.id != params of userid, throw 403
+      authorize(@user)
       @task = @user.tasks.build(task_params)
    
       if @task.save
@@ -66,7 +67,13 @@ class TasksController < ApplicationController
     authenticate
     if params[:user_id]
       @user = current_user
+      # binding.pry
+      authorize(@user)
       @task = @user.tasks.find(params[:id])
+      # authorize_task(@task)
+    else
+      flash[:error] = "Not found."
+      redirect_to user_tasks_path(@user)
     end
   end
 

@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_10_231827) do
+ActiveRecord::Schema.define(version: 2019_10_13_023043) do
 
   create_table "skills", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "task_skills", force: :cascade do |t|
+    t.integer "points"
+    t.integer "task_id"
+    t.integer "skill_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["skill_id"], name: "index_task_skills_on_skill_id"
+    t.index ["task_id"], name: "index_task_skills_on_task_id"
   end
 
   create_table "tasks", force: :cascade do |t|

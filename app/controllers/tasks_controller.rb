@@ -22,7 +22,7 @@ class TasksController < ApplicationController
     # https://stackoverflow.com/questions/2182428/rails-nested-form-with-has-many-through-how-to-edit-attributes-of-join-model
     @user = current_user
     # binding.pry
-    @task = @user.tasks.build
+    @task = @user.user_tasks.build_task
     # @task = current_user.tasks.build
     # @task.users.build
   end
@@ -45,12 +45,12 @@ class TasksController < ApplicationController
       else
         flash[:error] = "Sorry, #{@user.username}, something messed up."
         binding.pry
-        render :new
+        redirect_to new_user_task_path(current_user)
       end
     else
       flash[:error] = "Sorry, #{@user.username}, something messed up."
       binding.pry
-      render :new
+      redirect_to new_user_task_path(current_user)
     end
 
     # @task = Task.new(task_params)
@@ -92,7 +92,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :description, :difficulty_level, :priority_level, :user_id)
+    params.require(:task).permit(:name, :description, :difficulty_level, :priority_level, user_id:[])
   end
 end
 

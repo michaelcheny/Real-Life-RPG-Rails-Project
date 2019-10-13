@@ -1,5 +1,11 @@
 # Notes for Rails project
 
+leveling formula
+
+
+
+
+
 ## tables
 
 

@@ -22,19 +22,22 @@ class TasksController < ApplicationController
     # https://stackoverflow.com/questions/2182428/rails-nested-form-with-has-many-through-how-to-edit-attributes-of-join-model
     @user = current_user
     # binding.pry
-    @task = @user.user_tasks.build_task
+    @task = @user.user_tasks.build
+    
     # @task = current_user.tasks.build
     # @task.users.build
   end
 
   def create
     authenticate
-    binding.pry
+    # binding.pry
     if params[:user_id]
       @user = User.find_by(id: params[:user_id])
       binding.pry
+
+
       # @task = Task.new(task_params)
-      @task = @user.user_tasks.build(task: task_params)
+      @task = @user.tasks.build(task_params)
       binding.pry
       @user.user_tasks.build(task: @task)
       # @user.tasks << @task

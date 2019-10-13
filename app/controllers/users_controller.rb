@@ -54,6 +54,7 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    authenticate
     @user = current_user
     #skill.user_skills.first.update(level: 1)
     

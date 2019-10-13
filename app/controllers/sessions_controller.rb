@@ -27,9 +27,15 @@ class SessionsController < ApplicationController
     # Note: Refresh_token is only sent once during the first request
     refresh_token = access_token.credentials.refresh_token
     @user.google_refresh_token = refresh_token if refresh_token.present?
-    @user.save
-    log_in(@user)
-    redirect_to dashboard_path
+    if @user.save
+      flash[:success] = "Hello #{@user.username}"
+      log_in(@user)
+      redirect_to dashboard_path
+    else
+      flash[:error] = "There was an error"
+      binding.pry
+      redirect_to login_path
+    end
   end
 
 

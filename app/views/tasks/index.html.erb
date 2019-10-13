@@ -8,8 +8,7 @@
       <p>pri lvl: <%= task.priority_level %></p>
       <p>completed? <%= task.completed %></p>
       <p><%= show_task_user(task) %></p>
-      <% if current_user == task.user %>
-        <%= link_to "Edit", edit_user_task_path(current_user, task) %>
-      <% end %>
+      <%= show_edit_button_for_task(task) %>
+    
     </div>
   <% end %>

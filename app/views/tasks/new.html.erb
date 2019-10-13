@@ -13,7 +13,7 @@
   <%= f.label :difficulty_level %>
   <p><%= f.select :difficulty_level, (1..10) %></p>
 
-
+  <%= f.hidden_field :user_id %>
   <%= f.submit %>
 
 <% end %>

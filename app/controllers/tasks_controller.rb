@@ -20,8 +20,9 @@ class TasksController < ApplicationController
     # create action isnt finding user_id, do something here to show user id
     # @task = UserTask.new(user_id: params[:user_id])
     # https://stackoverflow.com/questions/2182428/rails-nested-form-with-has-many-through-how-to-edit-attributes-of-join-model
-
-    @task = @user.user_tasks.build.build_tasks
+    @user = current_user
+    # binding.pry
+    @task = @user.tasks.build
     # @task = current_user.tasks.build
     # @task.users.build
   end
@@ -31,8 +32,12 @@ class TasksController < ApplicationController
     binding.pry
     if params[:user_id]
       @user = User.find_by(id: params[:user_id])
-      @task = Task.new(task_params)
-      @user.tasks << @task
+      binding.pry
+      # @task = Task.new(task_params)
+      @task = @user.user_tasks.build(task: task_params)
+      binding.pry
+      @user.user_tasks.build(task: @task)
+      # @user.tasks << @task
       binding.pry
       if @task.save
         flash[:notice] = "Task created, good job, #{@user.username}!"
@@ -42,7 +47,10 @@ class TasksController < ApplicationController
         binding.pry
         render :new
       end
-      ## need to add an else conditional here
+    else
+      flash[:error] = "Sorry, #{@user.username}, something messed up."
+      binding.pry
+      render :new
     end
 
     # @task = Task.new(task_params)

@@ -20,7 +20,7 @@ class UsersController < ApplicationController
  
     if @user.save
       # to log in
-      session[:user_id] = @user.id
+      log_in(@user)
       flash[:success] = "Account successfully created!"
 
       Skill.all.each do |s|

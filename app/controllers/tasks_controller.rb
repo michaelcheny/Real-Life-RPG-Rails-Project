@@ -32,7 +32,7 @@ class TasksController < ApplicationController
       ## if user.id != params of userid, throw 403
       authorize(@user)
       @task = @user.tasks.build(task_params)
-   
+      binding.pry
       if @task.save
         flash[:notice] = "Task created, good job, #{@user.username}!"
         redirect_to user_task_path(@user, @task)
@@ -104,7 +104,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :description, :difficulty_level, :priority_level, :completed)
+    params.require(:task).permit(:name, :description, :difficulty_level, :priority_level, :completed, skill_ids:[])
   end
 end
 

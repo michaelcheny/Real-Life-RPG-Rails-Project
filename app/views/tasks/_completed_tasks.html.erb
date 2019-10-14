@@ -4,7 +4,8 @@
       <p>desc: <%= task.description %></p>
       <p>dif lvl: <%= task.difficulty_level %></p>
       <p>pri lvl: <%= task.priority_level %></p>
-      
+      <p>Completed on: <%= task.completion_time %></p>
+      <p>Duration: <%= task.duration %> minutes</p>
         
       <p><%= show_task_user(task) %></p>
       <%= show_edit_button_for_task(task) %>

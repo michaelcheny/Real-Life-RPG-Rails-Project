@@ -88,7 +88,7 @@ class TasksController < ApplicationController
     binding.pry
     if @task.update(task_params)
       flash[:success] = "Task updated successfully!"
-      redirect_to user_task_path(@task.user)
+      redirect_to user_tasks_path(@task.user)
     else
       flash[:error]
       redirect_to edit_user_task_path(@task.user, @task)

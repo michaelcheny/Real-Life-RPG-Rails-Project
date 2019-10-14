@@ -1,17 +1,9 @@
-<h3>Tasks</h3>
 
-  <% @tasks.reverse.each do |task| %>
-    <div class="container">
-      <p>name: <%= task.name %></p>
-      <p>desc: <%= task.description %></p>
-      <p>dif lvl: <%= task.difficulty_level %></p>
-      <p>pri lvl: <%= task.priority_level %></p>
-      <p>completed? <%= task.completed %></p>
+  <h3>Incomplete Tasks</h3>
+  <%= render 'incomplete_tasks', tasks: @todo %>
 
-      <%= render 'completed_button', task: task if !task.completed %>
-        
-      <p><%= show_task_user(task) %></p>
-      <%= show_edit_button_for_task(task) %>
-    
-    </div>
-  <% end %>
+  <br>
+
+  <h3>Completed Tasks</h3>
+  <%= render 'completed_tasks', tasks: @finished_tasks %>
+  

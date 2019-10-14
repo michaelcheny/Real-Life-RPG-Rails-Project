@@ -7,7 +7,8 @@ class TasksController < ApplicationController
         flash[:error] = "User not found"
         redirect_to users_path
       else
-        @tasks = @user.tasks
+        @finished_tasks = @user.tasks.finished
+        @todo = @user.tasks.incomplete
       end
     else
       @tasks = Task.all

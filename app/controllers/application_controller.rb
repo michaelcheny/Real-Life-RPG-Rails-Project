@@ -61,9 +61,35 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
+
   ## currently not working
   def no_access
     render(:file => File.join(Rails.root, 'public/custom403.html'), :status => 403, :layout => false)
   end
+
+
+
+
+
+
+  ## updates the skill 
+  def update_skill(user_skill, points)
+    user_skill.experience_pts += points
+  end
+
+  def calculate_points_for(task)
+    diff_pts = task.difficulty_level * 0.6
+    pri_pts = task.priority_level * 0.8
+    pts = (diff_pts + pri_pts) * 5
+    return pts.to_i
+  end
+
+  def hash_for_points(task)
+    hash = {}
+    hash[:points] = calculate_points_for(task)
+  end
+
+  
 
 end

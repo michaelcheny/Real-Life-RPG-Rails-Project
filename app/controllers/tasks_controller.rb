@@ -1,5 +1,7 @@
 class TasksController < ApplicationController
 
+  include SkillsHelper
+
   def index
     if params[:user_id]
       @user = User.find_by(id: params[:user_id])
@@ -88,6 +90,24 @@ class TasksController < ApplicationController
     binding.pry
     if @task.update(task_params)
       flash[:success] = "Task updated successfully!"
+
+      #update the point thing
+      if @task.completed
+        @task.task_skills.each do |task_skill|
+          task_skill.points = calculate_points_for(@task)
+
+          @task.user.user_skills.each do |user_skill|
+            # binding.pry
+            if task_skill == user_skill
+              user_skill.update(experience_pts: update_skill(user_skill, task_skill.points)) 
+            end
+
+          end
+          
+          
+        end
+      end
+
       redirect_to user_tasks_path(@task.user)
     else
       flash[:error]

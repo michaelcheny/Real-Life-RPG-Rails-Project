@@ -2,9 +2,15 @@
 
 <p><%= @task.name %></p>
 <p><%= @task.description %></p>
-<p><%= @task.priority_level %></p>
-<p><%= @task.difficulty_level %></p>
-<% @task.skills.each do |skill| %>
-  <p><%= skill.name %></p>
-<% end %>
+<p><%= @task.priority_level %> | <%= @task.difficulty_level %></p>
+<p>Points for completing: <%= calculate_points(@task) %></p>
+  <p>The skills associated with this task:</p>
+<ul>  
+  <% @task.skills.each do |skill| %>
+    <li><%= skill.name %></li>
+
+    <% #binding.pry %>
+  <% end %>
+</ul>
+
 <%= render 'completed_button', task: @task %>

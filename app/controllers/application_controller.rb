@@ -47,4 +47,9 @@ class ApplicationController < ActionController::Base
     redirect_to user_tasks_path(user) if params[:user_id] != user.id.to_s
   end
 
+  def no_access
+    flash[:error] = "Hey, you can't do that!"
+    render(:file => File.join(Rails.root, 'public/custom403.html.erb'), :status => 403, :layout => false)
+  end
+
 end

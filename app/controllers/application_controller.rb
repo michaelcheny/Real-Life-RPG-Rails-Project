@@ -44,12 +44,26 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize(user)
-    redirect_to user_tasks_path(user) if params[:user_id] != user.id.to_s
+    if params[:user_id] != user.id.to_s
+      flash[:error] = "You are not authorized! Sending you back."
+      redirect_to user_tasks_path(user)
+    end
   end
 
+
+  ## not used yet
+  def authorize_user(user)
+    if user == current_user
+      true
+    else
+      no_access
+      false
+    end
+  end
+
+  ## currently not working
   def no_access
-    flash[:error] = "Hey, you can't do that!"
-    render(:file => File.join(Rails.root, 'public/custom403.html.erb'), :status => 403, :layout => false)
+    render(:file => File.join(Rails.root, 'public/custom403.html'), :status => 403, :layout => false)
   end
 
 end

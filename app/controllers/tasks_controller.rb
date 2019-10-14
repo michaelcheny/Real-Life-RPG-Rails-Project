@@ -103,7 +103,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :description, :difficulty_level, :priority_level)
+    params.require(:task).permit(:name, :description, :difficulty_level, :priority_level, :completed)
   end
 end
 

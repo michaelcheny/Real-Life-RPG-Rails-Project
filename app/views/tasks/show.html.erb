@@ -4,3 +4,6 @@
 <p><%= @task.description %></p>
 <p><%= @task.priority_level %></p>
 <p><%= @task.difficulty_level %></p>
+<%= form_with model: @task, local: true do |f| %>
+  <%= f.check_box :completed %>
+<% end %>

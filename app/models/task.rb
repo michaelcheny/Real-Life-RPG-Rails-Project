@@ -7,11 +7,11 @@ class Task < ApplicationRecord
   # scope :finished, where(:completed => true)
 
   def self.finished
-    where(completed: true)
+    where(completed: true).order(updated_at: :desc)
   end
 
   def self.incomplete
-    where(completed: false)
+    where(completed: false).order(created_at: :desc)
   end
 
   

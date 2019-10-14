@@ -39,8 +39,8 @@ class ApplicationController < ActionController::Base
 
   def authorize_task(task)
     # authenticate
-    redirect_to user_tasks_path(current_user) if !task
-    redirect_to user_tasks_path(current_user) if current_user != task.user
+    redirect_to edit_user_task_path(current_user, task) if !task
+    redirect_to edit_user_task_path(current_user, task) if current_user != task.user
   end
 
   def authorize(user)

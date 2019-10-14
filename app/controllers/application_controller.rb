@@ -76,6 +76,7 @@ class ApplicationController < ActionController::Base
   ## updates the skill 
   def update_skill(user_skill, points)
     user_skill.experience_pts += points
+    return user_skill.experience_pts
   end
 
   def calculate_points_for(task)
@@ -85,7 +86,7 @@ class ApplicationController < ActionController::Base
     return pts.to_i
   end
 
-  def hash_for_points(task)
+  def hash_for_points(k, v)
     hash = {}
     hash[:points] = calculate_points_for(task)
   end

@@ -34,7 +34,7 @@ class TasksController < ApplicationController
       ## if user.id != params of userid, throw 403
       authorize(@user)
       @task = @user.tasks.build(task_params)
-      binding.pry
+      # binding.pry
       if @task.save
         flash[:notice] = "Task created, good job, #{@user.username}!"
         redirect_to user_task_path(@user, @task)
@@ -87,18 +87,20 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
-    binding.pry
+    # binding.pry
     if @task.update(task_params)
       flash[:success] = "Task updated successfully!"
 
       #update the point thing
       if @task.completed
         @task.task_skills.each do |task_skill|
-          task_skill.points = calculate_points_for(@task)
-
+          # binding.pry
+          task_skill.update(points: calculate_points_for(@task))
+          # binding.pry
           @task.user.user_skills.each do |user_skill|
             # binding.pry
-            if task_skill == user_skill
+            if task_skill.skill_id == user_skill.skill_id
+              binding.pry
               user_skill.update(experience_pts: update_skill(user_skill, task_skill.points)) 
             end
 

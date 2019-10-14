@@ -20,6 +20,7 @@
 
  .container {
    border: solid black 1px;
+   margin: 3px;
  }
 
  /* for incorrect stuff causing errors */

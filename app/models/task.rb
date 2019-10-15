@@ -30,6 +30,11 @@ class Task < ApplicationRecord
     self.updated_at.strftime("%b %e, %l:%M %p")
   end
 
+  def self.completed_task_for_user(user, task)
+    where(user_id: user.id).where(completed: true)
+  end
+
+
   def duration
     created = self.created_at
     updated = self.updated_at

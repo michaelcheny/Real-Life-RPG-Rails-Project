@@ -1,6 +1,8 @@
 <h3>Your progress</h3>
 User skills  | Show a list of uncomplete tasks | Show a list of completed tasks |
 
+<p>Total Completed Tasks: <%= @user.tasks.finished.count %></p>
+
 
 <% if @user %>
   <% @user.user_skills.each do |user_skill| %>

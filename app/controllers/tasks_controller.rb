@@ -89,6 +89,7 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
+    authorize_task(@task)
     @user = current_user
     # binding.pry
     if @task.update(task_params)
@@ -103,7 +104,7 @@ class TasksController < ApplicationController
           @task.user.user_skills.each do |user_skill|
             # binding.pry
             if task_skill.skill_id == user_skill.skill_id
-              binding.pry
+              # binding.pry
               user_skill.update(experience_pts: update_skill(user_skill, task_skill.points)) 
             end
           end

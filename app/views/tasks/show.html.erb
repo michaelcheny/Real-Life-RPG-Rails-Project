@@ -1,15 +1,19 @@
-<h3>The current task for the current user</h3>
+<fieldset>
+  <legend><h3><%= @task.name %></h3></legend>
 
-<p><%= @task.name %></p>
-<p><%= @task.description %></p>
-<p>Pri lvl: <%= @task.priority_level %> | diff lvl: <%= @task.difficulty_level %></p>
-<p>Points for completing: <%= calculate_points(@task) %></p>
-  <p>The skills associated with this task:</p>
-<ul>  
-  <% @task.skills.each do |skill| %>
-    <li><%= skill.name %></li>
+  Pri lvl: <%= @task.priority_level %> | diff lvl: <%= @task.difficulty_level %>
+
+  <p>Points for completing: <%= calculate_points(@task) %></p>
+  <p><%= @task.description %></p>
   
-  <% end %>
-</ul>
+  <p>The skills associated with this task:</p>
+  <ul>  
+    <% @task.skills.each do |skill| %>
+      <li><%= skill.name %></li>
+    
+    <% end %>
+  </ul>
 
-<%= render 'completed_button', task: @task %>
+  <%= render 'completed_button', task: @task %>
+  <%= show_edit_button_for_task(@task) %>
+</fieldset>

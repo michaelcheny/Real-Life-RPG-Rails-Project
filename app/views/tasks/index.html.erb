@@ -1,17 +1,21 @@
 
 <% if params[:user_id] %>
 
-  <h3>Incomplete Tasks</h3>
-  <%= render 'incomplete_tasks', tasks: @todo %>
-
+  <fieldset>
+    <legend><h3>Incomplete Tasks</h3></legend>
+    <%= render 'incomplete_tasks', tasks: @todo %>
+  </fieldset>
   <br>
 
-  <h3>Completed Tasks</h3>
-  <%= render 'completed_tasks', tasks: @finished_tasks %>
-
+  <fieldset>
+    <legend><h3>Completed Tasks</h3></legend>
+    <%= render 'completed_tasks', tasks: @finished_tasks %>
+  </fieldset>
 <% else %>
 
-  <h3>All Tasks</h3>
-  <%= render 'all_tasks', tasks: @tasks  %>
-
+  <fieldset>
+    <legend><h3>All Tasks</h3></legend>
+    <%= render 'all_tasks', tasks: @tasks  %>
+  </fieldset>
+  
 <% end %>

@@ -37,7 +37,7 @@ class TasksController < ApplicationController
       # binding.pry
       if @task.save
         flash[:notice] = "Task created, good job, #{@user.username}!"
-        redirect_to user_task_path(@user, @task)
+        redirect_to user_tasks_path(@user)
       else
         flash[:error] = "Sorry, #{@user.username}, something messed up."
         # binding.pry

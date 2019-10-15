@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params(:username, :password, :password_confirmation, :name, :email))
+    @user = User.new(user_params)
  
     if @user.save
       # to log in
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
 
   def update
     authorize_user_for_editing_user(@user)
-    if @user.update(user_params(:username, :password, :password_confirmation, :name, :email))
+    if @user.update(user_params)
       flash[:success] = "Profile successfully updated!"
       redirect_to dashboard_path
     else
@@ -62,8 +62,8 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params(*args)
-    params.require(:user).permit(*args)
+  def user_params
+    params.require(:user).permit(:username, :password, :password_confirmation, :name, :email)
   end
 
   def find_user

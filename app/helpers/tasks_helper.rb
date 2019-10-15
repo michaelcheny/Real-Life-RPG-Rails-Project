@@ -20,8 +20,10 @@ module TasksHelper
   end
 
   def show_delete_button_for_task(task)
-    if current_user == task.user
-      link_to "Delete", task, method: :delete, data: { confirm: "Are you sure?" }
+    if params[:id]
+      if current_user == task.user
+        link_to "Delete", task, method: :delete, data: { confirm: "Are you sure?" }
+      end
     end
   end
 

@@ -71,8 +71,6 @@ class ApplicationController < ActionController::Base
 
 
 
-
-
   ## updates the skill 
   def update_skill(user_skill, points)
     user_skill.experience_pts += points

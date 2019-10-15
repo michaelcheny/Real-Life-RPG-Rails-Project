@@ -1,0 +1,20 @@
+<%= form_with model: [task.user, task], local:true do |f| %>
+
+  <p><%= f.label :name %></p>
+  <p><%= f.text_field :name, placeholder: "Run hills with dog" %></p>
+  <p><%= f.label :description %></p>
+  <p><%= f.text_area :description, placeholder: "High intensity interval sprints with my doge." %></p>
+
+  <%= f.label :priority_level %>
+  <p><%= f.select :priority_level, (1..10) %></p>
+
+  <%= f.label :difficulty_level %>
+  <p><%= f.select :difficulty_level, (1..10) %></p>
+
+  <%= f.collection_check_boxes :skill_ids, @user.skills.all, :id, :name %>
+
+  
+
+  <p><%= f.submit %></p>
+
+<% end %>

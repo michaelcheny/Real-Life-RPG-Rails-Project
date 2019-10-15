@@ -23,6 +23,7 @@ class UsersController < ApplicationController
       log_in(@user)
       flash[:success] = "Account successfully created!"
 
+      # populate user with all the premade skills on creation
       Skill.all.each do |s|
         @user.skills << s
       end

@@ -13,7 +13,6 @@
   <p><%= f.select :difficulty_level, (1..10) %></p>
 
   <p>Pick the skills that are associated with this task to train:</p>
-
   <%= f.collection_check_boxes :skill_ids, task.user.skills.all, :id, :name %>
 
   <p><%= f.submit %></p>

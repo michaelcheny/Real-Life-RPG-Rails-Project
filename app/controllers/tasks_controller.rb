@@ -120,7 +120,11 @@ class TasksController < ApplicationController
 
 
   def destroy
-
+    @task = Task.find(params[:id])
+    authorize_task(@task)
+    @task.destroy
+    flash[:success] = "#{@task.name} has been deleted."
+    redirect_to user_tasks_path(current_user)
   end
 
 

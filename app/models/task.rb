@@ -22,6 +22,10 @@ class Task < ApplicationRecord
     where(completed: true).order(updated_at: :desc)
   end
 
+  def self.completed_today
+    where(completed: true).where(updated_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).order(updated_at: :desc)
+  end
+
   def self.incomplete
     where(completed: false).order(created_at: :desc)
   end
@@ -30,10 +34,7 @@ class Task < ApplicationRecord
     self.updated_at.strftime("%b %e, %l:%M %p")
   end
 
-  def self.completed_task_for_user(user, task)
-    where(user_id: user.id).where(completed: true)
-  end
-
+ 
 
   def duration
     created = self.created_at

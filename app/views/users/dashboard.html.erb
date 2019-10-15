@@ -2,6 +2,7 @@
 User skills  | Show a list of uncomplete tasks | Show a list of completed tasks |
 
 <p>Total Completed Tasks: <%= @user.tasks.finished.count %></p>
+<p>Tasks Completed Today: <%= @user.tasks.completed_today.count %></p>
 
 
 <% if @user %>
@@ -11,6 +12,5 @@ User skills  | Show a list of uncomplete tasks | Show a list of completed tasks 
     <p>Level: <%= user_skill.level %></p>
     <p>Exp: <%= user_skill.experience_pts %></p>
 
-   
   <% end %>
 <% end %>

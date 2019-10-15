@@ -13,7 +13,7 @@ class TasksController < ApplicationController
         @todo = @user.tasks.incomplete
       end
     else
-      binding.pry
+      # binding.pry
       @tasks = Task.all
     end
   end

@@ -1,7 +1,6 @@
 
-  <%= render 'all_tasks', tasks: @tasks  %>
-
 <% if params[:user_id] %>
+
   <h3>Incomplete Tasks</h3>
   <%= render 'incomplete_tasks', tasks: @todo %>
 
@@ -9,4 +8,10 @@
 
   <h3>Completed Tasks</h3>
   <%= render 'completed_tasks', tasks: @finished_tasks %>
+
+<% else %>
+
+  <h3>All Tasks</h3>
+  <%= render 'all_tasks', tasks: @tasks  %>
+
 <% end %>

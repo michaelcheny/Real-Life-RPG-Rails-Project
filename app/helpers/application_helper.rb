@@ -16,11 +16,5 @@ module ApplicationHelper
     end
   end
 
-  def show_edit_button_for_task(task)
-    if current_user == task.user
-      link_to "Edit", edit_user_task_path(current_user, task)
-    end
-
-  end
 
 end

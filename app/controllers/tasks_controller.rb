@@ -13,6 +13,7 @@ class TasksController < ApplicationController
         @todo = @user.tasks.incomplete
       end
     else
+      binding.pry
       @tasks = Task.all
     end
   end
@@ -88,6 +89,7 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
+    @user = current_user
     # binding.pry
     if @task.update(task_params)
       flash[:success] = "Task updated successfully!"
@@ -104,17 +106,15 @@ class TasksController < ApplicationController
               binding.pry
               user_skill.update(experience_pts: update_skill(user_skill, task_skill.points)) 
             end
-
           end
-          
-          
         end
       end
 
       redirect_to user_tasks_path(@task.user)
     else
-      flash[:error]
-      redirect_to edit_user_task_path(@task.user, @task)
+      flash[:error] = "Sorry, #{@task.user.username}, something messed up."
+      # redirect_to edit_user_task_path(@task.user, @task)
+      render :edit
     end
   end
 

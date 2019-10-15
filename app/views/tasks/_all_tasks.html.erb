@@ -1,0 +1,16 @@
+
+<% tasks.each do |task| %>
+
+  <div class="container">
+    <p>name: <%= link_to task.name, user_task_path(task.user, task) %></p>
+    <p>desc: <%= task.description %></p>
+    <p>dif lvl: <%= task.difficulty_level %> | pri lvl: <%= task.priority_level %></p>
+    <p>Points for completing: <%= calculate_points(task) %></p>
+    <%= render 'completed_button', task: task %>
+      
+    <p><%= show_task_user(task) %></p>
+    <%= show_edit_button_for_task(task) %>
+  
+  </div>
+
+<% end %>

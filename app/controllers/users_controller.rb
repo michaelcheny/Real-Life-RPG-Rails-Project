@@ -68,7 +68,7 @@ class UsersController < ApplicationController
 
 
   def highscores
-    @user = current_user
+    @users = User.all
   end
 
 

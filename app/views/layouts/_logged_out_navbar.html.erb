@@ -1,5 +1,12 @@
 <%= link_to 'Welcome', root_path, class: "navbutton"%>
 
+<div class="dropdown">
+  <%= link_to 'Highscores', highscores_path, class: "navbutton" %>
+    <div class="dropdown-content">
+      <%= link_to 'All Highscores', highscores_path %>
+    </div>
+</div>
+
 <%= link_to "Log In", login_path, class: "navbutton" %>
 
 <%= link_to "Sign Up", signup_path, class: "navbutton" %>

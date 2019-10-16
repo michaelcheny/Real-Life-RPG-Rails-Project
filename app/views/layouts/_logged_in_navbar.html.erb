@@ -10,6 +10,15 @@
 </div>
 
 <div class="dropdown">
+  <%= link_to 'Highscores', highscores_path, class: "navbutton" %>
+    <div class="dropdown-content">
+      <%= link_to 'All Highscores', highscores_path %>
+      <%= link_to 'New Task', new_user_task_path(current_user) %>
+      
+    </div>
+</div>
+
+<div class="dropdown">
   <%= link_to 'Profile', user_path(current_user), class: "navbutton" %>
     <div class="dropdown-content">
 

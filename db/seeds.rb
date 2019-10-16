@@ -39,7 +39,6 @@ Skill.destroy_all
 UserSkill.destroy_all
 
 
-
 Skill.create(name: "Health", description: "The overall health of your body. (example: not getting sick because you are healthy)")
 
 Skill.create(name: "Strength", description: "The quality or state of being strong. The capacity for exertion or endurance. (example: pulling a truck with your teeth)")
@@ -76,3 +75,5 @@ d = User.create(
 
 Skill.all.each{ |skill| m.skills << skill }
 Skill.all.each{ |skill| d.skills << skill }
+
+

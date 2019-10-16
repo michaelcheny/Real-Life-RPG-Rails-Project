@@ -1,6 +1,5 @@
 class TasksController < ApplicationController
 
-  include SkillsHelper
 
   def index
     if params[:user_id]
@@ -21,10 +20,8 @@ class TasksController < ApplicationController
 
   def new
     authenticate
-
     @user = current_user
     @task = @user.tasks.build
-     
   end
 
 
@@ -35,9 +32,8 @@ class TasksController < ApplicationController
       ## if user.id != params of userid, throw 403
       authorize(@user)
       @task = @user.tasks.build(task_params)
-      # binding.pry
       if @task.save
-        flash[:notice] = "Task created, good job, #{@user.username}!"
+        flash[:success] = "Task created, good job, #{@user.username}!"
         redirect_to user_tasks_path(@user)
       else
         flash[:error] = "Sorry, #{@user.username}, something messed up."
@@ -91,20 +87,20 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     authorize_task(@task)
     @user = current_user
-    # binding.pry
+
     if @task.update(task_params)
       flash[:success] = "Task updated successfully!"
 
       #update the point thing
       if @task.completed
         @task.task_skills.each do |task_skill|
-          # binding.pry
+         
           task_skill.update(points: calculate_points_for(@task))
-          # binding.pry
+         
           @task.user.user_skills.each do |user_skill|
-            # binding.pry
+           
             if task_skill.skill_id == user_skill.skill_id
-              # binding.pry
+              
               user_skill.update(experience_pts: update_skill(user_skill, task_skill.points)) 
             end
           end

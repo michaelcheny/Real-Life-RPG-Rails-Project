@@ -11,11 +11,14 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
 
   # Routes for Google authentication
-
   get 'auth/:provider/callback', to: 'sessions#googleAuth'
   get 'auth/failure', to: redirect('/')
 
+  # User's home
   get 'dashboard' => 'users#dashboard', as: 'dashboard'
+
+  # Highscore for all users
+  get 'highscores' => 'users#highscores', as: 'highscores'
 
   resources :users, except: [:new] do
     resources :tasks

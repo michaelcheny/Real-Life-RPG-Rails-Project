@@ -1,16 +1,42 @@
 <h3>Your progress</h3>
-User skills  | Show a list of uncomplete tasks | Show a list of completed tasks |
 
 <p>Total Completed Tasks: <%= @user.tasks.finished.count %></p>
 <p>Tasks Completed Today: <%= @user.tasks.completed_today.count %></p>
 
+<p>Top Skill: <%= UserSkill.top_skill_by_user(@user).first.skill.name %></p>
 
-<% if @user %>
-  <% @user.user_skills.each do |user_skill| %>
-    <p class="skill_name"><%= link_to user_skill.skill.name, user_skill_path(@user, user_skill.skill) %></p>
+     
 
-    <p>Level: <%= user_skill.level %></p>
-    <p>Exp: <%= user_skill.experience_pts %></p>
+<table>
 
-  <% end %>
-<% end %>
+  
+
+  <tr>
+
+    <th>Skills:</th>
+
+    <% @user.user_skills.each do |user_skill| %>
+
+      <th><%= link_to user_skill.skill.name, user_skill_path(@user, user_skill.skill) %></th>
+
+    <% end %>
+  </tr>
+  
+  
+
+  <tr>
+
+    <td class = "skill_name">Exp:</td>
+
+    <% @user.user_skills.each do |user_skill| %>
+
+      <td><%= user_skill.experience_pts  %></td>
+        
+    <% end %>
+  </tr>
+ 
+</table>
+
+
+ 
+

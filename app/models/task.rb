@@ -7,6 +7,8 @@ class Task < ApplicationRecord
   has_many :task_skills
   has_many :skills, through: :task_skills
 
+  scope :finished, -> () {where(:completed => true).order(updated_at: :desc) }
+
   accepts_nested_attributes_for :skills
 
   def skills_attributes=(skills_attributes)
@@ -16,11 +18,9 @@ class Task < ApplicationRecord
     end
   end
 
-  # scope :finished, where(:completed => true)
-
-  def self.finished
-    where(completed: true).order(updated_at: :desc)
-  end
+  # def self.finished
+  #   where(completed: true).order(updated_at: :desc)
+  # end
 
   def self.completed_today
     where(completed: true).where(updated_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).order(updated_at: :desc)
@@ -34,7 +34,6 @@ class Task < ApplicationRecord
     self.updated_at.strftime("%b %e, %l:%M %p")
   end
 
- 
 
   def duration
     created = self.created_at

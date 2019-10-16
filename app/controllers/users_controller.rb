@@ -2,18 +2,22 @@ class UsersController < ApplicationController
   
   before_action :find_user, only: [:show, :edit, :update, :destroy]
 
+
   def index
     @users = User.all
   end
+
 
   def show
     
   end
 
+
   def new
     redirect_to dashboard_path if logged_in?
     @user = User.new
   end
+
 
   def create
     @user = User.new(user_params)
@@ -35,9 +39,11 @@ class UsersController < ApplicationController
     end
   end
 
+
   def edit
     authorize_user_for_editing_user(@user)
   end
+
 
   def update
     authorize_user_for_editing_user(@user)
@@ -54,12 +60,17 @@ class UsersController < ApplicationController
 
   end
 
+
   def dashboard
     authenticate
-    @user = current_user
-    #skill.user_skills.first.update(level: 1)
-    
+    @user = current_user    
   end
+
+
+  def highscores
+    @user = current_user
+  end
+
 
   private
 

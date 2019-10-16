@@ -77,6 +77,7 @@ class ApplicationController < ActionController::Base
     return user_skill.experience_pts
   end
 
+
   def calculate_points_for(task)
     diff_pts = task.difficulty_level * 0.6
     pri_pts = task.priority_level * 0.8
@@ -84,11 +85,9 @@ class ApplicationController < ActionController::Base
     return pts.to_i
   end
 
-  def hash_for_points(k, v)
-    hash = {}
-    hash[:points] = calculate_points_for(task)
-  end
-
   
+  def calculate_skill_gain(exp_pts, level)
+    exp_pts
+  end
 
 end

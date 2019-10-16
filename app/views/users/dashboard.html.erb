@@ -12,7 +12,6 @@
   
 
   <tr>
-
     <th>Skills:</th>
 
     <% @user.user_skills.each do |user_skill| %>
@@ -22,10 +21,17 @@
     <% end %>
   </tr>
   
-  
+  <tr>
+    <td class = "skill_name">Level:</td>
+
+    <% @user.user_skills.each do |user_skill| %>
+
+      <td><%= user_skill.level  %></td>
+        
+    <% end %>
+  </tr>
 
   <tr>
-
     <td class = "skill_name">Exp:</td>
 
     <% @user.user_skills.each do |user_skill| %>
@@ -34,6 +40,9 @@
         
     <% end %>
   </tr>
+
+
+
  
 </table>
 

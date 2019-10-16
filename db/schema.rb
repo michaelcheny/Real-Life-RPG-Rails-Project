@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_10_13_033749) do
   end
 
   create_table "user_skills", force: :cascade do |t|
-    t.integer "level", default: 0
+    t.integer "level", default: 1
     t.integer "experience_pts", default: 0
     t.integer "skill_id"
     t.integer "user_id"

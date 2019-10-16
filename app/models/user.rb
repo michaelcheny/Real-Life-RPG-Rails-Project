@@ -37,6 +37,14 @@ class User < ApplicationRecord
     return total_exp
   end
 
+  def total_level
+    total_level = 0
+    self.user_skills.each do |user_skill|
+      total_level += user_skill.level
+    end
+    return total_level
+  end
+
   # def self.sort_by_total_exp
   #   where(total_exp_pts: :desc)
   # end

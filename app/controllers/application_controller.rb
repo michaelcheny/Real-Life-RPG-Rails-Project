@@ -86,8 +86,10 @@ class ApplicationController < ActionController::Base
   end
 
   
-  def calculate_skill_gain(exp_pts, level)
-    exp_pts
+  # Formula for leveling up based on exp
+  def calculate_level_from_exp(exp_pts)
+    level = (25 + (Math.sqrt(625 + 100 * exp_pts))) / 50
+    return level.floor
   end
 
 

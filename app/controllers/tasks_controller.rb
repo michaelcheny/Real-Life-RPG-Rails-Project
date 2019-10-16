@@ -101,7 +101,7 @@ class TasksController < ApplicationController
            
             if task_skill.skill_id == user_skill.skill_id
               
-              user_skill.update(experience_pts: update_skill(user_skill, task_skill.points)) 
+              user_skill.update(experience_pts: update_skill(user_skill, task_skill.points), level: calculate_level_from_exp(user_skill.experience_pts)) 
             end
           end
         end

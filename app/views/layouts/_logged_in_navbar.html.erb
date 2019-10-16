@@ -3,8 +3,8 @@
 <div class="dropdown">
   <%= link_to 'Tasks', user_tasks_path(current_user), class: "navbutton" %>
     <div class="dropdown-content">
-      <%= link_to 'Your Tasks', user_tasks_path(current_user) %>
       <%= link_to 'New Task', new_user_task_path(current_user) %>
+      <%= link_to 'Your Tasks', user_tasks_path(current_user) %>
       <%= link_to 'All Tasks', tasks_path %>
     </div>
 </div>

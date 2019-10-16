@@ -62,14 +62,14 @@ Skill.create(name: "Social", description: "The ability to interact and act appro
 
 m = User.create(
   email: "michael@michael.com", 
-  username: "michael", 
+  username: "Michael", 
   password: "password", 
   password_confirmation: "password",
   )
 
 d = User.create(
   email: "dog@dog.com", 
-  username: "dog", 
+  username: "Dog", 
   password: "password", 
   password_confirmation: "password",
   )  

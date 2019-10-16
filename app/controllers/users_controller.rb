@@ -69,6 +69,10 @@ class UsersController < ApplicationController
 
   def highscores
     @users = User.all
+    @users.each do |user|
+      @user = user
+      @user_skills = user.user_skills
+    end
   end
 
 

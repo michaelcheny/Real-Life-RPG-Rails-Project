@@ -6,5 +6,6 @@ class UserSkill < ApplicationRecord
   scope :top_skill_by_user, -> (u) { where(user_id: u.id).order(experience_pts: :desc).limit(1) }
 
   
+  
 
 end

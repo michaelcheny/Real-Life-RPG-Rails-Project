@@ -1,5 +1,6 @@
 module UsersHelper
 
+
   def populate_skills_if_empty(user)
     if user.skills.empty?
       Skill.all.each do |s|
@@ -13,4 +14,5 @@ module UsersHelper
     users.sort_by{|u| u.total_exp_pts}.reverse
   end
 
+  
 end

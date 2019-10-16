@@ -56,6 +56,7 @@ class UsersController < ApplicationController
     end
   end
 
+
   def destroy
 
   end
@@ -69,21 +70,20 @@ class UsersController < ApplicationController
 
   def highscores
     @users = User.all
-    @users.each do |user|
-      @user = user
-      @user_skills = user.user_skills
-    end
   end
 
 
   private
 
+
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation, :name, :email)
+    params.require(:user).permit(:username, :password, :password_confirmation, :email)
   end
+
 
   def find_user
     @user = User.find(params[:id])
   end
+
 
 end

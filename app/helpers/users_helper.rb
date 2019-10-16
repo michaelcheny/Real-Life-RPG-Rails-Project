@@ -8,4 +8,9 @@ module UsersHelper
     end
   end
 
+
+  def sort_by_total_exp(users)
+    users.sort_by{|u| u.total_exp_pts}.reverse
+  end
+
 end

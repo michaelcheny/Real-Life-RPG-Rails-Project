@@ -20,7 +20,7 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     # Creates a new user only if it doesn't exist
     where(email: auth.info.email).first_or_initialize do |user|
-      user.username = auth.info.name.split(" ").first + rand(1..1000).to_s
+      user.username = auth.info.name.split(" ").first + rand(1..100).to_s
       user.email = auth.info.email
       random_password = RandomPasswordGenerator.generate(18)
       user.password = random_password
@@ -36,6 +36,7 @@ class User < ApplicationRecord
     end
     return total_exp
   end
+
 
   def total_level
     total_level = 0

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsProject</title>
+    <title>Real Life RPG</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,16 +11,17 @@
 
   <body>
 
-  <header>
-    <h1>Welcome to blah</h1>
-    <h4><%= greeting %></h4>
-    <%= navbar %> <br><br><br>
-  </header>
+    <header>
+      <h1>Real Life RPG</h1>
+      <h4><%= greeting %></h4>
+      <%= navbar %> <br><br><br>
+    </header>
 
     <% flash.each do |k,v| %>
       <div class=<%= k %>><%= v %></div>
     <% end %>
 
     <%= yield %>
+    
   </body>
 </html>

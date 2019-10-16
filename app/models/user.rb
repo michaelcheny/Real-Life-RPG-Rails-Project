@@ -31,10 +31,6 @@ class User < ApplicationRecord
   end
 
 
-  def each_skills
-    self.user_skills
-  end
-
   def total_exp_pts
     total_exp = 0 
     self.user_skills.each do |user_skill|

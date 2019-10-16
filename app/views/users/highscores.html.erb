@@ -1,6 +1,23 @@
 <fieldset>
 <legend><h3>Overall Highscores</h3></legend>
 
+  <table>
+    
+    <tr>
+      <th>Rank</th>
+      <th>Name</th>
+      <th>Exp</th>
+    </tr>
+      
+    <% @users.each.with_index do |user, index| %>
 
+    <tr>
+      <td><%= index += 1 %></td>
+      <td><%= user.username %></td>
+      <td><%= user.total_exp_pts %></td>
+    </tr>
+      <% end %>
+      
+  </table>
 
 </fieldset>

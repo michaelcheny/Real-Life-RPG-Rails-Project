@@ -15,14 +15,14 @@ module TasksHelper
 
   def show_edit_button_for_task(task)
     if current_user == task.user
-      link_to "Edit", edit_user_task_path(current_user, task)
+      link_to "Edit", edit_user_task_path(current_user, task), class: "btn btn-secondary btn-sm float-right"
     end
   end
 
   def show_delete_button_for_task(task)
     if params[:id]
       if current_user == task.user
-        link_to "Delete", task, method: :delete, data: { confirm: "Are you sure?" }
+        link_to "Delete", task, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-secondary"
       end
     end
   end

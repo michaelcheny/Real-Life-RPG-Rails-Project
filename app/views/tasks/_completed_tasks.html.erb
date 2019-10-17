@@ -1,24 +1,23 @@
 <% if tasks.finished.any? %>
-    
   <% tasks.finished.each do |task| %>
 
-    <div class="container">
+    <div class="card">
+      <div class="card-header"><%= link_to task.name, user_task_path(task.user, task) %><%= show_edit_button_for_task(task) %></div>
+      <div class="card-body">
+        <p class="card-text"><%= task.description %></p>
+        <ul class="list-group list-group-flush">
 
-      <p>name: <%= link_to task.name, user_task_path(task.user, task) %></p>
-      <p>desc: <%= task.description %></p>
-      <p>dif lvl: <%= task.difficulty_level %> | pri lvl: <%= task.priority_level %></p>
-      <p>Points for completing: <%= calculate_points(task) %></p>
-      <p>Completed on: <%= task.completion_time %></p>
-      <p>Duration: <%= task.duration %> minutes</p>
-        
-      <p><%= show_task_user(task) %></p>
-      <%= show_edit_button_for_task(task) %> 
-    </div>
-
+          <li class="list-group-item"><%= calculate_points(task) %> exp</li>
+          <li class="list-group-item"><%= task.duration %> minute duration</li>
+          <li class="list-group-item">Completed on: <%= task.completion_time %></li>
+        </ul>
+      </div>
+      <div class="card-footer text-muted">
+        <%= show_task_user(task) %>
+      </div>
+    </div><br>
   <% end %>
 
 <% else %>
-
-  <h3>None</h3>
-
+  <h3 class="card-body">None at the moment.</h3>
 <% end %>

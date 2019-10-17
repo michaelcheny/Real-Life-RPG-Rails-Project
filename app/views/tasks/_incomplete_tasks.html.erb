@@ -1,8 +1,5 @@
-
 <% if tasks.incomplete.any? %>
-
   <% tasks.incomplete.each do |task| %>
-
     <div class="card">
       <div class="card-header"><%= link_to task.name, user_task_path(task.user, task) %> <%= show_edit_button_for_task(task) %></div>
 
@@ -12,28 +9,17 @@
 
       <div class="card-body">
         <p class="card-text"><%= calculate_points(task) %> exp gain for:</p>
-        
-        <ul class="list-group list-group-flush">
-
-          <% task.skills.each do |task_skill| %>
-            <li class="list-group-item"><%= task_skill.name %></li>
-          <% end %>
-
-        </ul>
+        <%= render 'affiliated_skills', task: task %>
       </div>
 
       <div class="card-footer text-muted">
         <%= render 'completed_button', task: task%>
         <%= show_task_user(task) %>
       </div>
-
     </div>
-
   <% end %>
-
+  
 <% else %>
-
   <h3 class="card-body">None at the moment.</h3>
-
 <% end %>
 

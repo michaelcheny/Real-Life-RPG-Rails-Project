@@ -31,7 +31,7 @@ class Task < ApplicationRecord
   end
 
   def completion_time
-    self.updated_at.strftime("%b %e, %l:%M %p")
+    self.updated_at.strftime("%m/%d/%Y")
   end
 
 

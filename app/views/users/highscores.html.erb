@@ -1,15 +1,16 @@
 <fieldset>
 <legend><h3>Overall Highscores</h3></legend>
 
-  <table id="highscores">
-    
-    <tr>
-      <th>Rank</th>
-      <th>Name</th>
-      <th>Total Level</th>
-      <th>Total Exp</th>
-    </tr>
-      
+  <table class="table table-hover table-sm">
+    <thead class="thead-light">
+      <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Total Level</th>
+        <th>Total Exp</th>
+      </tr>
+    </thead>
+
     <% sort_by_total_exp(@users).each.with_index do |user, index| %>
 
       <tr>

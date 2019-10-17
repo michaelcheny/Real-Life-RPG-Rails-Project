@@ -1,6 +1,6 @@
 
 <% @users.each do |user| %>
-  <div class="container">
+  <div>
     <h3><%= link_to user.username, user_path(user) %></h3>
   </div>
 <% end %>

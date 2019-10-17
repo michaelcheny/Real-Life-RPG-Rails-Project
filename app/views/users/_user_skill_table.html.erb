@@ -1,15 +1,15 @@
-<table id="highscores">
+<table class="table table-hover table-sm">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Skills:</th>
 
-  <tr>
-    <th>Skills:</th>
+      <% user.user_skills.each do |user_skill| %>
 
-    <% user.user_skills.each do |user_skill| %>
+        <th scope="col"><%= link_to user_skill.skill.name, user_skill_path(user, user_skill.skill) %></th>
 
-      <th><%= link_to user_skill.skill.name, user_skill_path(user, user_skill.skill) %></th>
-
-    <% end %>
-  </tr>
-  
+      <% end %>
+    </tr>
+  </thead>
   <tr>
     <td class = "skill_name">Level:</td>
 

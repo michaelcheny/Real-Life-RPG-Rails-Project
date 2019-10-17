@@ -1,128 +1,112 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
-
+/* 
  body {
    background-color: beige;
- }
-
+ } */
+/* 
  .container {
    border-left: solid #4CAF50 8px;
-   /* border-bottom: solid black 1px; */
    padding-left: 10px;
    border-radius: 7px;
    background-color: beige;
- }
-
+ } */
+/* 
 fieldset {
   background-color: rgb(236, 236, 206);
-}
+} */
 
  /* for incorrect stuff causing errors */
- .error {
+ /* .error {
   color: red;
- }
+ } */
 
 /* for successful db updates */
- .success {
+ /* .success {
    color: green;
- }
+ } */
 
  /* Dropdown Button */
-.navbutton {
+/* .navbutton {
   background-color: #4CAF50;
   color: white;
   padding: 8px;
   font-size: 16px;
   border: none;
   text-decoration: none;
-}
+} */
 
 /* The container <div> - needed to position the dropdown content */
-.dropdown {
+/* .dropdown {
   position: relative;
   display: inline-block;
-}
+} */
 
 /* Dropdown Content (Hidden by Default) */
-.dropdown-content {
+/* .dropdown-content {
   display: none;
   position: absolute;
   background-color: #4CAF50;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-}
+} */
 
 /* Links inside the dropdown */
-.dropdown-content a {
+/* .dropdown-content a {
   color: white;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-}
+} */
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {
+/* .dropdown-content a:hover {
   background-color: #ddd;
-}
+} */
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
+/* .dropdown:hover .dropdown-content {
   display: block;
-}
+} */
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
+/* .dropdown:hover .dropbtn {
   background-color: #3e8e41;
-}
+} */
 
 /* Form for User */
-.user_form {
+/* .user_form {
 
-}
+} */
 
-.skill_name {
+/* .skill_name {
   font-weight: bold;
-}
+} */
 
-#highscores {
+/* #highscores {
   border-collapse: collapse;
   width: 100%;
-}
-
+} */
+/* 
 #highscores td, #customers th {
   border: 1px solid #ddd;
   padding: 4px;
   text-align: center;
-}
+} */
 
 /* #highscores tr:nth-child(even){background-color: #f2f2f2;} */
 
-#highscores tr:hover {
+/* #highscores tr:hover {
   background-color: #ddd;
-}
+} */
 
-#highscores th {
+/* #highscores th {
   padding-top: 4px;
   padding-bottom: 4px;
   text-align: center;
   background-color: #4CAF50;
   color: white;
-}
-
+} */
+/* 
 #no_decoration {
   text-decoration: none!important;
-}
+} */

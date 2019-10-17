@@ -19,9 +19,10 @@
  }
 
  .container {
-   border: solid black 1px;
-   margin: 1px;
-   border-radius: 5px;
+   border-left: solid #4CAF50 8px;
+   /* border-bottom: solid black 1px; */
+   padding-left: 10px;
+   border-radius: 7px;
    background-color: beige;
  }
 
@@ -99,7 +100,7 @@ fieldset {
 
 #highscores {
   border-collapse: collapse;
-  width: 80%;
+  width: 100%;
 }
 
 #highscores td, #customers th {
@@ -120,4 +121,8 @@ fieldset {
   text-align: center;
   background-color: #4CAF50;
   color: white;
+}
+
+#no_decoration {
+  text-decoration: none!important;
 }

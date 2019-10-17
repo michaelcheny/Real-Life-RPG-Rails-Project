@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
     @user.google_refresh_token = refresh_token if refresh_token.present?
     if @user.save
       flash[:success] = "Hello #{@user.username}"
-      helpers.populate_skills_if_empty(@user)
+      populate_skills_if_empty(@user)
       log_in(@user)
       redirect_to dashboard_path
     else

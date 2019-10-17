@@ -69,6 +69,14 @@ class ApplicationController < ActionController::Base
   end
 
 
+  # populates user skills with premade skills if empty
+  def populate_skills_if_empty(user)
+    if user.skills.empty?
+      Skill.all.each do |s|
+        user.skills << s
+      end
+    end
+  end
 
 
   ## updates the skill 

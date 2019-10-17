@@ -28,9 +28,7 @@ class UsersController < ApplicationController
       flash[:success] = "Account successfully created!"
 
       # populate user with all the premade skills on creation
-      Skill.all.each do |s|
-        @user.skills << s
-      end
+      populate_skills_if_empty(@user)
 
       redirect_to dashboard_path
     else

@@ -1,4 +1,6 @@
-  <% tasks.each do |task| %>
+<% if tasks.finished.any? %>
+    
+  <% tasks.finished.each do |task| %>
 
     <div class="container">
 
@@ -14,3 +16,9 @@
     </div>
 
   <% end %>
+
+<% else %>
+
+  <h3>None</h3>
+
+<% end %>

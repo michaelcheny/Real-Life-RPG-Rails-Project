@@ -1,13 +1,30 @@
+<fieldset>
 
-<p>Email: <%= @user.email %></p>
-<p>Name: <%= @user.name %></p>
-<p>Current Tasks:</p>
-<ul>
-  <% @user.tasks.each do |task| %>
-    <p><%= task.name %></p>
-    <li><%= task.description %></li>
-    <li><%= task.difficulty_level %></li>
-    <li><%= task.priority_level %></li>
-    
-  <% end %>
-</ul>
+  <legend><h3><%= @user.username %>'s profile</h3></legend>
+
+  <%= render 'user_skill_table', user: @user %>
+
+  <fieldset>
+    <legend><h3>Incomplete Tasks</h3></legend>
+    <%= render 'tasks/incomplete_tasks', tasks: @user.tasks %>
+  </fieldset>
+
+  <fieldset>
+    <legend><h3>Completed Tasks</h3></legend>
+    <%= render 'tasks/completed_tasks', tasks: @user.tasks %>
+  </fieldset>
+
+<!--
+  <p>Current Tasks:</p>
+  <ul>
+    <% @user.tasks.each do |task| %>
+      <p><%= task.name %></p>
+      <li><%= task.description %></li>
+      <li><%= task.difficulty_level %></li>
+      <li><%= task.priority_level %></li>
+      
+    <% end %>
+  </ul>
+-->
+
+</fieldset>

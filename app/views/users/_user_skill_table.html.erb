@@ -1,0 +1,33 @@
+<table>
+
+  <tr>
+    <th>Skills:</th>
+
+    <% user.user_skills.each do |user_skill| %>
+
+      <th><%= link_to user_skill.skill.name, user_skill_path(user, user_skill.skill) %></th>
+
+    <% end %>
+  </tr>
+  
+  <tr>
+    <td class = "skill_name">Level:</td>
+
+    <% user.user_skills.each do |user_skill| %>
+
+      <td><%= user_skill.level  %></td>
+        
+    <% end %>
+  </tr>
+
+  <tr>
+    <td class = "skill_name">Exp:</td>
+
+    <% user.user_skills.each do |user_skill| %>
+
+      <td><%= user_skill.experience_pts  %></td>
+        
+    <% end %>
+  </tr>
+
+</table>

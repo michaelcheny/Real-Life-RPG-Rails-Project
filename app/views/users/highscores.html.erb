@@ -14,7 +14,7 @@
 
       <tr>
         <td><%= index += 1 %></td>
-        <td><%= user.username %></td>
+        <td><%= link_to user.username, user_path(user) %></td>
         <td><%= user.total_level %></td>
         <td><%= user.total_exp_pts %></td>
       </tr>

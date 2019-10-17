@@ -8,8 +8,8 @@ class TasksController < ApplicationController
         flash[:error] = "User not found"
         redirect_to users_path
       else
-        @finished_tasks = @user.tasks.finished
-        @todo = @user.tasks.incomplete
+        @tasks = @user.tasks
+        
       end
     else
       # binding.pry
@@ -102,7 +102,7 @@ class TasksController < ApplicationController
             if task_skill.skill_id == user_skill.skill_id
               
               user_skill.update(experience_pts: update_skill(user_skill, task_skill.points), level: calculate_level_from_exp(user_skill.experience_pts)) 
-              
+              flash[:success] = "Exp gained for #{user_skill.skill.name}!"
             end
           end
         end

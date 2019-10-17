@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
       redirect_to dashboard_path
     else
-      flash[:error] = "Please try again."
+      # flash[:error] = "Please try again."
       render :new
     end
   end

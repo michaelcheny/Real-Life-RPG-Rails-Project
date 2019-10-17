@@ -1,15 +1,24 @@
+
+
 <h3>Login</h3>
 
-<%= form_tag login_path do %>
- 
-  <%= text_field_tag :username, "", placeholder: "Username" %> <br>
+<%= form_tag login_path, class: "was-validated" do %>
+  <div class="form-group">
+    <%= text_field_tag :username, "", placeholder: "Enter Username", class: "form-control", required: true %> 
+  </div>
+  <div class="valid-feedback">Valid.</div>
+  <div class="invalid-feedback">Please fill out this field.</div>
+  
 
-  <%= password_field_tag :password, "", placeholder: "Password" %> <br>
+  <div class="form-group">
+    <%= password_field_tag :password, "", placeholder: "Enter Password", class: "form-control", required: true %> 
+  </div>
+  <div class="valid-feedback">Valid.</div>
+  <div class="invalid-feedback">Please fill out this field.</div>
+  
+  <%= submit_tag "Log In", class: "btn btn-primary" %>
 
-  <%= submit_tag "Log In" %>
-
-
-  <%= link_to 'Log in using Google', '/auth/google_oauth2', method: :post %>
-
+  <%= link_to 'Log in using Google', '/auth/google_oauth2', method: :post, class: "btn btn-secondary" %>
+  
 <% end %>
 

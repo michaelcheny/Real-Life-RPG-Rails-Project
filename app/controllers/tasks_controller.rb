@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
 
+  include TasksHelper
 
   def index
     if params[:user_id]
@@ -13,13 +14,7 @@ class TasksController < ApplicationController
         
       end
     else
-      # binding.pry
-      @tasks = []
-      Task.all.map do |task|
-         if task.user != current_user
-          @tasks << task
-         end
-      end
+      @tasks = tasks_that_are_not_yours
     end
   end
 

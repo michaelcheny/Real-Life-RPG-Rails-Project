@@ -41,5 +41,10 @@ class Task < ApplicationRecord
     minutes = (updated - created) / 1.minutes
     return minutes.round
   end
+
+  # def self.tasks_that_are_not_yours
+  #  Task.all.select { |task| task.user != current_user }
+  # end
+
   
 end

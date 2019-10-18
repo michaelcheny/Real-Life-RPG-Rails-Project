@@ -1,18 +1,28 @@
 <% if tasks.any? %>
   <% tasks.each do |task| %>
     <div class="card">
-      <div class="card-header">
-        <p>name: <%= link_to task.name, user_task_path(task.user, task) %></p>
-        <p>desc: <%= task.description %></p>
-        <p>dif lvl: <%= task.difficulty_level %> | pri lvl: <%= task.priority_level %></p>
-        <p>Points for completing: <%= calculate_points(task) %></p>
+      <div class="card-header"><%= link_to task.name, user_task_path(task.user, task) %><span class="float-sm-right"><%= show_task_user(task) %></span></div>
+
+        <div class="card-body">
+          <p class="card-text"><%= task.description %></p>
+        </div>
+
+        <div class="card-body">
+          <p class="card-text"><%= calculate_points(task) %> exp gained for:</p>
+          <%= render 'affiliated_skills', task: task %>
+        </div>
+        
         <%= render 'completed_button', task: task if task.user == current_user%>
           
-        <p><%= show_task_user(task) %></p>
         <%= show_edit_button_for_task(task) %> 
       
-      </div>
-</div>
+        <div class="card-footer text-muted">
+          <span class="float-sm-left"><%= show_completed_if_completed(task) %></span>
+          <span class="float-sm-right"><%= show_task_time_info(task) %></span>
+        </div>
+        
+      </div><br>
+    
   <% end %>
 
 <% else %>

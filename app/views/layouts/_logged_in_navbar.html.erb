@@ -13,6 +13,19 @@
     </li>
 
     <!-- Dropdown -->
+
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Quests
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="<%= new_quest_path %>">Daily Quests</a>
+        <a class="dropdown-item" href="<%= quests_path %>">All Available Quests</a>
+        <a class="dropdown-item" href="<%= user_quests_path(current_user) %>">Your Quests</a>
+      </div>
+    </li>
+
+    
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         Tasks

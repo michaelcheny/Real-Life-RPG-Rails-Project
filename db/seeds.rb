@@ -63,14 +63,14 @@ m = User.create(
   email: "michael@michael.com", 
   username: "Michael", 
   password: "password", 
-  password_confirmation: "password",
+  password_confirmation: "password"
   )
 
 d = User.create(
   email: "dog@dog.com", 
   username: "Dog", 
   password: "password", 
-  password_confirmation: "password",
+  password_confirmation: "password"
   )  
 
 Skill.all.each{ |skill| m.skills << skill }

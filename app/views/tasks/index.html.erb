@@ -1,31 +1,7 @@
 
 <% if params[:user_id] %>
 
-
-
-<div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h3 class="card-header">Incomplete Tasks</h3>
-        <p class="card-text"><%= render 'incomplete_tasks', tasks: @tasks %></p>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h3 class="card-header">Completed Tasks</h3>
-        <p class="card-text"><%= render 'completed_tasks', tasks: @tasks %></p>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
- 
+  <%= render 'tasks/tasks_for_users_split', tasks: @tasks %> 
   
 <% else %>
 

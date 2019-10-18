@@ -11,20 +11,15 @@
           <p class="card-text"><%= calculate_points(task) %> exp gained for:</p>
           <%= render 'affiliated_skills', task: task %>
         </div>
-        
-        <%= render 'completed_button', task: task if task.user == current_user%>
-          
-        <%= show_edit_button_for_task(task) %> 
-      
+                
         <div class="card-footer text-muted">
           <span class="float-sm-left"><%= show_completed_if_completed(task) %></span>
           <span class="float-sm-right"><%= show_task_time_info(task) %></span>
         </div>
         
       </div><br>
-    
   <% end %>
-
+  
 <% else %>
   <h3>None at the moment. Be the first to add one.</h3>
 <% end %>

@@ -36,7 +36,7 @@ module TasksHelper
 
 
   def show_task_time_info(task)
-    task.completed ? task.completion_time : "added on: " + task.created_at.strftime("%m/%d/%Y").to_s
+    task.completed ? "Date of completion: " + task.completion_time : "added on: " + task.created_at.strftime("%m/%d/%Y").to_s
   end
 
   def show_completed_if_completed(task)

@@ -22,16 +22,25 @@ class Task < ApplicationRecord
   #   where(completed: true).order(updated_at: :desc)
   # end
 
+
+
   def self.completed_today
     where(completed: true).where(updated_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).order(updated_at: :desc)
   end
+
 
   def self.incomplete
     where(completed: false).order(created_at: :desc)
   end
 
+
   def completion_time
     self.updated_at.strftime("%m/%d/%Y")
+  end
+
+
+  def self.last_five
+    limit(5)
   end
 
 

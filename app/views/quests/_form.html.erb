@@ -23,7 +23,7 @@
 
   <p>Pick the skills that are associated with this quest:</p>
 
-  <%= render 'skills/collection_checkboxes', object: Skill.all, f: f %>
+  <%= render 'shared/collection_checkboxes', object: Skill.all, f: f %>
 
 
   <%= f.submit class: "btn btn-secondary" %>

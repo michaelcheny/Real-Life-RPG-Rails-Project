@@ -19,7 +19,7 @@
 
   <p>Pick the skills that are associated with this task to train:</p>
 
-  <%= render 'skills/collection_checkboxes', f: f, object: task.user.skills.all %>
+  <%= render 'shared/collection_checkboxes', f: f, object: task.user.skills.all %>
 
   <%= f.submit class: "btn btn-secondary" %> <%= show_delete_button_for_task(task) %>
 

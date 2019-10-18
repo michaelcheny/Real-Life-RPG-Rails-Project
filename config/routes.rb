@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root 'welcome#index'
@@ -22,8 +23,10 @@ Rails.application.routes.draw do
 
   resources :users, except: [:new] do
     resources :tasks
+    resources :quests
     resources :skills, only: [:index, :show]
   end
   resources :tasks
+  resources :quests
   # resources :skills, only: [:show]
 end

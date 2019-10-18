@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_13_033749) do
+ActiveRecord::Schema.define(version: 2019_10_18_163307) do
+
+  create_table "quest_skills", force: :cascade do |t|
+    t.integer "points"
+    t.integer "quest_id"
+    t.integer "skill_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["quest_id"], name: "index_quest_skills_on_quest_id"
+    t.index ["skill_id"], name: "index_quest_skills_on_skill_id"
+  end
+
+  create_table "quests", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "difficulty_level"
+    t.integer "level_requirement"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "skills", force: :cascade do |t|
     t.string "name"
@@ -39,6 +58,16 @@ ActiveRecord::Schema.define(version: 2019_10_13_033749) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
+
+  create_table "user_quests", force: :cascade do |t|
+    t.integer "completed", default: 0
+    t.integer "user_id"
+    t.integer "quest_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["quest_id"], name: "index_user_quests_on_quest_id"
+    t.index ["user_id"], name: "index_user_quests_on_user_id"
   end
 
   create_table "user_skills", force: :cascade do |t|

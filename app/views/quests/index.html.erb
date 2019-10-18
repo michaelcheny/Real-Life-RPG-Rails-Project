@@ -1,10 +1,7 @@
-<h3>Available Quests</h3>
+<% if params[:user_id] %>
+  <h3>Your Quest Log</h3>
+<% else %>
+  <h3>Available Quests</h3>
+<% end %>
 
 <%= render 'quests/all_quests', quests: @quests %>
-<% @quests.each do |quest| %>
-  <p><%= quest.name %></p>
-  <p><%= quest.description %></p>
-  <% quest.skills.each do |s| %>
-    <%= s.name %>
-  <% end %>
-<% end %>

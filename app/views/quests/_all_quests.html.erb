@@ -13,9 +13,12 @@
         </div>
                 
         <div class="card-footer text-muted">
-          put the add quest button here
+          <%= form_with model: quest, url: addquest_path, local: true do |f| %>
+            <%= f.hidden_field :id %>
+            <%= f.submit "Accept Quest", class: "btn btn-secondary btn-sm" %>
+          <% end %>
         </div>
-        
+          
       </div><br>
   <% end %>
   

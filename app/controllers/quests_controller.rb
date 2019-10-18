@@ -45,13 +45,25 @@ class QuestsController < ApplicationController
 
 
   def edit
-
-
+    authenticate
+    @user = current_user
+    authorize(@user)
+    @quest = Quest.find(params[:id])
   end
 
   
   def update
-
+    authenticate
+    @user = current_user
+    @quest = Quest.find(params[:id])
+    binding.pry
+    if @quest.update(quest_params)
+      binding.pry
+      redirect_to user_quests_path(@user)
+    else
+      flash[:error] = "welp"
+      redirect_to quest_path(@quest)
+    end
 
   end
 
@@ -61,10 +73,22 @@ class QuestsController < ApplicationController
 
   end
 
+
+  def add_quest
+    # binding.pry
+    @quest = Quest.find(params[:quest][:id])
+    @user = current_user
+    # @user.quests.build()
+    @user.quests << @quest
+    # binding.pry
+    redirect_to user_quests_path(@user)
+  end
+
   private
 
   def quest_params
     params.require(:quest).permit(:name, :description, :difficulty_level, :level_requirement, skill_ids:[])
   end
+
 
 end

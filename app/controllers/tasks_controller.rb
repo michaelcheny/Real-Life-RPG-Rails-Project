@@ -11,7 +11,6 @@ class TasksController < ApplicationController
         redirect_to users_path
       else
         @tasks = @user.tasks
-        
       end
     else
       @tasks = tasks_that_are_not_yours

@@ -21,9 +21,12 @@ Rails.application.routes.draw do
   # Highscore for all users
   get 'highscores' => 'users#highscores', as: 'highscores'
 
+  # Custom add quest path
+  patch 'add_quest' => 'quests#add_quest', as: 'addquest'
+
   resources :users, except: [:new] do
     resources :tasks
-    resources :quests, only: [:index, :show]
+    resources :quests, only: [:index, :show, :edit, :update]
     resources :skills, only: [:index, :show]
   end
   resources :tasks

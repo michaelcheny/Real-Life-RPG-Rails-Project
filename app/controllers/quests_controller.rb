@@ -52,7 +52,7 @@ class QuestsController < ApplicationController
   private
 
   def quest_params
-    require(:quest).permit(:name, :description, :difficulty_level, :level_requirement, skills_ids:[])
+    require(:quest).permit(:name, :description, :difficulty_level, :level_requirement, skill_ids:[])
   end
 
 end

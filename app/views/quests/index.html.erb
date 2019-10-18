@@ -1,0 +1,9 @@
+<h3>Available Quests</h3>
+
+<% @quests.each do |quest| %>
+  <p><%= quest.name %></p>
+  <p><%= quest.description %></p>
+  <% quest.skills.each do |s| %>
+    <%= s.name %>
+  <% end %>
+<% end %>

@@ -22,7 +22,11 @@
 
 
   <p>Pick the skills that are associated with this quest:</p>
-  <p><%= f.collection_check_boxes :skill_ids, Skill.all, :id, :name %></p>
+  <p><%= f.collection_check_boxes :skill_ids, Skill.all, :id, :name do |b| %>
+
+  <%= b.label(class: "check_box_thing") { b.check_box + b.text } %>
+
+  <% end %></p>
 
 
   <%= f.submit class: "btn btn-secondary" %>

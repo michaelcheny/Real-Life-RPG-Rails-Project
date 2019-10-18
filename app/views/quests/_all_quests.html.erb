@@ -1,0 +1,24 @@
+<% if quests.any? %>
+  <% quests.each do |quest| %>
+    <div class="card">
+      <div class="card-header"><%= quest.name %><span class="float-sm-right">put the quest creator</span></div>
+
+        <div class="card-body">
+          <p class="card-text"><%= quest.description %></p>
+        </div>
+
+        <div class="card-body">
+          <p class="card-text">put the exp for skills here</p>
+            <%= render 'skills/affiliated_skills', object: quest %>
+        </div>
+                
+        <div class="card-footer text-muted">
+          put the add quest button here
+        </div>
+        
+      </div><br>
+  <% end %>
+  
+<% else %>
+  <h3>None at the moment. Be the first to add one.</h3>
+<% end %>

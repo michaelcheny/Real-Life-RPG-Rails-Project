@@ -7,7 +7,7 @@ class TasksController < ApplicationController
       @user = User.find_by(id: params[:user_id])
       # @user = current_user
       if @user.nil?
-        flash[:error] = "User not found"
+        flash[:error] = "User not found."
         redirect_to users_path
       else
         @tasks = @user.tasks

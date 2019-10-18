@@ -20,8 +20,8 @@
       </a>
       <div class="dropdown-menu">
         <a class="dropdown-item" href="<%= new_quest_path %>">New Quests</a>
-        <a class="dropdown-item" href="<%= quests_path %>">All Available Quests</a>
-        <a class="dropdown-item" href="<%= user_quests_path(current_user) %>">Your Quests</a>
+        <a class="dropdown-item" href="<%= quests_path %>">Bulletin Board</a>
+        <a class="dropdown-item" href="<%= user_quests_path(current_user) %>">Quests Log</a>
       </div>
     </li>
 
@@ -32,7 +32,7 @@
       </a>
       <div class="dropdown-menu">
         <a class="dropdown-item" href="<%= new_user_task_path(current_user) %>">New Task</a>
-        <a class="dropdown-item" href="<%= user_tasks_path(current_user) %>">Your Tasks</a>
+        <a class="dropdown-item" href="<%= user_tasks_path(current_user) %>">Tasks Log</a>
         <a class="dropdown-item" href="<%= tasks_path %>">All Tasks</a>
       </div>
     </li>
@@ -57,7 +57,4 @@
 
 
 
-
-
-<%= button_to 'Logout', '/logout', method: :delete, class: "nav-item" %>
 

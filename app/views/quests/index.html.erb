@@ -1,5 +1,6 @@
 <h3>Available Quests</h3>
 
+<%= render 'quests/all_quests', quests: @quests %>
 <% @quests.each do |quest| %>
   <p><%= quest.name %></p>
   <p><%= quest.description %></p>

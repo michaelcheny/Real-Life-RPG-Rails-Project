@@ -2,7 +2,7 @@
 
 leveling formula
 
-
+foreman start -f Procfile.dev
 
 
 # backups

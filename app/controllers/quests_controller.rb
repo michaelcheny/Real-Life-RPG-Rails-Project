@@ -1,7 +1,18 @@
 class QuestsController < ApplicationController
 
   def index
-    @quest = Quest.all
+    if params[:user_id]
+      @user = User.find_by(id: params[:user_id])
+      # @quests = Quest.all
+      if @user.nil?
+        flash[:error] = "User not found."
+        redirect_to quests_path
+      else
+        @quests = @user.quests
+      end
+    else
+      @quests = Quest.all
+    end
   end
 
 
@@ -21,6 +32,7 @@ class QuestsController < ApplicationController
     authenticate
     @user = current_user
     # @quest = @user.quests.build(quest_params)
+    binding.pry
     @quest = Quest.new(quest_params)
     if @quest.save
       flash[:success] = "Quest has been created!"
@@ -52,7 +64,7 @@ class QuestsController < ApplicationController
   private
 
   def quest_params
-    require(:quest).permit(:name, :description, :difficulty_level, :level_requirement, skill_ids:[])
+    params.require(:quest).permit(:name, :description, :difficulty_level, :level_requirement, skill_ids:[])
   end
 
 end

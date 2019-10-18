@@ -5,6 +5,34 @@ leveling formula
 
 
 
+# backups
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+
+        <h3 class="card-header">Most Recent Incomplete Tasks</h3>
+        <p class="card-text"><%= render 'tasks/incomplete_tasks', tasks: @user.tasks.last_five %></p>
+      
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+
+        <h3 class="card-header">Most Recent Completed Tasks</h3>
+        <p class="card-text"><%= render 'tasks/completed_tasks', tasks: @user.tasks.last_five %></p>
+      
+      </div>
+    </div>
+  </div>
+</div>
+ 
+
+
 
 ## tables
 

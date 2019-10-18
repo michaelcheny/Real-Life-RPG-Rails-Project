@@ -7,35 +7,12 @@
 
   <p>Top Skill: <%= UserSkill.top_skill_by_user(@user).first.skill.name %></p>
 
-      
-
+  <p>Total Level: <%= @user.total_level %></p>    
+  <p>Total Exp: <%= @user.total_exp_pts %></p>
   <%= render 'user_skill_table', user: @user %>
 
 </fieldset>
 
+<%= render 'tasks/tasks_for_users_split', tasks: @user.tasks.last_five %>
 
-<div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-
-        <h3 class="card-header">Incomplete Tasks</h3>
-        <p class="card-text"><%= render 'tasks/incomplete_tasks', tasks: @user.tasks.last_five %></p>
-      
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-
-        <h3 class="card-header">Completed Tasks</h3>
-        <p class="card-text"><%= render 'tasks/completed_tasks', tasks: @user.tasks.last_five %></p>
-      
-      </div>
-    </div>
-  </div>
-</div>
- 
 

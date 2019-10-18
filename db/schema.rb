@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_18_163307) do
+ActiveRecord::Schema.define(version: 2019_10_18_174106) do
 
   create_table "quest_skills", force: :cascade do |t|
     t.integer "points"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2019_10_18_163307) do
   end
 
   create_table "user_quests", force: :cascade do |t|
-    t.integer "completed", default: 0
+    t.boolean "completed", default: false
     t.integer "user_id"
     t.integer "quest_id"
     t.datetime "created_at", precision: 6, null: false

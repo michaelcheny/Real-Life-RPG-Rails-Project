@@ -9,11 +9,11 @@
 
       <div class="card-body">
         <p class="card-text"><%= calculate_points(task) %> exp gain for:</p>
-        <%= render 'affiliated_skills', task: task %>
+        <%= render 'tasks/affiliated_skills', task: task %>
       </div>
 
       <div class="card-footer text-muted">
-        <%= render 'completed_button', task: task%>
+        <%= render 'tasks/completed_button', task: task%>
         <%= show_task_user(task) %>
       </div>
     </div>

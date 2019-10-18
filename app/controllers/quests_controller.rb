@@ -14,7 +14,6 @@ class QuestsController < ApplicationController
   def new
     authenticate
     @quest = Quest.new
-
   end
 
 

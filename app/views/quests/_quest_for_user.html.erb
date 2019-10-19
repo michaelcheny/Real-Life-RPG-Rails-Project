@@ -1,6 +1,27 @@
+<% if user.user_quests %>
+  <% user.user_quests.reverse.each do |user_quest| %>
 
-<% user.user_quests.each do |user_quest| %>
+    <div class="card">
+    
+      <div class="card-header"><%= user_quest.quest.name %> <span class="float-sm-right">put the quest creator</span></div>
+    
+      <div class="card-body">
+          <p class="card-text"><%= user_quest.quest.description %></p>
+      </div>
+    
+      <div class="card-body">
+        <p class="card-text">put the exp for skills here</p>
+          <%= render 'shared/affiliated_skills', object: user_quest.quest %>
+      </div>
 
-  <%= user_quest.quest.name %>
+      <div class="card-footer text-muted">
 
+        <%= quest_footer_for_quest(user_quest) %>
+      </div>
+
+    </div><br>
+  <% end %>
+
+<% else %>
+  <h3>Go check out the quest bulletin to add a quest.</h3>
 <% end %>

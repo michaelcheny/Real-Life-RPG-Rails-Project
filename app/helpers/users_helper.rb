@@ -15,5 +15,15 @@ module UsersHelper
   end
 
 
+  def user_meets_requirements(user, quest)
+    if user.total_level >= quest.level_requirement
+      true
+    else
+      false
+      flash[:error] = "You do not meet the requirements."
+      redirect_to quests_path
+      return
+    end
+  end
   
 end

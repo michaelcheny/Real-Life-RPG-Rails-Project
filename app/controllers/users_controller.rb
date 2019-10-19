@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   
+  include UsersHelper
   include QuestsHelper
   
   before_action :find_user, only: [:show, :edit, :update, :destroy]
@@ -66,20 +67,20 @@ class UsersController < ApplicationController
 
 
   def add_quest
-    # binding.pry
     @quest = Quest.find(params[:quest][:id])
     @user = current_user
-    # @user.quests.build()
     if !@user.quests.include?(@quest)
-      @user.user_quests.create(quest: @quest)
-      # binding.pry
-      flash[:success] = "Quest successfully added."
-      redirect_to user_quests_path(@user)
+
+      if user_meets_requirements(@user, @quest)
+        @user.user_quests.create(quest: @quest) 
+        flash[:success] = "Quest successfully added."
+        redirect_to user_quests_path(@user)
+      end
+      
     else
       flash[:error] = "You already have this quest added."
       redirect_to quests_path
     end
-    # binding.pry
   end
 
 

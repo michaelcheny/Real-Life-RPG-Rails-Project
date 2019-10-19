@@ -59,8 +59,8 @@ class UsersController < ApplicationController
     @user = current_user
     # @user.quests.build()
     if !@user.quests.include?(@quest)
-      @user.quests << @quest
-      binding.pry
+      @user.user_quests.create(quest: @quest)
+      # binding.pry
       flash[:success] = "Quest successfully added."
       redirect_to user_quests_path(@user)
     else
@@ -76,13 +76,13 @@ class UsersController < ApplicationController
     quest = Quest.find(params[:user_quest][:id])
     @user.user_quests.each do |user_quest|
       if user_quest.quest_id == quest.id
-        binding.pry
-        method to update user_quest.points, and add points to user_skill.
+        # binding.pry
+        # method to update user_quest.points, and add points to user_skill.
       end
       
     end
-    @quest = @user.user_quests.find_by(params[:user_quest][:id])
-    binding.pry
+    # @quest = @user.user_quests.find_by(params[:user_quest][:id])
+    # binding.pry
   end
 
   private

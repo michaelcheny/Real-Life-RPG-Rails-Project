@@ -1,7 +1,10 @@
 <% if params[:user_id] %>
   <h3>Your Quest Log</h3>
+
+  <%= render 'quests/quest_for_user', user: @user  %>
 <% else %>
   <h3>Available Quests</h3>
+
+  <%= render 'quests/all_quests', quests: @quests.reverse %>
 <% end %>
 
-<%= render 'quests/all_quests', quests: @quests.reverse %>

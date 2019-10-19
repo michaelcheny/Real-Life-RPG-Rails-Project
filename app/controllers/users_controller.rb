@@ -71,7 +71,18 @@ class UsersController < ApplicationController
   end
 
   def complete_quest
-    
+    authenticate
+    @user = current_user
+    quest = Quest.find(params[:user_quest][:id])
+    @user.user_quests.each do |user_quest|
+      if user_quest.quest_id == quest.id
+        binding.pry
+        method to update user_quest.points, and add points to user_skill.
+      end
+      
+    end
+    @quest = @user.user_quests.find_by(params[:user_quest][:id])
+    binding.pry
   end
 
   private

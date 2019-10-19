@@ -23,11 +23,11 @@ Rails.application.routes.draw do
 
   # Custom add quest path
   patch 'add_quest' => 'users#add_quest', as: 'addquest'
-  post 'complete_quest' => 'users#complete_quest'
+  patch 'complete_quest' => 'users#complete_quest'
 
   resources :users, except: [:new] do
     resources :tasks
-    resources :quests, only: [:index, :show]
+    resources :quests, only: [:index, :show, :update]
     resources :skills, only: [:index, :show]
   end
   resources :tasks, only: [:index]

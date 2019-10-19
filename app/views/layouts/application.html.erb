@@ -26,8 +26,10 @@
       </nav>
       
 
-        <% flash.each do |k,v| %>
-          <div class=<%= k %>><%= v %></div>
+        <% flash.each do |key, value| %>
+              <div class="<%= flash_class(key) %>">
+                    <%= value %>
+              </div>
         <% end %>
 
         <%= yield %>

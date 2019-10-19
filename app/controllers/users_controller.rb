@@ -86,7 +86,6 @@ class UsersController < ApplicationController
   def complete_quest
     authenticate
     @user = current_user
-    # binding.pry
     quest = Quest.find_by(id: params[:user_quest][:quest_id])
     @user.user_quests.each do |user_quest|
       # binding.pry
@@ -94,12 +93,13 @@ class UsersController < ApplicationController
         # binding.pry
         user_quest.update(user_quest_params)
         flash[:success] = "nice"
+
+
         redirect_to user_quests_path(@user)
         # binding.pry
       
         # # method to update user_quest.points, and add points to user_skill.
       end
-      
     end
     # @quest = @user.user_quests.find_by(params[:user_quest][:id])
     # binding.pry
@@ -113,9 +113,11 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :password, :password_confirmation, :email)
   end
 
+
   def find_user
     @user = User.find(params[:id])
   end
+
 
   def user_quest_params
     params.require(:user_quest).permit(:completed)

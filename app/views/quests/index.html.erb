@@ -5,6 +5,6 @@
 <% else %>
   <h3>Available Quests</h3>
 
-  <%= render 'quests/all_quests', quests: @quests.reverse %>
+  <%= render 'quests/all_quests', quests: @quests.sort_by_level_requirement %>
 <% end %>
 

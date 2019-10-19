@@ -9,7 +9,7 @@ module QuestsHelper
       end
     else
       if current_user.quests.include?(quest)
-        render 'quests/disabled_button', message: "Already Added"
+        render 'quests/disabled_button', message: "Accepted"
       else
         render 'quests/accept_quest_button', quest: quest
       end

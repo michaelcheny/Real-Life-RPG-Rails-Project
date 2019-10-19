@@ -78,19 +78,12 @@ class UsersController < ApplicationController
     @user.user_quests.each do |user_quest|
       # binding.pry
       if user_quest.quest_id == quest.id
-        binding.pry
-        if user_quest.update(user_quest_params)
-          flash[:success] = "nice"
-          redirect_to user_quests_path(@user)
-          binding.pry
-        else
-          binding.pry
-          redirect_to user_quests_path(@user)
-        end
-        # user_quest.update(completed: true)
-
-        # user_quest.completed = true
         # binding.pry
+        user_quest.update(user_quest_params)
+        flash[:success] = "nice"
+        redirect_to user_quests_path(@user)
+        # binding.pry
+      
         # # method to update user_quest.points, and add points to user_skill.
       end
       
@@ -99,8 +92,10 @@ class UsersController < ApplicationController
     # binding.pry
   end
 
+
   private
 
+  
   def user_params
     params.require(:user).permit(:username, :password, :password_confirmation, :email)
   end

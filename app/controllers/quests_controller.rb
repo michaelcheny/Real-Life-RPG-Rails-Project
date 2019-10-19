@@ -3,7 +3,6 @@ class QuestsController < ApplicationController
   def index
     if params[:user_id]
       @user = User.find_by(id: params[:user_id])
-      # @quests = Quest.all
       if @user.nil?
         flash[:error] = "User not found."
         redirect_to quests_path
@@ -62,7 +61,6 @@ class QuestsController < ApplicationController
       flash[:error] = "welp"
       redirect_to quest_path(@quest)
     end
-
   end
 
 
@@ -71,23 +69,6 @@ class QuestsController < ApplicationController
 
   end
 
-
-  # def add_quest
-  #   # binding.pry
-  #   @quest = Quest.find(params[:quest][:id])
-  #   @user = current_user
-  #   # @user.quests.build()
-  #   if !@user.quests.include?(@quest)
-  #     @user.quests << @quest
-  #     binding.pry
-  #     flash[:success] = "Quest successfully added."
-  #     redirect_to user_quests_path(@user)
-  #   else
-  #     flash[:error] = "You already have this quest added."
-  #     redirect_to quests_path
-  #   end
-  #   # binding.pry
-  # end
 
   private
 

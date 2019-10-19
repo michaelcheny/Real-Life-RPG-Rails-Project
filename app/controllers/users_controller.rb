@@ -2,17 +2,21 @@ class UsersController < ApplicationController
   
   before_action :find_user, only: [:show, :edit, :update, :destroy]
 
+
   def index
     @users = User.all
   end
 
+
   def show
   end
+
 
   def new
     redirect_to dashboard_path if logged_in?
     @user = User.new
   end
+
 
   def create
     @user = User.new(user_params)
@@ -26,9 +30,11 @@ class UsersController < ApplicationController
     end
   end
 
+
   def edit
     authorize_user_for_editing_user(@user)
   end
+
 
   def update
     authorize_user_for_editing_user(@user)
@@ -41,17 +47,21 @@ class UsersController < ApplicationController
     end
   end
 
+
   def destroy
   end
+
 
   def dashboard
     authenticate
     @user = current_user    
   end
 
+
   def highscores
     @users = User.all
   end
+
 
   def add_quest
     # binding.pry
@@ -70,6 +80,7 @@ class UsersController < ApplicationController
     # binding.pry
   end
 
+  
   def complete_quest
     authenticate
     @user = current_user
@@ -95,7 +106,7 @@ class UsersController < ApplicationController
 
   private
 
-  
+
   def user_params
     params.require(:user).permit(:username, :password, :password_confirmation, :email)
   end
@@ -107,5 +118,6 @@ class UsersController < ApplicationController
   def user_quest_params
     params.require(:user_quest).permit(:completed)
   end
+
 
 end

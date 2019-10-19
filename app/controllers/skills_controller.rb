@@ -1,4 +1,6 @@
 class SkillsController < ApplicationController
+
+
   def index
     if params[:user_id]
       @skills = User.find(params[:user_id]).skills
@@ -7,8 +9,11 @@ class SkillsController < ApplicationController
     end
   end
 
+
+
   def show
-    
     @skill = Skill.find(params[:id])
   end
+
+
 end

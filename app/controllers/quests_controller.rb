@@ -1,5 +1,6 @@
 class QuestsController < ApplicationController
 
+
   def index
     if params[:user_id]
       @user = User.find_by(id: params[:user_id])
@@ -16,7 +17,6 @@ class QuestsController < ApplicationController
 
 
   def show
-
 
   end
 
@@ -66,11 +66,11 @@ class QuestsController < ApplicationController
 
   def destroy
 
-
   end
 
 
   private
+
 
   def quest_params
     params.require(:quest).permit(:name, :description, :difficulty_level, :level_requirement, skill_ids:[])

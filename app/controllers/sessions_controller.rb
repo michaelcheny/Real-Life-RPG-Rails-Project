@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
 
+
   def new
     redirect_to dashboard_path if authorize?
   end
@@ -44,5 +45,6 @@ class SessionsController < ApplicationController
     session.delete(:user_id)
     redirect_to root_path
   end
+  
   
 end

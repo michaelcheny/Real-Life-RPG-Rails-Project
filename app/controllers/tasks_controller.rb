@@ -1,7 +1,9 @@
 class TasksController < ApplicationController
 
+
   include TasksHelper
 
+  
   def index
     if params[:user_id]
       @user = User.find_by(id: params[:user_id])
@@ -128,8 +130,11 @@ class TasksController < ApplicationController
 
   private
 
+
   def task_params
     params.require(:task).permit(:name, :description, :difficulty_level, :priority_level, :completed, skill_ids:[])
   end
+
+
 end
 

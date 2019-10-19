@@ -1,16 +1,13 @@
 class User < ApplicationRecord
   has_secure_password
   
- 
   has_many :tasks
   has_many :user_skills
   has_many :skills, through: :user_skills
   has_many :user_quests
   has_many :quests, through: :user_quests
 
-
   accepts_nested_attributes_for :tasks
-
 
   ## validation for account creation
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP } 

@@ -2,46 +2,33 @@ class UsersController < ApplicationController
   
   before_action :find_user, only: [:show, :edit, :update, :destroy]
 
-
   def index
     @users = User.all
   end
 
-
   def show
-    
   end
-
 
   def new
     redirect_to dashboard_path if logged_in?
     @user = User.new
   end
 
-
   def create
     @user = User.new(user_params)
- 
     if @user.save
-      # to log in
       log_in(@user)
       flash[:success] = "Account successfully created!"
-
-      # populate user with all the premade skills on creation
       populate_skills_if_empty(@user)
-
       redirect_to dashboard_path
     else
-      # flash[:error] = "Please try again."
       render :new
     end
   end
 
-
   def edit
     authorize_user_for_editing_user(@user)
   end
-
 
   def update
     authorize_user_for_editing_user(@user)
@@ -54,34 +41,43 @@ class UsersController < ApplicationController
     end
   end
 
-
   def destroy
-
   end
-
 
   def dashboard
     authenticate
     @user = current_user    
   end
 
-
   def highscores
     @users = User.all
   end
 
+  def add_quest
+    # binding.pry
+    @quest = Quest.find(params[:quest][:id])
+    @user = current_user
+    # @user.quests.build()
+    if !@user.quests.include?(@quest)
+      @user.quests << @quest
+      binding.pry
+      flash[:success] = "Quest successfully added."
+      redirect_to user_quests_path(@user)
+    else
+      flash[:error] = "You already have this quest added."
+      redirect_to quests_path
+    end
+    # binding.pry
+  end
 
   private
-
 
   def user_params
     params.require(:user).permit(:username, :password, :password_confirmation, :email)
   end
 
-
   def find_user
     @user = User.find(params[:id])
   end
-
 
 end

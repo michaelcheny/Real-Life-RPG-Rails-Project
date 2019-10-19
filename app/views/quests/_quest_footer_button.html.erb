@@ -1,0 +1,9 @@
+<% if params[:user_id] %>
+  button to complete task
+
+<% else %>
+  <%= form_with model: quest, url: addquest_path, local: true do |f| %>
+    <%= f.hidden_field :id %>
+    <%= f.submit "Accept Quest", class: "btn btn-secondary btn-sm" %>
+  <% end %>
+<% end %>

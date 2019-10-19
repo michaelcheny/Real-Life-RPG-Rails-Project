@@ -13,7 +13,7 @@
       </div>
 
       <div class="card-footer text-muted">
-        <%= render 'tasks/completed_button', task: task %>
+        <%= render 'shared/completed_button', object: task, url: user_task_path(task.user, task) %>
         <%= show_task_user(task) %>
       </div>
     </div><br>

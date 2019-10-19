@@ -70,6 +70,10 @@ class UsersController < ApplicationController
     # binding.pry
   end
 
+  def complete_quest
+    
+  end
+
   private
 
   def user_params

@@ -26,10 +26,10 @@ Rails.application.routes.draw do
 
   resources :users, except: [:new] do
     resources :tasks
-    resources :quests, only: [:index, :show, :edit, :update]
+    resources :quests, only: [:index, :show]
     resources :skills, only: [:index, :show]
   end
-  resources :tasks
+  resources :tasks, only: [:index]
   resources :quests
   # resources :skills, only: [:show]
 end

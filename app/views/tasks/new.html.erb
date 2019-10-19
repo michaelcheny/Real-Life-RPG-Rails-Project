@@ -1,8 +1,5 @@
-<fieldset>
+<h3>New Task</h3>
 
-  <legend><h3>New Task</h3></legend>
+<%= render 'shared/error_messages', object: @task %>
+<%= render 'form', task: @task %>
 
-  <%= render 'shared/error_messages', object: @task %>
-  <%= render 'form', task: @task %>
-
-</fieldset>

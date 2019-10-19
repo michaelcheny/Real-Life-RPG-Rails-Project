@@ -31,15 +31,13 @@ class QuestsController < ApplicationController
   def create
     authenticate
     @user = current_user
-    # @quest = @user.quests.build(quest_params)
-    binding.pry
     @quest = Quest.new(quest_params)
     if @quest.save
       flash[:success] = "Quest has been created!"
       redirect_to quests_path
     else
       flash[:error] = "Sorry, you don't have the power to create a quest (ADD ADMIN FUNCTIONALITY)"
-      redirect_to dashboard_path
+      render :new
     end
   end
 

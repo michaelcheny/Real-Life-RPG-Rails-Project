@@ -1,5 +1,5 @@
-  <%= f.collection_check_boxes :skill_ids, object, :id, :name do |b| %>
+<%= f.collection_check_boxes :skill_ids, object, :id, :name do |b| %>
 
   <%= b.label(class: "check_box_thing") { b.check_box + b.text } %>
 
-  <% end %>
+<% end %>

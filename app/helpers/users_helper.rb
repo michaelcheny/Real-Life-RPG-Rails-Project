@@ -14,5 +14,6 @@ module UsersHelper
     users.sort_by{|u| u.total_exp_pts}.reverse
   end
 
+
   
 end

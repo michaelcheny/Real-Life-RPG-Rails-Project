@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   
+  include QuestsHelper
+  
   before_action :find_user, only: [:show, :edit, :update, :destroy]
 
 
@@ -80,7 +82,7 @@ class UsersController < ApplicationController
     # binding.pry
   end
 
-  
+
   def complete_quest
     authenticate
     @user = current_user

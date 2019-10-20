@@ -98,21 +98,11 @@ class UsersController < ApplicationController
         points = calculate_points_for_quest(quest)
 
         if update_user_skill(@user, user_quest, points)
-          # flash[:success] = "#{points_earned} exp gained for associated skills!"
-          leveled_up?(@user, current_level, points)
+          leveled_up_message?(@user, current_level, points)
           redirect_to user_quests_path(@user)
-        # else # just precationary
-        #   flash[:error] = "Something went wrong. Please try again."
-        #   redirect_to user_quests_path(@user)
-        #   return
+
         end
       end
-    # else
-    #   flash[:error] = "Something went wrong."
-    #   redirect_to user_quests_path(@user)
-    #   return
-    end
- 
   end
 
 

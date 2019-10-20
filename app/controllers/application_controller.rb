@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :authenticate
   helper_method :authorize?
+  helper_method :check_if_user_is_a_master?
   # helper_method :owns_resource?
 
   rescue_from ActiveRecord::RecordNotFound, :with => :rescue404
@@ -11,7 +12,6 @@ class ApplicationController < ActionController::Base
  
 
   private
-
 
   # ERROR STUFF
 
@@ -71,10 +71,17 @@ class ApplicationController < ActionController::Base
   end
 
 
-  def authorize_viewing_quests
+  # def authorize_viewing_quests
+  #   unless params[:user_id].to_i == current_user.id
+  #     flash[:error] = "You are not authorized to view this."
+  #     redirect_to user_quests_path(current_user)
+  #   end
+  # end
+
+  def authorize_viewing_nested(path_to)
     unless params[:user_id].to_i == current_user.id
-      flash[:error] = "You are not authorized to view this."
-      redirect_to user_quests_path(current_user)
+      flash[:error] = "You are not authorized to view that. Shame! (ring bell)"
+      redirect_to path_to
     end
   end
 
@@ -100,13 +107,18 @@ class ApplicationController < ActionController::Base
   end
 
   
-
-  
   # Formula for leveling up based on exp
   def calculate_level_from_exp(exp_pts)
     level = (25 + (Math.sqrt(625 + 100 * exp_pts))) / 50
     return level.floor
   end
 
+
+  def check_if_user_is_a_master?
+    unless !!current_user && current_user.master
+      flash[:error] = "You must become a master to do this action. Reach level 50 and defeat the mighty cow to obtain master status."
+      redirect_to dashboard_path
+    end
+  end
 
 end

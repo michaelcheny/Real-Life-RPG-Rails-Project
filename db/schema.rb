@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_18_174106) do
+ActiveRecord::Schema.define(version: 2019_10_20_220856) do
 
   create_table "quest_skills", force: :cascade do |t|
     t.integer "points"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2019_10_18_174106) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "google_token"
     t.string "google_refresh_token"
+    t.boolean "master", default: false
   end
 
 end

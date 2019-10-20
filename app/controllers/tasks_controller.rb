@@ -7,20 +7,41 @@ class TasksController < ApplicationController
   before_action :authenticate
 
   
+  # def index
+  #   if params[:user_id]
+  #     @user = User.find_by(id: params[:user_id])
+  #     # @user = current_user
+  #     if @user.nil?
+  #       flash[:error] = "User not found."
+  #       redirect_to user_tasks_path(@user)
+  #     else
+  #       @tasks = @user.tasks
+  #     end
+  #   else
+  #     @tasks = tasks_that_are_not_yours
+  #   end
+  # end
+
+
+
   def index
     if params[:user_id]
-      @user = User.find_by(id: params[:user_id])
+      authorize_viewing_nested(user_tasks_path(current_user))
+      @user = current_user
       # @user = current_user
-      if @user.nil?
-        flash[:error] = "User not found."
-        redirect_to user_tasks_path(@user)
-      else
+      # if @user.nil?
+      #   flash[:error] = "User not found."
+      #   redirect_to user_tasks_path(@user)
+      # else
         @tasks = @user.tasks
-      end
+      # end
     else
       @tasks = tasks_that_are_not_yours
     end
   end
+  
+  
+  
 
 
   def new

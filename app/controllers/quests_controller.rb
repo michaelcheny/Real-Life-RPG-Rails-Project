@@ -2,19 +2,14 @@ class QuestsController < ApplicationController
 
 
   before_action :authenticate
+  before_action :check_if_user_is_a_master?, except: [:index, :show ]
 
 
   def index
     if params[:user_id]
-      authorize_viewing_quests
-      # @user = User.find_by(id: params[:user_id])
+      authorize_viewing_nested(user_quests_path(current_user))
       @user = current_user
-      # if @user.nil?
-      #   flash[:error] = "User not found."
-      #   redirect_to quests_path
-      # else
-        @quests = @user.quests
-      # end
+      @quests = @user.quests
     else
       @quests = Quest.all
     end
@@ -46,7 +41,9 @@ class QuestsController < ApplicationController
 
   def edit
     @user = current_user
-    authorize_user(@user)
+    # authorize_user(@user)
+    check_if_user_is_a_master?
+    ## only masters can edit
     @quest = Quest.find(params[:id])
   end
 
@@ -55,7 +52,7 @@ class QuestsController < ApplicationController
     @user = current_user
     @quest = Quest.find(params[:id])
     if @quest.update(quest_params)
-      flash[:error] = "Quest Updated."
+      flash[:success] = "Quest Updated."
       redirect_to user_quests_path(@user)
     else
       flash[:error] = "There was an error. Read the message below."

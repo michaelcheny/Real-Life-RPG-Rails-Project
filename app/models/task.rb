@@ -3,7 +3,9 @@ class Task < ApplicationRecord
   validates :name, presence: true, length: { minimum: 2 }
   validates :description, length: { maximum: 500 }
   validates :skills, presence: true
- 
+  validates :skills, length: { maximum: 3, message: "You can only train up to 3 skills per task." }
+
+  
   belongs_to :user
   has_many :task_skills
   has_many :skills, through: :task_skills

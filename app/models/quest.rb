@@ -10,6 +10,7 @@ class Quest < ApplicationRecord
   validates :name, presence: true
   validates :description, length: { maximum: 500 }
   validates :skills, presence: true
+  validates :skills, length: { maximum: 3, message: "You can only train up to 3 skills per quest." }
 
 
   def self.sort_by_level_requirement

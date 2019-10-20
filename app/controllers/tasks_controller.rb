@@ -87,7 +87,6 @@ class TasksController < ApplicationController
 
   def update
     current_level = current_user.total_level
-    @user = current_user
     @task = Task.find(params[:id])
     authorize_task(@task)
 
@@ -101,7 +100,7 @@ class TasksController < ApplicationController
           task_skill.update(points: points)
          
           update_user_skill_task(task_skill, @task)
-          leveled_up_message(@user, current_level, points)
+          leveled_up_message(current_user, current_level, points)
         end
       end
       redirect_to user_tasks_path(@task.user)

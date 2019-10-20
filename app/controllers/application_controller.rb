@@ -55,20 +55,42 @@ class ApplicationController < ActionController::Base
   end
 
 
-  # checks if user is logged in and available
-  def authorize?
-    !current_user.nil? && !!logged_in?
+  # checks if user is authorized
+  # def authorize?
+  #   unless current_user.id == params[:id].to_i
+  #     flash[:error] = "You are not authorized! Sending you back."
+  #     redirect_to dashboard_path
+  #   end
+  # end
+
+  def authorize(user)
+    unless params[:id].to_i == user.id
+      flash[:error] = "You are not authorized! Sending you back."
+      redirect_to dashboard_path
+    end
   end
 
 
-
-  
-  ## authorizes user to edit user info, if not, redirect
-  def authorize_user_for_editing_user(user)
-    authenticate
-    redirect "/user/#{current_user.id}/edit" if !user
-    redirect "/user/#{current_user.id}/edit" if current_user != user
+  def authorize_viewing_quests
+    unless params[:user_id].to_i == current_user.id
+      flash[:error] = "You are not authorized to view this."
+      redirect_to user_quests_path(current_user)
+    end
   end
+
+  # def authorize_quest(user_quest)
+  #   unless current_user.id == user_quest.id
+  #     flash[:error] = "You are not authorized! Sending you back."
+  #     redirect_to dashboard_path and return
+  #   end
+  # end
+
+  # ## authorizes user to edit user info, if not, redirect
+  # def authorize_user_for_editing_user(user)
+  #   authenticate
+  #   redirect "/user/#{current_user.id}/edit" if !user
+  #   redirect "/user/#{current_user.id}/edit" if current_user != user
+  # end
 
 
   def authorize_task(task)
@@ -78,30 +100,25 @@ class ApplicationController < ActionController::Base
   end
 
   
-  def authorize(user)
-    unless params[:id].to_i == user.id
-      flash[:error] = "You are not authorized! Sending you back."
-      redirect_to dashboard_path
-    end
-  end
-
-
-  ## not used yet
-  def authorize_user(user)
-    if user == current_user
-      true
-    else
-      flash[:error] = "You are not authorized! Sending you back."
-      redirect_to dashboard_path
-    end
-  end
 
 
 
-  ## currently not working
-  def no_access
-    render(:file => File.join(Rails.root, 'public/custom403.html'), :status => 403, :layout => false)
-  end
+  # ## not used yet
+  # def authorize_user(user)
+  #   if user == current_user
+  #     true
+  #   else
+  #     flash[:error] = "You are not authorized! Sending you back."
+  #     redirect_to dashboard_path
+  #   end
+  # end
+
+
+
+  # ## currently not working
+  # def no_access
+  #   render(:file => File.join(Rails.root, 'public/custom403.html'), :status => 403, :layout => false)
+  # end
 
 
   # populates user skills with premade skills if empty

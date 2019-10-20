@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   
   before_action :find_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate, except: [:show, :new, :create, :highscores]
+  # before_action :authorize?, only: [:edit, :update]
 
 
   def index
@@ -37,12 +38,12 @@ class UsersController < ApplicationController
 
 
   def edit
-    authorize(current_user)
+    # authorize(current_user)
   end
 
 
   def update
-    authorize_user_for_editing_user(@user)
+    # authorize(current_user)
     if @user.update(user_params)
       flash[:success] = "Profile successfully updated!"
       redirect_to dashboard_path
@@ -88,19 +89,23 @@ class UsersController < ApplicationController
   def complete_quest
     @user = current_user
     quest = Quest.find_by(id: params[:user_quest][:quest_id])
-    
+    # binding.pry
     current_level = @user.total_level
 
     @user.user_quests.each do |user_quest|
 
       if user_quest.quest_id == quest.id
+
+        # authorize_quest(user_quest)
+        # # binding.pry
+
         user_quest.update(user_quest_params)
         points = calculate_points_for_quest(quest)
 
         if update_user_skill_quest(@user, user_quest, points)
           leveled_up_message(@user, current_level, points)
           redirect_to user_quests_path(@user)
-
+          
         end
       end
     end

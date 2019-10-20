@@ -6,13 +6,15 @@ class QuestsController < ApplicationController
 
   def index
     if params[:user_id]
-      @user = User.find_by(id: params[:user_id])
-      if @user.nil?
-        flash[:error] = "User not found."
-        redirect_to quests_path
-      else
+      authorize_viewing_quests
+      # @user = User.find_by(id: params[:user_id])
+      @user = current_user
+      # if @user.nil?
+      #   flash[:error] = "User not found."
+      #   redirect_to quests_path
+      # else
         @quests = @user.quests
-      end
+      # end
     else
       @quests = Quest.all
     end

@@ -2,7 +2,7 @@ class QuestsController < ApplicationController
 
 
   before_action :authenticate
-  before_action :check_if_user_is_a_master?, except: [:index, :show ]
+  before_action :check_if_user_is_a_master?, except: [ :index, :show ]
 
 
   def index
@@ -33,7 +33,7 @@ class QuestsController < ApplicationController
       flash[:success] = "Quest has been created!"
       redirect_to quests_path
     else
-      flash[:error] = "Sorry, you don't have the power to create a quest (ADD ADMIN FUNCTIONALITY)"
+      flash[:error] = "Become a master first, bro."
       render :new
     end
   end

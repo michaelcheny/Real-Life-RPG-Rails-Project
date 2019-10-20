@@ -116,7 +116,7 @@ class ApplicationController < ActionController::Base
 
   def check_if_user_is_a_master?
     unless !!current_user && current_user.master
-      flash[:error] = "You must become a master to do this action. Reach level 50 and defeat the mighty cow to obtain master status."
+      flash[:error] = "You must become a master to do this action. Reach level 50 and defeat the mighty jelly bean to obtain master status."
       redirect_to dashboard_path
     end
   end

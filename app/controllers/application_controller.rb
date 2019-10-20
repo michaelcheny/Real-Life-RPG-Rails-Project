@@ -89,19 +89,19 @@ class ApplicationController < ActionController::Base
   end
 
 
-  ## updates the skill 
-  def update_skill(user_skill, points)
-    user_skill.experience_pts += points
-    return user_skill.experience_pts
-  end
+  # ## updates the skill 
+  # def update_skill(user_skill, points)
+  #   user_skill.experience_pts += points
+  #   return user_skill.experience_pts
+  # end
 
 
-  def calculate_points_for(task)
-    diff_pts = task.difficulty_level * 0.6
-    pri_pts = task.priority_level * 0.8
-    pts = (diff_pts + pri_pts) * 5
-    return pts.to_i
-  end
+  # def calculate_points_for(task)
+  #   diff_pts = task.difficulty_level * 0.6
+  #   pri_pts = task.priority_level * 0.8
+  #   pts = (diff_pts + pri_pts) * 5
+  #   return pts.to_i
+  # end
 
   
   # Formula for leveling up based on exp

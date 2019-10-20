@@ -20,11 +20,12 @@ module UsersHelper
       true
     else
       false
-      flash[:error] = "You are " + levels_away_from_req(user, quest) + " levels are from the requirements."
+      flash[:error] = "You are " + levels_away_from_req(user, quest) + " levels are from the requirement."
       redirect_to quests_path
       return
     end
   end
   
-  
+
+
 end

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   
   include UsersHelper
   include QuestsHelper
+  include SkillsHelper
   
   before_action :find_user, only: [:show, :edit, :update, :destroy]
 
@@ -76,8 +77,8 @@ class UsersController < ApplicationController
         flash[:success] = "Quest successfully added."
         redirect_to user_quests_path(@user)
       end
-      
-    else
+
+    else  ## to prevent people from inspecting page and enabling the button (extra precaution)
       flash[:error] = "You already have this quest added."
       redirect_to quests_path
     end
@@ -88,6 +89,8 @@ class UsersController < ApplicationController
     authenticate
     @user = current_user
     quest = Quest.find_by(id: params[:user_quest][:quest_id])
+
+
     @user.user_quests.each do |user_quest|
       # binding.pry
       if user_quest.quest_id == quest.id

@@ -2,6 +2,7 @@ class TasksController < ApplicationController
 
 
   include TasksHelper
+  include SkillsHelper
 
   
   def index
@@ -35,7 +36,7 @@ class TasksController < ApplicationController
       authorize(@user)
       @task = @user.tasks.build(task_params)
       if @task.save
-        flash[:success] = "Task created, good job, #{@user.username}!"
+        flash[:success] = "Task created."
         redirect_to user_tasks_path(@user)
       else
         flash[:error] = "Sorry, #{@user.username}, something messed up."
@@ -97,7 +98,7 @@ class TasksController < ApplicationController
       if @task.completed
         @task.task_skills.each do |task_skill|
          
-          task_skill.update(points: calculate_points_for(@task))
+          task_skill.update(points: calculate_points(@task))
          
           @task.user.user_skills.each do |user_skill|
            

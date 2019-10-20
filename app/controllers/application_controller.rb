@@ -67,8 +67,9 @@ class ApplicationController < ActionController::Base
     if user == current_user
       true
     else
-      no_access
       false
+      no_access
+      
     end
   end
 

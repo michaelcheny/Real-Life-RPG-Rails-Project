@@ -1,17 +1,13 @@
-<fieldset>
+<h3 class="card-header font-weight-bold">Your progress</h3>
+<p>Total Completed Tasks: <%= @user.tasks.finished.count %></p>
+<p>Tasks Completed Today: <%= @user.tasks.completed_today.count %></p>
 
-  <legend><h3>Your progress</h3></legend>
+<p>Top Skill: <%= UserSkill.top_skill_by_user(@user).first.skill.name %></p>
 
-  <p>Total Completed Tasks: <%= @user.tasks.finished.count %></p>
-  <p>Tasks Completed Today: <%= @user.tasks.completed_today.count %></p>
+<p>Total Level: <%= @user.total_level %></p>    
+<p>Total Exp: <%= @user.total_exp_pts %></p>
+<%= render 'user_skill_table', user: @user %>
 
-  <p>Top Skill: <%= UserSkill.top_skill_by_user(@user).first.skill.name %></p>
-
-  <p>Total Level: <%= @user.total_level %></p>    
-  <p>Total Exp: <%= @user.total_exp_pts %></p>
-  <%= render 'user_skill_table', user: @user %>
-
-</fieldset>
 
 <%= render 'tasks/tasks_for_users_split', tasks: @user.tasks.last_five %>
 

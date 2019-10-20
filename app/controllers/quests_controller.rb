@@ -25,13 +25,11 @@ class QuestsController < ApplicationController
 
 
   def new
-    authenticate
     @quest = Quest.new
   end
 
 
   def create
-    authenticate
     @user = current_user
     @quest = Quest.new(quest_params)
     if @quest.save
@@ -45,20 +43,17 @@ class QuestsController < ApplicationController
 
 
   def edit
-    authenticate
     @user = current_user
-    authorize(@user)
+    authorize_user(@user)
     @quest = Quest.find(params[:id])
   end
 
   
   def update
-    authenticate
     @user = current_user
     @quest = Quest.find(params[:id])
-    binding.pry
     if @quest.update(quest_params)
-      binding.pry
+      flash[:error] = "Quest Updated."
       redirect_to user_quests_path(@user)
     else
       flash[:error] = "welp"

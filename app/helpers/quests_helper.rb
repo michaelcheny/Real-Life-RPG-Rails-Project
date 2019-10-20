@@ -3,13 +3,13 @@ module QuestsHelper
   def quest_footer_for_quest(quest)
     if params[:user_id]
       if quest.completed
-        render 'quests/disabled_button', message: "Completed"
+        render 'shared/disabled_button', message: "Completed"
       else
         render 'quests/complete_button', object: quest, url: "/complete_quest" 
       end
     else
       if current_user.quests.include?(quest)
-        render 'quests/disabled_button', message: "Accepted"
+        render 'shared/disabled_button', message: "Accepted", class: "btn btn-secondary btn-sm btn-block"
       else
         render 'quests/accept_quest_button', quest: quest
       end

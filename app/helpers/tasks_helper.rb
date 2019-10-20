@@ -17,7 +17,9 @@ module TasksHelper
 
   def show_edit_button_for_task(task)
     if current_user == task.user
-      link_to "Edit", edit_user_task_path(current_user, task), class: "btn btn-secondary btn-sm float-right"
+      if !task.completed
+        link_to "Edit", edit_user_task_path(current_user, task), class: "btn btn-secondary btn-sm float-right"
+      end
     end
   end
 

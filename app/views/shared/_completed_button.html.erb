@@ -1,4 +1,6 @@
-<%= form_with model: object, url: url, local: true do |f| %>
-  <%= f.hidden_field :completed, value: true %>
-  <%= f.submit "Complete Task", class: "btn btn-secondary btn-sm btn-block" %>
+<% if current_user.id == object.id %>
+  <%= form_with model: object, url: url, local: true do |f| %>
+    <%= f.hidden_field :completed, value: true %>
+    <%= f.submit "Complete Task", class: "btn btn-secondary btn-sm btn-block" %>
+  <% end %>
 <% end %>

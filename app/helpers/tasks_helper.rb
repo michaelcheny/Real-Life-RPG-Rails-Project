@@ -32,6 +32,13 @@ module TasksHelper
     end
   end
 
+  def show_complete_button_for(task)
+    if current_user.tasks.include?(task)
+      render 'shared/completed_button', object: task, url: user_task_path(task.user, task)
+    end
+  end
+
+
 
   def tasks_that_are_not_yours
     Task.all.select{ |task| task.user != current_user }.reverse

@@ -2,6 +2,7 @@ class Task < ApplicationRecord
 
   validates :name, presence: true, length: { minimum: 2 }
   validates :description, length: { maximum: 500 }
+  validates :skills, presence: true
  
   belongs_to :user
   has_many :task_skills

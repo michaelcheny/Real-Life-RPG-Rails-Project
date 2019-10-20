@@ -8,7 +8,7 @@ class Quest < ApplicationRecord
 
   validates :name, presence: true
   validates :description, length: { maximum: 500 }
-
+  validates :skills, presence: true
 
   def self.sort_by_level_requirement
     order(level_requirement: :desc)
@@ -17,4 +17,7 @@ class Quest < ApplicationRecord
   def self.sort_by_completed
     where(completed: true)
   end
+
+
+
 end

@@ -1,5 +1,6 @@
 module QuestsHelper
 
+  # renders the footer of the quest based on different scenerios
   def quest_footer_for_quest(quest)
     if params[:user_id]
       if quest.completed

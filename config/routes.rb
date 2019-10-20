@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :quests, only: [:index, :show, :update]
     resources :skills, only: [:index, :show]
   end
+  
   resources :tasks, except: [:show]
   resources :quests
   # resources :skills, only: [:show]

@@ -1,7 +1,7 @@
 <% if tasks.finished.any? %>
   <% tasks.finished.each do |task| %>
     <div class="card">
-      <div class="card-header font-weight-bold"><%= link_to task.name, user_task_path(task.user, task) %><%= show_edit_button_for_task(task) %></div>
+      <div class="card-header font-weight-bold"><%= task.name %><%= show_edit_button_for_task(task) %></div>
       <div class="card-body">
         <p class="card-text"><%= task.description %></p>
       </div>

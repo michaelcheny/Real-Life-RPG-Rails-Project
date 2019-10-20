@@ -89,8 +89,7 @@ class UsersController < ApplicationController
     authenticate
     @user = current_user
     quest = Quest.find_by(id: params[:user_quest][:quest_id])
-
-
+    
     @user.user_quests.each do |user_quest|
 
       if user_quest.quest_id == quest.id
@@ -98,15 +97,18 @@ class UsersController < ApplicationController
         points_earned = calculate_points_for_quest(quest)
 
         if update_user_skill(@user, user_quest, points_earned)
-          flash[:success] = "nice"
+          flash[:success] = "#{points_earned} exp gained for associated skills!"
           redirect_to user_quests_path(@user)
-        else # just precationary
-          flash[:error] = "Something went wrong. Please try again."
-          redirect_to user_quests_path(@user)
-          return
+        # else # just precationary
+        #   flash[:error] = "Something went wrong. Please try again."
+        #   redirect_to user_quests_path(@user)
+        #   return
         end
-
       end
+    # else
+    #   flash[:error] = "Something went wrong."
+    #   redirect_to user_quests_path(@user)
+    #   return
     end
  
   end

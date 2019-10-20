@@ -14,6 +14,6 @@
     <% end %>
   </ul>
 
-  <%= render 'completed_button', task: @task %>
+  <%= render 'shared/completed_button', object: @task, url: edit_user_task_path(@task.user, @task) %>
   <%= show_edit_button_for_task(@task) %>
 </fieldset>

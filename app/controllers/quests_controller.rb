@@ -68,9 +68,12 @@ class QuestsController < ApplicationController
 
 
   def boss_battle
-    @user = current_user
+    
   end
 
+  def defeated
+    answer = "profanity"
+  end
 
   private
 

@@ -1,1 +1,13 @@
-<%= image_tag "mrjellybean.png" %>
+
+  <%= image_tag "mrjellybean.png", class: "img-fluid" %>
+
+  <%= form_tag do %>
+
+  <div class="form-group">
+    <%= label_tag "Defeat the Jellybean by answering the question correctly!" %>
+    <%= text_field_tag :input, "", placeholder: "What is the most used language in programming?", class: "form-control", required: true %> 
+  </div>
+
+  <%= submit_tag "Defeat the Jellybean", class: "btn btn-secondary" %>
+
+  <% end %>

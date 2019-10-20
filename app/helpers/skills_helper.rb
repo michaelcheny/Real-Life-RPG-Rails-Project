@@ -36,4 +36,14 @@ module SkillsHelper
   end
 
 
+  ## Populates the user with skills if it is empty, usually in the beginning of a session or new user.
+  def populate_skills_if_empty(user)
+    if user.skills.empty?
+      Skill.all.each do |s|
+        user.skills << s
+      end
+    end
+  end
+
+
 end

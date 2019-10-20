@@ -45,13 +45,6 @@ class User < ApplicationRecord
     return total_level
   end
 
-  # def self.sort_by_total_exp
-  #   where(total_exp_pts: :desc)
-  # end
-
-  # def sort_by_total_exp
-  #   sort_by{|u| u.total_exp_pts}.reverse
-  # end
 
 
 end

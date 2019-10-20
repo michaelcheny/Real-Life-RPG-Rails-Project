@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :authenticate
   helper_method :authorize?
-  helper_method :owns_resource?
+  # helper_method :owns_resource?
 
   rescue_from ActiveRecord::RecordNotFound, :with => :rescue404
   rescue_from ActionController::RoutingError, :with => :rescue404
@@ -23,13 +23,13 @@ class ApplicationController < ActionController::Base
     render(:file => File.join(Rails.root, 'public/custom403.html'), :status => 403, :layout => false)
   end
 
-  def owns_resource?
-    resource.user == current_user
-  end
+  # def owns_resource?
+  #   resource.user == current_user
+  # end
 
-  def authorize(resource)
-    rescue403 if !owns_resource?(resource)
-  end
+  # def authorize(resource)
+  #   rescue403 if !owns_resource?(resource)
+  # end
 
 
   def current_user
@@ -56,12 +56,12 @@ class ApplicationController < ActionController::Base
 
 
   # checks if user is authorized
-  # def authorize?
-  #   unless current_user.id == params[:id].to_i
-  #     flash[:error] = "You are not authorized! Sending you back."
-  #     redirect_to dashboard_path
-  #   end
-  # end
+  def authorize?
+    unless current_user.id == params[:id].to_i
+      flash[:error] = "You are not authorized! Sending you back."
+      redirect_to dashboard_path
+    end
+  end
 
   def authorize(user)
     unless params[:id].to_i == user.id
@@ -100,50 +100,6 @@ class ApplicationController < ActionController::Base
   end
 
   
-
-
-
-  # ## not used yet
-  # def authorize_user(user)
-  #   if user == current_user
-  #     true
-  #   else
-  #     flash[:error] = "You are not authorized! Sending you back."
-  #     redirect_to dashboard_path
-  #   end
-  # end
-
-
-
-  # ## currently not working
-  # def no_access
-  #   render(:file => File.join(Rails.root, 'public/custom403.html'), :status => 403, :layout => false)
-  # end
-
-
-  # populates user skills with premade skills if empty
-  def populate_skills_if_empty(user)
-    if user.skills.empty?
-      Skill.all.each do |s|
-        user.skills << s
-      end
-    end
-  end
-
-
-  # ## updates the skill 
-  # def update_skill(user_skill, points)
-  #   user_skill.experience_pts += points
-  #   return user_skill.experience_pts
-  # end
-
-
-  # def calculate_points_for(task)
-  #   diff_pts = task.difficulty_level * 0.6
-  #   pri_pts = task.priority_level * 0.8
-  #   pts = (diff_pts + pri_pts) * 5
-  #   return pts.to_i
-  # end
 
   
   # Formula for leveling up based on exp

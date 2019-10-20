@@ -5,9 +5,8 @@
   
 <% else %>
 
-  <fieldset>
-    <legend><h3>All Tasks</h3></legend>
-    <%= render 'all_tasks', tasks: @tasks  %>
-  </fieldset>
+  <h3 class="card-header">All Tasks</h3>
+
+  <%= render 'all_tasks', tasks: @tasks  %>
   
 <% end %>

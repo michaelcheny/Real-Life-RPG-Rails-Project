@@ -29,5 +29,10 @@ module ApplicationHelper
     end
   end
 
+  
+  # Shows how long it took for user to complete
+  def show_object_time_info(object)
+    object.completed ? "Date of completion: " + object.completion_time : "added on: " + object.created_at.strftime("%m/%d/%Y").to_s
+  end
 
 end

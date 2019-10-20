@@ -56,14 +56,20 @@ class QuestsController < ApplicationController
       flash[:error] = "Quest Updated."
       redirect_to user_quests_path(@user)
     else
-      flash[:error] = "welp"
-      redirect_to quest_path(@quest)
+      flash[:error] = "There was an error. Read the message below."
+      render :edit
     end
   end
 
 
   def destroy
+    @user = current_user
+    @quest = Quest.find(params[:id])
+    # authrize
 
+    @quest.destroy
+    flash[:success] = "#{@quest.name} has been deleted."
+    redirect_to quests_path
   end
 
 

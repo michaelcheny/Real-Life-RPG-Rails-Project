@@ -58,7 +58,6 @@ class UsersController < ApplicationController
 
 
   def dashboard
-    authenticate
     @user = current_user    
   end
 
@@ -87,18 +86,20 @@ class UsersController < ApplicationController
 
 
   def complete_quest
-    authenticate
     @user = current_user
     quest = Quest.find_by(id: params[:user_quest][:quest_id])
     
+    current_level = @user.total_level
+
     @user.user_quests.each do |user_quest|
 
       if user_quest.quest_id == quest.id
         user_quest.update(user_quest_params)
-        points_earned = calculate_points_for_quest(quest)
+        points = calculate_points_for_quest(quest)
 
-        if update_user_skill(@user, user_quest, points_earned)
-          flash[:success] = "#{points_earned} exp gained for associated skills!"
+        if update_user_skill(@user, user_quest, points)
+          # flash[:success] = "#{points_earned} exp gained for associated skills!"
+          leveled_up?(@user, current_level, points)
           redirect_to user_quests_path(@user)
         # else # just precationary
         #   flash[:error] = "Something went wrong. Please try again."

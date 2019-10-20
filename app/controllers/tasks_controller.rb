@@ -40,11 +40,9 @@ class TasksController < ApplicationController
         redirect_to user_tasks_path(@user)
       else
         flash[:error] = "Sorry, #{@user.username}, something messed up."
-        binding.pry
-        # redirect_to new_user_task_path(current_user)
         render :new
       end
-    else
+    else # just in case someone tries to create a non nested task.
       flash[:error] = "Sorry, #{@user.username}, something messed up."
       binding.pry
       redirect_to new_user_task_path(current_user)

@@ -8,9 +8,9 @@ module TasksHelper
 
 
   def calculate_points(task)
-    diff_pts = task.difficulty_level * 0.6
+    diff_pts = task.difficulty_level * 0.8
     pri_pts = task.priority_level * 0.8
-    pts = (diff_pts + pri_pts) * 5
+    pts = (diff_pts + pri_pts) * 6
     return pts.to_i
   end
 
@@ -30,6 +30,7 @@ module TasksHelper
     end
   end
 
+
   def tasks_that_are_not_yours
     Task.all.select{ |task| task.user != current_user }.reverse
   end
@@ -38,6 +39,7 @@ module TasksHelper
   def show_task_time_info(task)
     task.completed ? "Date of completion: " + task.completion_time : "added on: " + task.created_at.strftime("%m/%d/%Y").to_s
   end
+
 
   def show_completed_if_completed(task)
     task.completed ? "Completed" : "Not Completed"

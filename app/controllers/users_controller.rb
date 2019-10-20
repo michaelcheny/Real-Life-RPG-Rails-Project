@@ -100,13 +100,11 @@ class UsersController < ApplicationController
 
 
         redirect_to user_quests_path(@user)
-        # binding.pry
       
         # # method to update user_quest.points, and add points to user_skill.
       end
     end
-    # @quest = @user.user_quests.find_by(params[:user_quest][:id])
-    # binding.pry
+ 
   end
 
 

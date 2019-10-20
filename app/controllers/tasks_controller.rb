@@ -1,6 +1,5 @@
 class TasksController < ApplicationController
 
-
   include TasksHelper
   include SkillsHelper
 

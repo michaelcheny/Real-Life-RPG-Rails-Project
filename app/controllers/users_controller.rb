@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
 
   def edit
-    authorize_user_for_editing_user(@user)
+    authorize(current_user)
   end
 
 

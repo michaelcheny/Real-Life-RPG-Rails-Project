@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   patch 'add_quest' => 'users#add_quest', as: 'addquest'
   patch 'complete_quest' => 'users#complete_quest'
 
-  resources :users, except: [:new] do
+  resources :users, except: [:new, :index] do
     resources :tasks, except: [:show]
     resources :quests, only: [:index, :show, :update]
     resources :skills, only: [:index, :show]

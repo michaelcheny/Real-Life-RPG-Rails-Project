@@ -13,7 +13,7 @@ class TasksController < ApplicationController
       # @user = current_user
       if @user.nil?
         flash[:error] = "User not found."
-        redirect_to users_path
+        redirect_to user_tasks_path(@user)
       else
         @tasks = @user.tasks
       end
@@ -32,10 +32,10 @@ class TasksController < ApplicationController
 
   def create
     # authenticate
+    @user = current_user
+    authorize(@user)
     if params[:user_id]
-      @user = current_user
-      ## if user.id != params of userid, throw 403
-      authorize(@user)
+      
       @task = @user.tasks.build(task_params)
       if @task.save
         flash[:success] = "Task created."
@@ -67,10 +67,11 @@ class TasksController < ApplicationController
 
 
   def edit
-    # authenticate
+  @user = current_user
+  authorize(@user)
     if params[:user_id]
-      @user = current_user
-      authorize(@user)
+      
+      
       if @user.tasks.find_by(id: params[:id])
         @task = @user.tasks.find(params[:id])
         authorize_task(@task)

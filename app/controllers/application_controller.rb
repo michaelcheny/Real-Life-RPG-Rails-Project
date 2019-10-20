@@ -1,13 +1,35 @@
 class ApplicationController < ActionController::Base
 
-
   helper_method :logged_in?
   helper_method :current_user
   helper_method :authenticate
   helper_method :authorize?
+  helper_method :owns_resource?
 
+  rescue_from ActiveRecord::RecordNotFound, :with => :rescue404
+  rescue_from ActionController::RoutingError, :with => :rescue404
+ 
 
   private
+
+
+  # ERROR STUFF
+
+  def rescue404
+    render(:file => File.join(Rails.root, 'public/custom404.html'), :status => 404, :layout => false)
+  end
+
+  def rescue403
+    render(:file => File.join(Rails.root, 'public/custom403.html'), :status => 403, :layout => false)
+  end
+
+  def owns_resource?
+    resource.user == current_user
+  end
+
+  def authorize(resource)
+    rescue403 if !owns_resource?(resource)
+  end
 
 
   def current_user
@@ -39,6 +61,8 @@ class ApplicationController < ActionController::Base
   end
 
 
+
+  
   ## authorizes user to edit user info, if not, redirect
   def authorize_user_for_editing_user(user)
     authenticate
@@ -55,9 +79,9 @@ class ApplicationController < ActionController::Base
 
   
   def authorize(user)
-    if params[:user_id] != user.id.to_s
+    unless params[:id].to_i == user.id
       flash[:error] = "You are not authorized! Sending you back."
-      redirect_to user_tasks_path(user)
+      redirect_to dashboard_path
     end
   end
 
@@ -67,9 +91,8 @@ class ApplicationController < ActionController::Base
     if user == current_user
       true
     else
-      false
-      no_access
-      
+      flash[:error] = "You are not authorized! Sending you back."
+      redirect_to dashboard_path
     end
   end
 

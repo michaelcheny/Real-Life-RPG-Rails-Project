@@ -98,7 +98,7 @@ class UsersController < ApplicationController
         points = calculate_points_for_quest(quest)
 
         if update_user_skill_quest(@user, user_quest, points)
-          leveled_up_message?(@user, current_level, points)
+          leveled_up_message(@user, current_level, points)
           redirect_to user_quests_path(@user)
 
         end

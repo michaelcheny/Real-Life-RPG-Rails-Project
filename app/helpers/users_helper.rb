@@ -27,7 +27,7 @@ module UsersHelper
   end
   
   
-  # If user level up
+  # If user level up, show them their level, if not, show exp gained.
   def leveled_up_message?(user, current_level, points)
     if user.total_level > current_level
       flash[:success] = "You are now level #{user.total_level}!"

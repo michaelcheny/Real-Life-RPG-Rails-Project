@@ -1,7 +1,7 @@
 module SkillsHelper
 
   # Iterate over user's skills, matche with the quest skills, and trains the correct skill
-  def update_user_skill(user, user_quest, points)
+  def update_user_skill_quest(user, user_quest, points)
   quest = Quest.find_by(id: user_quest.quest_id)  
     user.user_skills.each do |user_skill|
       quest.skills.each do |quest_skill|
@@ -11,6 +11,14 @@ module SkillsHelper
           train_skill(user_skill, points)
         end
       end
+    end
+  end
+
+
+  # Update the user skill based on the task
+  def update_user_skill_task(task_skill, task)
+    task.user.user_skills.each do |user_skill|
+      train_skill(user_skill, task_skill.points) if task_skill.skill_id == user_skill.skill_id
     end
   end
 

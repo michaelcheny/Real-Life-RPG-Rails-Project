@@ -2,6 +2,7 @@ class TasksController < ApplicationController
 
   include TasksHelper
   include SkillsHelper
+  include UsersHelper
 
   before_action :authenticate
 
@@ -88,31 +89,24 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     authorize_task(@task)
     @user = current_user
+    current_level = @user.total_level
 
     if @task.update(task_params)
       flash[:success] = "Task updated successfully!"
 
-      #update the point thing
       if @task.completed
         @task.task_skills.each do |task_skill|
          
-          task_skill.update(points: calculate_points(@task))
+          points = calculate_points(@task)
+          task_skill.update(points: points)
          
-          @task.user.user_skills.each do |user_skill|
-           
-            if task_skill.skill_id == user_skill.skill_id
-              
-              user_skill.update(experience_pts: update_skill(user_skill, task_skill.points), level: calculate_level_from_exp(user_skill.experience_pts)) 
-              flash[:success] = "Exp gained for #{user_skill.skill.name}!"
-            end
-          end
+          update_user_skill_task(task_skill, @task)
+          leveled_up_message?(@user, current_level, points)
         end
       end
-
       redirect_to user_tasks_path(@task.user)
     else
       flash[:error] = "Sorry, #{@task.user.username}, something messed up."
-      # redirect_to edit_user_task_path(@task.user, @task)
       render :edit
     end
   end

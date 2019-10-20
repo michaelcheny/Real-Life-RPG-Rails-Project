@@ -3,14 +3,14 @@
 
     <div class="card">
     
-      <div class="card-header"><%= user_quest.quest.name %> <span class="float-sm-right">put the quest creator</span></div>
+      <div class="card-header"><%= user_quest.quest.name %> <span class="float-sm-right">Level Requirement: <%= user_quest.quest.level_requirement %></span></div>
     
       <div class="card-body">
           <p class="card-text"><%= user_quest.quest.description %></p>
       </div>
     
       <div class="card-body">
-        <p class="card-text">put the exp for skills here</p>
+        <p class="card-text"><%= calculate_points_for_quest(user_quest.quest) %> Exp for:</p>
           <%= render 'shared/affiliated_skills', object: user_quest.quest %>
       </div>
 

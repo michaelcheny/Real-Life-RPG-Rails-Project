@@ -94,17 +94,15 @@ class UsersController < ApplicationController
     @user.user_quests.each do |user_quest|
 
       if user_quest.quest_id == quest.id
-        # binding.pry
-        user_quest.update(user_quest_params)
 
-        points_earned = calculate_points_for_quest(user_quest)
+        user_quest.update(user_quest_params)
+        
+        points_earned = calculate_points_for_quest(quest)
+
+        update_user_skill(@user, user_quest, points_earned)
 
         flash[:success] = "nice"
-
-
         redirect_to user_quests_path(@user)
-      
-        # # method to update user_quest.points, and add points to user_skill.
       end
     end
  

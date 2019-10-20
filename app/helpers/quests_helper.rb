@@ -17,10 +17,11 @@ module QuestsHelper
   end
 
 
+  # Calculates the exp earned for completing the quest based on quest info.
   def calculate_points_for_quest(quest)
     diff_pts = quest.difficulty_level * 1.2
     level_scaling = quest.level_requirement
-    pts = (diff_pts + level_scaling) * 40
+    pts = (diff_pts + level_scaling) * 25
     return pts.to_i
   end
 

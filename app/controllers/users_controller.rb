@@ -92,10 +92,13 @@ class UsersController < ApplicationController
 
 
     @user.user_quests.each do |user_quest|
-      # binding.pry
+
       if user_quest.quest_id == quest.id
         # binding.pry
         user_quest.update(user_quest_params)
+
+        points_earned = calculate_points_for_quest(user_quest)
+
         flash[:success] = "nice"
 
 

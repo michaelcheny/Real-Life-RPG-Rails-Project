@@ -35,4 +35,13 @@ module ApplicationHelper
     object.completed ? "Date of completion: " + object.completion_time : "added on: " + object.created_at.strftime("%m/%d/%Y").to_s
   end
 
+
+  # Shows link to boss battle
+
+  def boss_battle_link
+    if (current_user.total_level >= 50) && !current_user.master
+      render 'layouts/boss_battle_link'
+    end
+  end
+
 end

@@ -19,6 +19,7 @@
         Quests
       </a>
       <div class="dropdown-menu">
+        <%= boss_battle_link %>
         <a class="dropdown-item" href="<%= new_quest_path %>">New Quests</a>
         <a class="dropdown-item" href="<%= quests_path %>">Bulletin Board</a>
         <a class="dropdown-item" href="<%= user_quests_path(current_user) %>">Quests Log</a>

@@ -2,7 +2,7 @@ class QuestsController < ApplicationController
 
 
   before_action :authenticate
-  before_action :check_if_user_is_a_master?, except: [ :index, :show ]
+  before_action :check_if_user_is_a_master?, except: [ :index, :show, :boss_battle ]
 
 
   def index
@@ -41,9 +41,6 @@ class QuestsController < ApplicationController
 
   def edit
     @user = current_user
-    # authorize_user(@user)
-    check_if_user_is_a_master?
-    ## only masters can edit
     @quest = Quest.find(params[:id])
   end
 
@@ -64,11 +61,14 @@ class QuestsController < ApplicationController
   def destroy
     @user = current_user
     @quest = Quest.find(params[:id])
-    # authrize
-
     @quest.destroy
     flash[:success] = "#{@quest.name} has been deleted."
     redirect_to quests_path
+  end
+
+
+  def boss_battle
+    @user = current_user
   end
 
 

@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   patch 'add_quest' => 'users#add_quest', as: 'addquest'
   patch 'complete_quest' => 'users#complete_quest'
 
+  # Boss battle to become master
+  get 'boss_battle' => 'quests#boss_battle', as: 'bossbattle'
+
   resources :users, except: [:new, :index] do
     resources :tasks, except: [:show]
     resources :quests, only: [:index, :show, :update]

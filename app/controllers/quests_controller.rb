@@ -1,6 +1,9 @@
 class QuestsController < ApplicationController
 
 
+  before_action :authenticate
+
+
   def index
     if params[:user_id]
       @user = User.find_by(id: params[:user_id])

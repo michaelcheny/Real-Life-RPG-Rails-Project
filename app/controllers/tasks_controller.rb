@@ -3,6 +3,8 @@ class TasksController < ApplicationController
   include TasksHelper
   include SkillsHelper
 
+  before_action :authenticate
+
   
   def index
     if params[:user_id]
@@ -21,14 +23,14 @@ class TasksController < ApplicationController
 
 
   def new
-    authenticate
+    # authenticate
     @user = current_user
     @task = @user.tasks.build
   end
 
 
   def create
-    authenticate
+    # authenticate
     if params[:user_id]
       @user = current_user
       ## if user.id != params of userid, throw 403
@@ -64,7 +66,7 @@ class TasksController < ApplicationController
 
 
   def edit
-    authenticate
+    # authenticate
     if params[:user_id]
       @user = current_user
       authorize(@user)

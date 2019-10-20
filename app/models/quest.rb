@@ -1,4 +1,5 @@
 class Quest < ApplicationRecord
+
   has_many :user_quests
   has_many :users, through: :user_quests
   has_many :quest_skills
@@ -10,14 +11,15 @@ class Quest < ApplicationRecord
   validates :description, length: { maximum: 500 }
   validates :skills, presence: true
 
+
   def self.sort_by_level_requirement
     order(level_requirement: :desc)
   end
 
+
   def self.sort_by_completed
     where(completed: true)
   end
-
 
 
 end

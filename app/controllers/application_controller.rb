@@ -72,27 +72,12 @@ class ApplicationController < ActionController::Base
   end
 
 
-
   def authorize_viewing_nested(path_to)
     unless params[:user_id].to_i == current_user.id
       flash[:error] = "You are not authorized to view that. Shame! (ring bell)"
       redirect_to path_to
     end
   end
-
-  # def authorize_quest(user_quest)
-  #   unless current_user.id == user_quest.id
-  #     flash[:error] = "You are not authorized! Sending you back."
-  #     redirect_to dashboard_path and return
-  #   end
-  # end
-
-  # ## authorizes user to edit user info, if not, redirect
-  # def authorize_user_for_editing_user(user)
-  #   authenticate
-  #   redirect "/user/#{current_user.id}/edit" if !user
-  #   redirect "/user/#{current_user.id}/edit" if current_user != user
-  # end
 
 
   def authorize_task(task)

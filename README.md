@@ -24,3 +24,5 @@ This application is for my Ruby on Rails project for Flatiron School
 The photo used in the boss battle is Mr. Jellybean from Rick and Morty TV series.
 Inspirations for this project came from classic RPG games.
 
+## License
+[Mit License](https://github.com/michaelcheny/Sinatra-Project/blob/master/LICENSE)

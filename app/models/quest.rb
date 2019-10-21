@@ -13,14 +13,16 @@ class Quest < ApplicationRecord
   validates :skills, length: { maximum: 3, message: "You can only train up to 3 skills per quest." }
 
 
+  # Sort quest by level requirement to use in bulletin
   def self.sort_by_level_requirement
     order(level_requirement: :desc)
   end
 
 
-  def self.sort_by_completed
-    where(completed: true)
-  end
+  # Grabs the last five tasks
+  def self.last_five
+    limit(5)
+  end  
 
 
 end

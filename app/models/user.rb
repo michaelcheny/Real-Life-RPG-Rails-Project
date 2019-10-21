@@ -46,5 +46,25 @@ class User < ApplicationRecord
   end
 
 
+  # Grabs all the completed quests.
+  def sort_quests_by_completed
+    self.user_quests.where(completed: true)
+  end
+
+   # Grabs all the incompleted quests.
+   def sort_quests_by_incomplete
+    self.user_quests.where(completed: false)
+  end
+
+
+
+  # Grabs the completed quests for today
+  def quests_completed_today
+    self.user_quests.where(completed: true).where(updated_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).order(updated_at: :desc)
+  end
+
+
+
+  
 
 end

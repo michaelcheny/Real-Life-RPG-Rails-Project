@@ -94,7 +94,7 @@ class UsersController < ApplicationController
 
         if update_user_skill_quest(@user, user_quest, points)
           leveled_up_message(@user, current_level, points)
-          redirect_to user_quests_path(@user)
+          redirect_to dashboard_path
         end
       end
     end

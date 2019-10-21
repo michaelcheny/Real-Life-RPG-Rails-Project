@@ -75,9 +75,12 @@ class TasksController < ApplicationController
          
           update_user_skill_task(task_skill, @task)
           leveled_up_message(current_user, current_level, points)
+
         end
       end
-      redirect_to user_tasks_path(@task.user)
+                redirect_to dashboard_path
+
+      # redirect_to user_tasks_path(@task.user)
     else
       flash[:error] = "Sorry, #{@task.user.username}, something messed up."
       render :edit

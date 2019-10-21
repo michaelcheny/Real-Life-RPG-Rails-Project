@@ -70,10 +70,50 @@ d = User.create(
   email: "dog@dog.com", 
   username: "Dog", 
   password: "password", 
+  password_confirmation: "password",
+  master: true
+  )  
+
+s = User.create(
+  email: "shrimply@pibbles.com", 
+  username: "Shirmplypibbles", 
+  password: "password", 
   password_confirmation: "password"
   )  
 
+b = User.create(
+  email: "bird@person.com", 
+  username: "Birdperson", 
+  password: "password", 
+  password_confirmation: "password"
+  ) 
+
+t = User.create(
+  email: "scary@terry.com", 
+  username: "Scaryterry", 
+  password: "password", 
+  password_confirmation: "password"
+  )  
+
+
 Skill.all.each{ |skill| m.skills << skill }
 Skill.all.each{ |skill| d.skills << skill }
+Skill.all.each{ |skill| s.skills << skill }
+Skill.all.each{ |skill| b.skills << skill }
+Skill.all.each{ |skill| t.skills << skill }
 
 
+q = Quest.create(name: "Level Booster2", description: "Boost my level for demoing app", difficulty_level: 10, level_requirement: 20, skill_ids: [4,5,6])
+qq = Quest.create(name: "Level Booster1", description: "Boost my level for demoing app", difficulty_level: 10, level_requirement: 10, skill_ids: [1,2,3])
+qqq = Quest.create(name: "Level Booster3", description: "Boost my level for demoing app", difficulty_level: 10, level_requirement: 30, skill_ids: [7,8,9])
+qqqq = Quest.create(name: "Take 2 Strokes Off My Golf Game", description: "Yeaahhh, can't dooooo.", difficulty_level: 10, level_requirement: 16, skill_ids: [3,8,9])
+qqqqq = Quest.create(name: "Find a Mating Partner", description: "It is considered a good move in bird culture to find a mate.", difficulty_level: 10, level_requirement: 20, skill_ids: [8,9,10])
+qqqqqq = Quest.create(name: "Lose 3 pounds", description: "Burn off all the weight from stress eating during project week.", difficulty_level: 7, level_requirement: 25, skill_ids: [1,3,4])
+
+
+
+m.user_quests.create(quest: q)
+m.user_quests.create(quest: qq)
+
+b.user_quests.create(quest: q)
+b.user_quests.create(quest: qq)

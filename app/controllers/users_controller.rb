@@ -61,10 +61,6 @@ class UsersController < ApplicationController
   end
 
 
-  def highscores
-    @users = User.all
-  end
-
 
   def add_quest
     @quest = Quest.find(params[:quest][:id])

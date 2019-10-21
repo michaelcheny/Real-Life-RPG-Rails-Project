@@ -21,4 +21,10 @@
   </div>
 
 </div>
+<p>
 <%= render 'user_skill_table', user: user %>
+</p>
+<%= render 'quests/all_quests', quests: user.quests.sort_by_level_requirement.last_five %>
+
+<%= render 'tasks/tasks_for_users_split', tasks: user.tasks.limit(3) %>
+

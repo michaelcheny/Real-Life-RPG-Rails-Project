@@ -24,5 +24,9 @@ class Quest < ApplicationRecord
     limit(5)
   end  
 
+  # Grabs the last three
+  def self.last_three
+    limit(3)
+  end
 
 end

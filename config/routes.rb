@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get 'dashboard' => 'users#dashboard', as: 'dashboard'
 
   # Highscore for all users
-  get 'highscores' => 'users#highscores', as: 'highscores'
+  get 'highscores' => 'users#index', as: 'highscores'
 
   # Custom add quest path
   patch 'add_quest' => 'users#add_quest', as: 'addquest'

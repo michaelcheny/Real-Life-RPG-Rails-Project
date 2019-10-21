@@ -46,9 +46,9 @@ module UsersHelper
   # Dashboard Greeting
   def dashboard_greet(user)
     if user.master
-      "Master #{user.username}'s Dashboard"
+      "The Great and Powerful #{user.username}"
     else
-      "Dashboard"
+      "#{user.username}"
     end
   end
 

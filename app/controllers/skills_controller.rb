@@ -3,7 +3,8 @@ class SkillsController < ApplicationController
 
   def index
     if params[:user_id]
-      @skills = User.find(params[:user_id]).skills
+      @user = User.find(params[:user_id])
+      @skills = @user.skills
     else
       @skills = SKill.all
     end

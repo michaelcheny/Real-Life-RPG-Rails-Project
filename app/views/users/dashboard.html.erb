@@ -1,13 +1,13 @@
 <h3 class="title text-center">Your progress</h3>
+
 <p>Total Completed Tasks: <%= @user.tasks.finished.count %></p>
 <p>Tasks Completed Today: <%= @user.tasks.completed_today.count %></p>
-
 <p>Top Skill: <%= UserSkill.top_skill_by_user(@user).first.skill.name %></p>
-
 <p>Total Level: <%= @user.total_level %></p>    
 <p>Total Exp: <%= @user.total_exp_pts %></p>
-<%= render 'user_skill_table', user: @user %>
 
+
+<%= render 'user_skill_table', user: @user %>
 
 <%= render 'tasks/tasks_for_users_split', tasks: @user.tasks.last_five %>
 

@@ -107,7 +107,7 @@ q = Quest.create(name: "Level Booster2", description: "Boost my level for demoin
 qq = Quest.create(name: "Level Booster1", description: "Boost my level for demoing app", difficulty_level: 10, level_requirement: 10, skill_ids: [1,2,3])
 qqq = Quest.create(name: "Level Booster3", description: "Boost my level for demoing app", difficulty_level: 10, level_requirement: 30, skill_ids: [7,8,9])
 qqqq = Quest.create(name: "Take 2 Strokes Off My Golf Game", description: "Yeaahhh, can't dooooo.", difficulty_level: 10, level_requirement: 16, skill_ids: [3,8,9])
-qqqqq = Quest.create(name: "Find a Mating Partner", description: "It is considered a good move in bird culture to find a mate.", difficulty_level: 10, level_requirement: 20, skill_ids: [8,9,10])
+qqqqq = Quest.create(name: "Get Schwifty!", description: "It is considered a good move in bird culture to find a mate.", difficulty_level: 10, level_requirement: 20, skill_ids: [8,9,10])
 qqqqqq = Quest.create(name: "Lose 3 pounds", description: "Burn off all the weight from stress eating during project week.", difficulty_level: 7, level_requirement: 25, skill_ids: [1,3,4])
 
 
@@ -115,5 +115,9 @@ qqqqqq = Quest.create(name: "Lose 3 pounds", description: "Burn off all the weig
 m.user_quests.create(quest: q)
 m.user_quests.create(quest: qq)
 
-b.user_quests.create(quest: q)
+
 b.user_quests.create(quest: qq)
+
+b.tasks.create(name: "Brush my feathers", description: "Must keep my feathers looking shiny to attract mate." difficulty_level: 3, priority_level: 10, skill_ids: [1,8,10])
+
+b.tasks.create(name: "Find a mating partner", description: "It is considered a good move in bird culture to find a mate.", difficulty_level: 10, priority_level: 10, skill_ids: [8,9,10])

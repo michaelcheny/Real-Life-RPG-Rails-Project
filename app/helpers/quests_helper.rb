@@ -2,7 +2,7 @@ module QuestsHelper
 
   # renders the footer of the quest based on different scenerios
   def quest_footer_for_quest(quest)
-    if params[:user_id]
+    if params[:user_id] 
       if quest.completed
         render 'shared/disabled_button', message: "Completed"
       else
@@ -17,6 +17,13 @@ module QuestsHelper
     end
   end
 
+
+  # Quest footer for the show and dashboard page changes if it is you or others
+  def quest_footer_for_show_dash(quest)
+    if current_user.user_quests.include?(quest)
+      render 'quests/complete_button', object: quest, url: '/complete_quest'
+    end
+  end
 
   # Calculates the exp earned for completing the quest based on quest info.
   def calculate_points_for_quest(quest)

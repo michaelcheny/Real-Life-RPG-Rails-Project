@@ -64,30 +64,14 @@ class ApplicationController < ActionController::Base
   end
 
 
-  def authorize(user)
-    unless params[:id].to_i == user.id
+  def authorize(user, id)
+    unless id.to_i == user.id
       flash[:error] = "You are not authorized! Sending you back."
       redirect_to dashboard_path
     end
   end
 
 
-
-  def authorize_nested(user, id)
-    unless id.to_i == user.id
-      flash[:error] = "You are not authorized! Sending you back."
-      redirect_to dashboard_path and return
-    end
-  end
-
-
-
-  # def authorize_viewing_quests
-  #   unless params[:user_id].to_i == current_user.id
-  #     flash[:error] = "You are not authorized to view this."
-  #     redirect_to user_quests_path(current_user)
-  #   end
-  # end
 
   def authorize_viewing_nested(path_to)
     unless params[:user_id].to_i == current_user.id
@@ -115,13 +99,6 @@ class ApplicationController < ActionController::Base
     # authenticate
     redirect_to edit_user_task_path(current_user, task) if !task
     redirect_to edit_user_task_path(current_user, task) if current_user != task.user
-  end
-
-  
-  # Formula for leveling up based on exp
-  def calculate_level_from_exp(exp_pts)
-    level = (25 + (Math.sqrt(625 + 100 * exp_pts))) / 50
-    return level.floor
   end
 
 

@@ -6,23 +6,6 @@ class TasksController < ApplicationController
 
   before_action :authenticate
 
-  
-  # def index
-  #   if params[:user_id]
-  #     @user = User.find_by(id: params[:user_id])
-  #     # @user = current_user
-  #     if @user.nil?
-  #       flash[:error] = "User not found."
-  #       redirect_to user_tasks_path(@user)
-  #     else
-  #       @tasks = @user.tasks
-  #     end
-  #   else
-  #     @tasks = tasks_that_are_not_yours
-  #   end
-  # end
-
-
 
   def index
     if params[:user_id]
@@ -33,9 +16,6 @@ class TasksController < ApplicationController
       @tasks = tasks_that_are_not_yours
     end
   end
-  
-  
-  
 
 
   def new
@@ -46,7 +26,7 @@ class TasksController < ApplicationController
 
   def create
     @user = current_user
-    authorize_nested(@user, params[:user_id])
+    authorize(@user, params[:user_id])
     if params[:user_id]
       
       @task = @user.tasks.build(task_params)
@@ -61,15 +41,13 @@ class TasksController < ApplicationController
       flash[:error] = "Sorry, #{@user.username}, something messed up."
       redirect_to new_user_task_path(current_user)
     end
-
   end
 
 
   def edit
     @user = current_user
-    authorize_nested(@user, params[:user_id])
+    authorize(@user, params[:user_id])
     if params[:user_id]
-
       if @user.tasks.find_by(id: params[:id])
         @task = @user.tasks.find(params[:id])
         authorize_task(@task)

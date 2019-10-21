@@ -1,3 +1,10 @@
 <h3 class="title text-center"><%= @user.username %>'s profile</h3> 
 
-<%= render 'users/stats_for_user', user: @user %>
+
+<% if @user.user_quests %>
+
+  <%= render 'users/stats_for_user', user: @user %>
+
+<% else %>
+  <h3 class="title text-center">Go check out the quest bulletin to add a quest.</h3>
+<% end %>

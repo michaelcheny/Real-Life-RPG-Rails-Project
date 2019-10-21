@@ -63,12 +63,23 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
   def authorize(user)
     unless params[:id].to_i == user.id
       flash[:error] = "You are not authorized! Sending you back."
       redirect_to dashboard_path
     end
   end
+
+
+
+  def authorize_nested(user, id)
+    unless id.to_i == user.id
+      flash[:error] = "You are not authorized! Sending you back."
+      redirect_to dashboard_path and return
+    end
+  end
+
 
 
   # def authorize_viewing_quests

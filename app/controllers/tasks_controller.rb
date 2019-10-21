@@ -28,13 +28,7 @@ class TasksController < ApplicationController
     if params[:user_id]
       authorize_viewing_nested(user_tasks_path(current_user))
       @user = current_user
-      # @user = current_user
-      # if @user.nil?
-      #   flash[:error] = "User not found."
-      #   redirect_to user_tasks_path(@user)
-      # else
-        @tasks = @user.tasks
-      # end
+      @tasks = @user.tasks
     else
       @tasks = tasks_that_are_not_yours
     end
@@ -45,16 +39,14 @@ class TasksController < ApplicationController
 
 
   def new
-    # authenticate
     @user = current_user
     @task = @user.tasks.build
   end
 
 
   def create
-    # authenticate
     @user = current_user
-    authorize(@user)
+    authorize_nested(@user, params[:user_id])
     if params[:user_id]
       
       @task = @user.tasks.build(task_params)
@@ -73,36 +65,18 @@ class TasksController < ApplicationController
   end
 
 
-  # def show
-  #   if params[:user_id]
-  #     @user = User.find_by(id: params[:user_id])
-  #     @task = @user.tasks.find_by(id: params[:id])
-  #     if @task.nil?
-  #       flash[:error] = "Task not found."
-  #       redirect_to user_tasks_path(@user)
-  #     end
-  #   else
-  #     @task = Task.find(params[:id])
-  #   end
-  # end
-
-
   def edit
-  @user = current_user
-  authorize(@user)
+    @user = current_user
+    authorize_nested(@user, params[:user_id])
     if params[:user_id]
-      
-      
+
       if @user.tasks.find_by(id: params[:id])
         @task = @user.tasks.find(params[:id])
         authorize_task(@task)
       else 
-        flash[:error] = "Task not found, don't you dare."
-         redirect_to user_tasks_path(@user) 
+        flash[:error] = "Task not found."
+        redirect_to user_tasks_path(@user) 
       end
-    else
-      flash[:error] = "User not found."
-      redirect_to user_tasks_path(@user)
     end
   end
 

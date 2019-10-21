@@ -27,5 +27,13 @@ module QuestsHelper
   end
 
 
+  # Gets duration of the task
+  def duration(quest)
+    created = quest.created_at
+    updated = quest.updated_at
+    minutes = (updated - created) / 1.minutes
+    return minutes.round
+  end
+
 
 end

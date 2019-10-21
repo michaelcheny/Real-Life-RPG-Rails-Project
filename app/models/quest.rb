@@ -29,4 +29,20 @@ class Quest < ApplicationRecord
     limit(3)
   end
 
+  # Gets duration of the task
+  def duration
+    created = self.created_at
+    updated = self.updated_at
+    minutes = (updated - created) / 1.minutes
+    return minutes.round
+  end
+
+  def completion_time
+    self.updated_at.strftime("%m/%d/%Y")
+  end
+
+  def added_on
+    self.created_at.strftime("%m/%d/%Y")
+  end
+
 end

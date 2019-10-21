@@ -1,5 +1,7 @@
 <% if tasks.any? %>
+
   <% tasks.each do |task| %>
+
     <div class="card">
       <div class="card-header"><span class="font-weight-bold"><%= task.name %></span><span class="float-sm-right"><%= show_task_user(task) %></span></div>
 
@@ -21,5 +23,7 @@
   <% end %>
   
 <% else %>
+
   <h3>None at the moment. Be the first to add one.</h3>
+  
 <% end %>

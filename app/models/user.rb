@@ -48,12 +48,12 @@ class User < ApplicationRecord
 
   # Grabs all the completed quests.
   def sort_quests_by_completed
-    self.user_quests.where(completed: true)
+    self.user_quests.where(completed: true).order(updated_at: :desc)
   end
 
    # Grabs all the incompleted quests.
    def sort_quests_by_incomplete
-    self.user_quests.where(completed: false)
+    self.user_quests.where(completed: false).order(created_at: :asc)
   end
 
 

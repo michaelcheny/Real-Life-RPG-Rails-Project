@@ -26,7 +26,8 @@
 
 <h3 class="title text-center">Recent Quests</h3>
 
-<%= render 'quests/all_quests', quests: user.quests.sort_by_level_requirement.last_five %>
+<%= render 'quests/incomplete_complete_quests', user: user %>
 
+<h3 class="title text-center">Recent Tasks</h3>
 <%= render 'tasks/tasks_for_users_split', tasks: user.tasks.last_five %>
 

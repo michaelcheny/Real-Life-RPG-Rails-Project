@@ -26,4 +26,6 @@ module QuestsHelper
     return pts.to_i
   end
 
+
+
 end

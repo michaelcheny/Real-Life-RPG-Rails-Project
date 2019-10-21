@@ -1,0 +1,23 @@
+<% if quests %>
+  <% quests.each do |quest| %>
+    <div class="card">
+      <div class="card-header"><span class="font-weight-bold"><%= quest.quest.name %></span><span class="float-sm-right">Quest Level: <%= quest.quest.level_requirement %></span></div>
+      <div class="card-body">
+        <p class="card-text"><%= quest.quest.description %></p>
+      </div>
+
+      <div class="card-body">
+        <p class="card-text"><%= calculate_points_for_quest(quest.quest) %> exp gained for:</p>
+        <%= render 'shared/affiliated_skills', object: quest.quest %>
+      </div>
+      
+      <div class="card-footer text-muted">
+        <span class="float-left"><%= quest.quest.duration %> minute total</span>
+        <span class="float-right">Completed on: <%= quest.quest.completion_time %></span>
+      </div>
+    </div><br>
+  <% end %>
+
+<% else %>
+  <h3 class="card-body">None at the moment.</h3>
+<% end %>

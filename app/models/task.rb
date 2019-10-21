@@ -47,7 +47,6 @@ class Task < ApplicationRecord
   end
 
 
-
   # Gets duration of the task
   def duration
     created = self.created_at

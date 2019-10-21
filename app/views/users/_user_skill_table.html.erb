@@ -6,7 +6,7 @@
 
       <% user.user_skills.each do |user_skill| %>
 
-        <th scope="col"><%= link_to user_skill.skill.name, user_skill_path(user, user_skill.skill) %></th>
+        <th scope="col" data-toggle="tooltip" title="<%= user_skill.skill.description %>"><%= user_skill.skill.name %></th>
 
       <% end %>
     </tr>

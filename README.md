@@ -1,7 +1,7 @@
 # Real Life RPG
 
 ## Description
-Real Life RPG is a minimal and interactive goals/to-do list that rewards the user. Users will be given 10 premade skills, and level them up by checking items off their goals / to-do list. This app has role playing game elements inspired from classic RPG games. Users can visit the Quest bulletin(sorted by difficulty level) and accept quests(goals) made by "Master" users. Reach level 50 and defeat the boss to obtain the "Master" status, to unlock the ability to create quests for other users. Level up by completing quests and completing tasks. Visit the highscores page to see how you rank amongst other users. The goal of this app is to level up the user's productivity in real life by rewarding them for reaching goals and completing tasks!
+Real Life RPG is a minimal and interactive goals/to-do list that rewards the user. Users will be given 10 premade skills, and can level them up by checking items off their goals / to-do list. This app has role playing game elements inspired from classic RPG games. Users can visit the Quest bulletin(sorted by difficulty level) and accept quests(goals) made by "Master" users. Reach level 50 and defeat the boss to obtain the "Master" status, to unlock the ability of creating new quests for other users. Level up by completing quests and completing tasks. Visit the highscores page to see how you rank amongst other users. The goal of this app is to level up the user's productivity in real life by rewarding them for reaching their goals and completing tasks!
 
 ## Installation
 - Clone this repo

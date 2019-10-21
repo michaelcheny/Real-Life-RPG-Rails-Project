@@ -9,22 +9,24 @@
   <div class="row">
 
     <div class="col text-center">
-      <p>Total Completed Tasks: <%= user.tasks.finished.count %></p>
       <p>Tasks Completed Today: <%= user.tasks.completed_today.count %></p>
+      <p>Total Completed Tasks: <%= user.tasks.finished.count %></p>
     </div>
 
     <div class="col text-center">
-      <p>Total Quests Completed: <%= user.sort_quests_by_completed.count %></p>
       <p>Quests Completed Today: <%= user.quests_completed_today.count %></p>
+      <p>Total Quests Completed: <%= user.sort_quests_by_completed.count %></p>
     </div>
 
   </div>
 
 </div>
-<p>
-<%= render 'user_skill_table', user: user %>
-</p>
+
+<p><%= render 'user_skill_table', user: user %></p>
+
+<h3 class="title text-center">Recent Quests</h3>
+
 <%= render 'quests/all_quests', quests: user.quests.sort_by_level_requirement.last_five %>
 
-<%= render 'tasks/tasks_for_users_split', tasks: user.tasks.limit(3) %>
+<%= render 'tasks/tasks_for_users_split', tasks: user.tasks.last_five %>
 

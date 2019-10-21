@@ -41,6 +41,12 @@ class Task < ApplicationRecord
     limit(5)
   end
 
+  # Grabs the last three tasks
+  def self.last_five
+    limit(5)
+  end
+
+
 
   # Gets duration of the task
   def duration

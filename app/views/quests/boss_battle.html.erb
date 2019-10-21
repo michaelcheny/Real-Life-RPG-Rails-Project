@@ -1,7 +1,9 @@
 
-  <%= image_tag "mrjellybean.png", class: "img-fluid" %>
+<h3>Boss Battle</h3>
 
-  <%= form_tag do %>
+<%= image_tag "mrjellybean.png", class: "img-fluid" %>
+
+<%= form_tag('/defeated') do %>
 
   <div class="form-group">
     <%= label_tag "Defeat the Jellybean by answering the question correctly!" %>
@@ -10,4 +12,4 @@
 
   <%= submit_tag "Defeat the Jellybean", class: "btn btn-secondary" %>
 
-  <% end %>
+<% end %>

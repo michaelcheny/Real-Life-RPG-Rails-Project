@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   # Boss battle to become master
   get 'boss_battle' => 'quests#boss_battle', as: 'bossbattle'
+  post 'defeated' => 'quests#defeated'
 
   resources :users, except: [:new, :index] do
     resources :tasks, except: [:show]

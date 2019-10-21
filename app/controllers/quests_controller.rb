@@ -2,7 +2,7 @@ class QuestsController < ApplicationController
 
 
   before_action :authenticate
-  before_action :check_if_user_is_a_master?, except: [ :index, :show, :boss_battle ]
+  before_action :check_if_user_is_a_master?, except: [ :index, :show, :boss_battle, :defeated ]
 
 
   def index
@@ -73,6 +73,20 @@ class QuestsController < ApplicationController
 
   def defeated
     answer = "profanity"
+    response = boss_battle_input[:input].downcase
+    if answer == response
+      current_user.update(master: true)
+      flash[:success] = "Congrats! You've slain the boss and obtained the status of Master!"
+      binding.pry
+      redirect_to dashboard_path
+    else
+      flash[:error] = "The Jellybean got what he wanted. Please try again."
+      binding.pry
+      redirect_to bossbattle_path
+
+    end
+    # binding.pry
+    
   end
 
   private
@@ -82,5 +96,9 @@ class QuestsController < ApplicationController
     params.require(:quest).permit(:name, :description, :difficulty_level, :level_requirement, skill_ids:[])
   end
 
+
+  def boss_battle_input
+    params.permit(:input)
+  end
 
 end

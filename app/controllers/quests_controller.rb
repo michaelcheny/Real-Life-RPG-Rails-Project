@@ -71,23 +71,20 @@ class QuestsController < ApplicationController
     
   end
 
+
   def defeated
     answer = "profanity"
-    response = boss_battle_input[:input].downcase
+    response = boss_battle_params[:input].downcase
     if answer == response
       current_user.update(master: true)
       flash[:success] = "Congrats! You've slain the boss and obtained the status of Master!"
-      binding.pry
       redirect_to dashboard_path
     else
       flash[:error] = "The Jellybean got what he wanted. Please try again."
-      binding.pry
       redirect_to bossbattle_path
-
     end
-    # binding.pry
-    
   end
+  
 
   private
 
@@ -97,7 +94,7 @@ class QuestsController < ApplicationController
   end
 
 
-  def boss_battle_input
+  def boss_battle_params
     params.permit(:input)
   end
 

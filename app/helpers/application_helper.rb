@@ -37,11 +37,21 @@ module ApplicationHelper
 
 
   # Shows link to boss battle
-
   def boss_battle_link
-    if (current_user.total_level >= 50) && !current_user.master
+    if current_user.total_level >= 50
       render 'layouts/boss_battle_link'
     end
   end
+
+
+  # Changes the link for the boss battle depend if you already defeated boss
+  def beat_boss_button
+    if current_user.master
+      render 'shared/disabled_button', message: "You've already defeated the Evil Jellybean" 
+    else
+      submit_tag "Defeat the Jellybean and become a master", class: "btn btn-secondary btn-sm btn-block"
+    end
+  end
+  
 
 end

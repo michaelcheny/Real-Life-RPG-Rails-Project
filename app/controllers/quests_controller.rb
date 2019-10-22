@@ -16,11 +16,6 @@ class QuestsController < ApplicationController
   end
 
 
-  def show
-
-  end
-
-
   def new
     @quest = Quest.new
   end
@@ -76,10 +71,10 @@ class QuestsController < ApplicationController
     response = boss_battle_params[:input].downcase
     if answer == response
       current_user.update(master: true)
-      flash[:success] = "Congrats! You've slain the boss and obtained the status of Master!"
+      flash[:success] = "Congrats! You've slain the Jellybean and obtained the status of Master!"
       redirect_to dashboard_path
     else
-      flash[:error] = "The Jellybean got what he wanted. Please try again."
+      flash[:error] = "The Jellybean has defeated you. Please try again."
       redirect_to bossbattle_path
     end
   end

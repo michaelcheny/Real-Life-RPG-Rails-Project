@@ -36,5 +36,5 @@ Rails.application.routes.draw do
   end
   
   resources :tasks, except: [:show]
-  resources :quests
+  resources :quests, except: [:show]
 end

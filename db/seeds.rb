@@ -92,7 +92,8 @@ qqq = Quest.create(name: "Lose 3 pounds", description: "Burn off all the weight 
 qqqq = Quest.create(name: "Take 2 Strokes Off My Golf Game", description: "Yeaahhh, can't dooooo.", difficulty_level: 10, level_requirement: 16, skill_ids: [3,8,9])
 qqqqq = Quest.create(name: "Get Schwifty!", description: "It is considered a good move in bird culture to find a mate.", difficulty_level: 10, level_requirement: 20, skill_ids: [8,9,10])
 qqqqqq = Quest.create(name: "Lose 6 pounds", description: "Burn off all the weight from stress eating during bootcamp.", difficulty_level: 7, level_requirement: 40, skill_ids: [1,3,4])
-
+Quest.create(name: "Read a book", description: "Finish a book." difficulty_level: 4, level_requirement: 13, skills_id: [6,7])
+Quest.create(name: "Prank my neighbor 5 days in a row", description: "Pull a prank on a neighbor everyday for 5 days! Muhahahaha!", difficulty_level: 4, level_requirement: 17, skill_ids: [10,9,7])
 
 
 m.user_quests.create(quest: q)

@@ -43,4 +43,20 @@ module QuestsHelper
   end
 
 
+  # Shows the edit button for the quest
+  def edit_button_for_quest(quest)
+    if !!current_user && current_user.master
+      link_to "Edit", edit_quest_path(quest), class: "btn btn-secondary btn-sm" 
+    end
+  end
+
+  # Shows the delete button if you own the task.
+  def show_delete_button_for_quest(quest)
+    if params[:id] && current_user.master
+      link_to "Delete", quest, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-secondary"
+    end
+  end
+
 end
+
+

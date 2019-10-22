@@ -18,6 +18,7 @@
 
   <%= render 'shared/collection_checkboxes', object: Skill.all, f: f %>
 
-  <%= f.submit class: "btn btn-secondary" %>
+  <%= f.submit class: "btn btn-secondary" %> <%= show_delete_button_for_quest(@quest) %>
 
 <% end %>
+

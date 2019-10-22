@@ -3,7 +3,7 @@
   <% quests.each do |quest| %>
 
     <div class="card">
-      <div class="card-header"><span class="font-weight-bold"><%= quest.name %></span> <span class="float-sm-right">Level Requirement: <%= quest.level_requirement %></span></div>
+      <div class="card-header"><span class="font-weight-bold"><%= quest.name %> <%= edit_button_for_quest(quest) %></span> <span class="float-sm-right">Level Requirement: <%= quest.level_requirement %></span></div>
 
         <div class="card-body">
           <p class="card-text"><%= quest.description %></p>

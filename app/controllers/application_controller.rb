@@ -5,30 +5,15 @@ class ApplicationController < ActionController::Base
   helper_method :authenticate
   helper_method :authorize?
   helper_method :check_if_user_is_a_master?
-  # helper_method :owns_resource?
 
-  rescue_from ActiveRecord::RecordNotFound, :with => :rescue404
-  rescue_from ActionController::RoutingError, :with => :rescue404
+  # rescue_from ActiveRecord::RecordNotFound, :with => :rescue404
+  # rescue_from ActionController::RoutingError, :with => :rescue404
  
 
   private
 
-  # ERROR STUFF
-
-  def rescue404
-    render(:file => File.join(Rails.root, 'public/custom404.html'), :status => 404, :layout => false)
-  end
-
-  def rescue403
-    render(:file => File.join(Rails.root, 'public/custom403.html'), :status => 403, :layout => false)
-  end
-
-  # def owns_resource?
-  #   resource.user == current_user
-  # end
-
-  # def authorize(resource)
-  #   rescue403 if !owns_resource?(resource)
+  # def rescue404
+  #   render(:file => File.join(Rails.root, 'public/custom404.html'), :status => 404, :layout => false)
   # end
 
 

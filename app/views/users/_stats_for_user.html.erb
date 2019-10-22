@@ -1,12 +1,13 @@
-<div class="title text-center">
-  <p>Total Level: <%= user.total_level %></p>    
-  <p>Total Exp: <%= user.total_exp_pts %></p>
-  <p>Top Skill: <%= UserSkill.top_skill_by_user(user).first.skill.name %></p>
-</div>
 
 <div class="container">
 
   <div class="row">
+
+    <div class="col text-center">
+      <p>Total Level: <%= user.total_level %></p>    
+      <p>Total Exp: <%= user.total_exp_pts %></p>
+      <p>Top Skill: <%= UserSkill.top_skill_by_user(user).first.skill.name %></p>
+    </div>
 
     <div class="col text-center">
       <p>Tasks Completed Today: <%= user.tasks.completed_today.count %></p>
@@ -29,5 +30,6 @@
 <%= render 'quests/incomplete_complete_quests', user: user %>
 
 <h3 class="title text-center">Recent Tasks</h3>
+
 <%= render 'tasks/tasks_for_users_split', tasks: user.tasks.last_five %>
 

@@ -1,4 +1,4 @@
-<% if quests %>
+<% if quests.any? %>
 
   <% quests.reverse.each do |quest| %>
 
@@ -24,6 +24,6 @@
   
 <% else %>
 
-  <h3>None at the moment</h3>
+  <h3 class="text-center">None at the moment</h3>
   
 <% end %>

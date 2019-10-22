@@ -1,5 +1,6 @@
 <% if tasks.incomplete.any? %>
   <% tasks.incomplete.each do |task| %>
+
     <div class="card">
       <div class="card-header font-weight-bold"><%= task.name %> <%= show_edit_button_for_task(task) %></div>
 
@@ -15,9 +16,12 @@
       <div class="card-footer text-muted">
         <%= show_complete_button_for(task) %>
       </div>
+
     </div><br>
   <% end %>
 
 <% else %>
-  <h3 class="card-body">None at the moment.</h3>
+
+  <h3 class="text-center">None at the moment.</h3>
+  
 <% end %>

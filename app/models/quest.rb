@@ -24,16 +24,20 @@ class Quest < ApplicationRecord
     limit(5)
   end  
 
+
   # Grabs the last three
   def self.last_three
     limit(3)
   end
 
 
+  # Shows the completion date
   def completion_time
     self.updated_at.strftime("%m/%d/%Y")
   end
 
+
+  # Shows the date they added the quest
   def added_on
     self.created_at.strftime("%m/%d/%Y")
   end

@@ -28,6 +28,7 @@ class User < ApplicationRecord
   end
 
 
+  # Calculates the users total exp
   def total_exp_pts
     total_exp = 0 
     self.user_skills.each do |user_skill|
@@ -37,6 +38,7 @@ class User < ApplicationRecord
   end
 
 
+  # Caculates their total level
   def total_level
     total_level = 0
     self.user_skills.each do |user_skill|

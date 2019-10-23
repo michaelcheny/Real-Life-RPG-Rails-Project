@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
+###################
   # Helper method Checks if user is authorized
   def authorize?
     unless current_user.id == params[:id].to_i
@@ -77,7 +77,7 @@ class ApplicationController < ActionController::Base
     redirect_to edit_user_task_path(current_user, task) if current_user != task.user
   end
 
-
+##############################
   # Checks to see if a user is a master, if not, boot
   def check_if_user_is_a_master?
     unless !!current_user && current_user.master

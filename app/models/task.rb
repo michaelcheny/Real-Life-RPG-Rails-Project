@@ -42,8 +42,8 @@ class Task < ApplicationRecord
   end
 
   # Grabs the last three tasks
-  def self.last_five
-    limit(5)
+  def self.last_three
+    limit(3)
   end
 
 

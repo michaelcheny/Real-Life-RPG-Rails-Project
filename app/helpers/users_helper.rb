@@ -36,6 +36,7 @@ module UsersHelper
     end
   end
 
+  
   # Formula for leveling up based on exp
   def calculate_level_from_exp(exp_pts)
     level = (25 + (Math.sqrt(625 + 100 * exp_pts))) / 50

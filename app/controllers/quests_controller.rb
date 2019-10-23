@@ -2,7 +2,7 @@ class QuestsController < ApplicationController
 
 
   before_action :authenticate
-  before_action :check_if_user_is_a_master?, except: [ :index, :boss_battle, :defeated ]
+  before_action :check_if_user_is_a_master, except: [ :index, :boss_battle, :defeated ]
 
 
   def index

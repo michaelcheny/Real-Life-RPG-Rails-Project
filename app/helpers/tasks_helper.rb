@@ -49,7 +49,6 @@ module TasksHelper
   end
 
 
-
   # Shows completed or not completed.
   def show_completed_if_completed(task)
     task.completed ? "Completed" : "Not Completed"

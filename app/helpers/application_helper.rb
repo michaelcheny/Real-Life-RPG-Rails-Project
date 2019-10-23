@@ -22,7 +22,7 @@ module ApplicationHelper
   end
 
 
-  # Greeting
+  # Greeting title
   def greeting
     if logged_in?
       "Hello " + current_user.username.titlecase

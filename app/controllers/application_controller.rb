@@ -43,9 +43,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-###################
+
   # Helper method Checks if user is authorized
-  def authorize?
+  def check_authorization
     unless current_user.id == params[:id].to_i
       flash[:error] = "You are not authorized! Sending you back."
       redirect_to dashboard_path
@@ -77,9 +77,9 @@ class ApplicationController < ActionController::Base
     redirect_to edit_user_task_path(current_user, task) if current_user != task.user
   end
 
-##############################
+  
   # Checks to see if a user is a master, if not, boot
-  def check_if_user_is_a_master?
+  def check_if_user_is_a_master
     unless !!current_user && current_user.master
       flash[:error] = "You must become a master to do this action. Reach level 50 and defeat the mighty jelly bean to obtain master status."
       redirect_to dashboard_path

@@ -101,6 +101,13 @@ class UsersController < ApplicationController
   end
 
 
+  def rewards
+
+    @user = current_user
+
+  end
+
+
   private
 
 

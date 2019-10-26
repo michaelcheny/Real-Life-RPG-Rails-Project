@@ -52,6 +52,14 @@ module ApplicationHelper
       submit_tag "Defeat the Jellybean and become a master", class: "btn btn-secondary btn-sm btn-block"
     end
   end
+
+
+  ## For the rewards page for people over 50
+  def show_if_master(user)
+    if user.master
+      render 'users/rewards_link'
+    end
+  end
   
 
 end

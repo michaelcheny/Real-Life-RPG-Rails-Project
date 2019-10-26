@@ -29,7 +29,7 @@ module QuestsHelper
   def calculate_points_for_quest(quest)
     diff_pts = quest.difficulty_level * 1.2
     level_scaling = quest.level_requirement
-    pts = (diff_pts + level_scaling) * 25
+    pts = (diff_pts + level_scaling) * 20
     return pts.to_i
   end
 
